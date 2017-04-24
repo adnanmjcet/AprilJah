@@ -193,7 +193,7 @@ namespace JamiatAhleHadees.Areas.PanelMember.Controllers
             return View(res);
         }
 
-        public ActionResult GetMasjidLandDetails(int Id)
+        public ActionResult GetMasjidLandRequestDetails(int Id)
         {
             var userDetails = new UserRegistrationBs().UserRegistrationList().Where(x => x.UserName == User.Identity.Name).FirstOrDefault();
             var useerTypeId = Convert.ToInt32(userDetails.UserTypeId);

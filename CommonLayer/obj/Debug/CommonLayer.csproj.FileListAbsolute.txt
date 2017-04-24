@@ -51,3 +51,8 @@ C:\Users\user\Desktop\Demo Version for git\Demo Version\JAH\CommonLayer\bin\Debu
 C:\Users\user\Desktop\Demo Version for git\Demo Version\JAH\CommonLayer\bin\Debug\CommonLayer.pdb
 C:\Users\user\Desktop\Demo Version for git\Demo Version\JAH\CommonLayer\obj\Debug\CommonLayer.dll
 C:\Users\user\Desktop\Demo Version for git\Demo Version\JAH\CommonLayer\obj\Debug\CommonLayer.pdb
+C:\Users\user\Documents\GitHub\AprilJah\CommonLayer\bin\Debug\CommonLayer.dll
+C:\Users\user\Documents\GitHub\AprilJah\CommonLayer\bin\Debug\CommonLayer.pdb
+C:\Users\user\Documents\GitHub\AprilJah\CommonLayer\obj\Debug\CommonLayer.csprojResolveAssemblyReference.cache
+C:\Users\user\Documents\GitHub\AprilJah\CommonLayer\obj\Debug\CommonLayer.dll
+C:\Users\user\Documents\GitHub\AprilJah\CommonLayer\obj\Debug\CommonLayer.pdb

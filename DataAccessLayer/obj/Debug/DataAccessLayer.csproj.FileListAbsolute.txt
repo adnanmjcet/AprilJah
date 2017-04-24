@@ -154,3 +154,15 @@ C:\Users\user\Desktop\Demo Version for git\Demo Version\JAH\DataAccessLayer\bin\
 C:\Users\user\Desktop\Demo Version for git\Demo Version\JAH\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
 C:\Users\user\Desktop\Demo Version for git\Demo Version\JAH\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 C:\Users\user\Desktop\Demo Version for git\Demo Version\JAH\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+C:\Users\user\Documents\GitHub\AprilJah\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+C:\Users\user\Documents\GitHub\AprilJah\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\user\Documents\GitHub\AprilJah\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\user\Documents\GitHub\AprilJah\DataAccessLayer\bin\Debug\CommonLayer.dll
+C:\Users\user\Documents\GitHub\AprilJah\DataAccessLayer\bin\Debug\EntityFramework.dll
+C:\Users\user\Documents\GitHub\AprilJah\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\user\Documents\GitHub\AprilJah\DataAccessLayer\bin\Debug\CommonLayer.pdb
+C:\Users\user\Documents\GitHub\AprilJah\DataAccessLayer\bin\Debug\EntityFramework.xml
+C:\Users\user\Documents\GitHub\AprilJah\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\user\Documents\GitHub\AprilJah\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
+C:\Users\user\Documents\GitHub\AprilJah\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+C:\Users\user\Documents\GitHub\AprilJah\DataAccessLayer\obj\Debug\DataAccessLayer.pdb

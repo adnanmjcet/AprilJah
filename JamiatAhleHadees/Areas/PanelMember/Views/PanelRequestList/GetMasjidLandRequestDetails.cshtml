@@ -7,9 +7,6 @@
 <div>
     <h4>Masjid Land Request</h4>
     <hr />
-
-
-
     <div class="row">
         <div class="col-lg-5">
             <dl class="dl-horizontal">
@@ -99,6 +96,69 @@
 
                 <dd>
                     @Html.DisplayFor(model => model.PurchasingFrom)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.RequestSubmitId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.RequestSubmitId)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Status)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreatedDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CreatedDate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.RequestTypeId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.RequestTypeId)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.RequestTypeName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.RequestTypeName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.MasjidName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MasjidName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.UserName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.RequestSubmitName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.RequestSubmitName)
                 </dd>
 
                 <dt>
@@ -272,72 +332,9 @@
                             </div>
                         </div>
                     </div>
-
-<dt>
-                    @Html.DisplayNameFor(model => model.RequestSubmitId)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.RequestSubmitId)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Status)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Status)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.CreatedDate)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.CreatedDate)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.RequestTypeId)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.RequestTypeId)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.RequestTypeName)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.RequestTypeName)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.MasjidName)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.MasjidName)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.UserName)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.UserName)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.RequestSubmitName)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.RequestSubmitName)
-                </dd>
-
             </dl>
+
+
         </div>
 
         <div class="col-lg-7">
@@ -441,36 +438,82 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3">
-            <table class="table table-hover table-condensed">
-                <thead>
-                    <tr>
-                        <td><b>Comments</b></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.PanelCommentList)
-                    {
-                        <tr>
-                            <td>
-                                @item.Comment
-                                <b><br />@item.UserName ,@item.UserTypeName</b><br />@item.CreatedDate
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+
+        <div class="col-lg-4">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">External Comments</a></li>
+                    <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Internal Comments</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab_1">
+                        <div class="col-lg-6">
+                            <table class="table table-hover table-condensed">
+                                <thead>
+                                    <tr>
+                                        <td><b>Comments</b></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.BoardCommentList)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @item.Comment
+                                                <b><br />@item.UserName ,@item.UserTypeName</b><br />@item.CreatedDate
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <textarea class="form-control" id="txtComment"></textarea>
+                                <br />
+                                <button type="button" id="btnPostComment" class="btn  btn-primary">Post Comment</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="tab_2">
+                        <div class="col-lg-6">
+                            <table class="table table-hover table-condensed">
+                                <thead>
+                                    <tr>
+                                        <td><b>Comments</b></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.PanelCommentList)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @item.Comment
+                                                <b><br />@item.UserName ,@item.UserTypeName</b><br />@item.CreatedDate
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <textarea class="form-control" id="txtComment"></textarea>
+                                <br />
+                                <button type="button" id="btnPostComment" class="btn  btn-primary">Post Comment</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
 </div>
-
 
 @using (Html.BeginForm())
 {
     <input type="hidden" value="@Model.MemberOpinionId" name="@Model.MemberOpinionId" id="txtMemberOpinionId" />
-
-
     <input type="hidden" value="@Model.AlreadyExistsInMemberOpinion.ToString()" name="AlreadyExistsInMemberOpinion" id="txtAlreadyExst" />
     <input type="hidden" value="@Model.UserId" name="@Model.UserId" id="txtUserId" />
     <input type="hidden" value="@Model.IsAgreed.ToString()" name="IsAgreed" id="txtIsAgreed" />

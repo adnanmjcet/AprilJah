@@ -159,3 +159,15 @@ C:\Users\user\Desktop\Git Latest\Git Latest\Demo Version for git\Demo Version\JA
 C:\Users\user\Desktop\Git Latest\Git Latest\Demo Version for git\Demo Version\JAH\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
 C:\Users\user\Desktop\Git Latest\Git Latest\Demo Version for git\Demo Version\JAH\BusinessLayer\obj\Debug\BusinessLayer.dll
 C:\Users\user\Desktop\Git Latest\Git Latest\Demo Version for git\Demo Version\JAH\BusinessLayer\obj\Debug\BusinessLayer.pdb
+C:\Users\user\Documents\GitHub\AprilJah\BusinessLayer\bin\Debug\BusinessLayer.dll
+C:\Users\user\Documents\GitHub\AprilJah\BusinessLayer\bin\Debug\BusinessLayer.pdb
+C:\Users\user\Documents\GitHub\AprilJah\BusinessLayer\bin\Debug\CommonLayer.dll
+C:\Users\user\Documents\GitHub\AprilJah\BusinessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\user\Documents\GitHub\AprilJah\BusinessLayer\bin\Debug\EntityFramework.dll
+C:\Users\user\Documents\GitHub\AprilJah\BusinessLayer\bin\Debug\CommonLayer.pdb
+C:\Users\user\Documents\GitHub\AprilJah\BusinessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\user\Documents\GitHub\AprilJah\BusinessLayer\bin\Debug\DataAccessLayer.dll.config
+C:\Users\user\Documents\GitHub\AprilJah\BusinessLayer\bin\Debug\EntityFramework.xml
+C:\Users\user\Documents\GitHub\AprilJah\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
+C:\Users\user\Documents\GitHub\AprilJah\BusinessLayer\obj\Debug\BusinessLayer.dll
+C:\Users\user\Documents\GitHub\AprilJah\BusinessLayer\obj\Debug\BusinessLayer.pdb
