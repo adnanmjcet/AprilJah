@@ -1,0 +1,581 @@
+﻿@model CommonLayer.CommonModels.MadarsaExtensionRequestModel
+
+@{
+    ViewBag.Title = "MadarsaExtensionRequestDetails";
+}
+
+<div>
+    <h4>Madarsa Extension Request</h4>
+    <hr />
+
+
+
+
+    <div class="row">
+        <div class="col-lg-4">
+            <dl class="dl-horizontal">
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShortDescription)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ShortDescription)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.UserId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.UserId)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Location)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Location)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Area)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Area)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.MadarsaId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MadarsaId)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ConstructionCost)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ConstructionCost)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ExistingFloors)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ExistingFloors)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.AmountNeeded)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AmountNeeded)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Engineer)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Engineer)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Elevation)
+                </dt>
+
+                <dd>
+                    @{ var base64Elev = Convert.ToBase64String(Model.Elevation);
+                            var ElevImg = string.Format("data:image/jpg;base64,{0}", base64Elev);
+                    }
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <a href='@ElevImg'>
+                                    <img src='@ElevImg' alt="Lights" style="width:100%">
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Paln)
+                </dt>
+
+                <dd>
+                    @{ var base64 = Convert.ToBase64String(Model.Paln);
+                           var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                    }
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <a href='@imgsrc'>
+                                    <img src='@imgsrc' alt="Lights" style="width:100%">
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Doc1)
+                </dt>
+
+                <dd>
+                    @{ var base64Doc1 = Convert.ToBase64String(Model.Doc1);
+                            var DocImg = string.Format("data:image/jpg;base64,{0}", base64Doc1);
+                    }
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <a href='@DocImg'>
+                                    <img src='@DocImg' alt="Lights" style="width:100%">
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Doc2)
+                </dt>
+
+                <dd>
+                    @{ 
+                        string base64Doc2 = string.Empty;
+                        string Doc2Img = string.Empty;
+                        if (Model.Doc2 != null)
+                        {
+                            base64Doc2 = Convert.ToBase64String(Model.Doc2);
+                            Doc2Img = string.Format("data:image/jpg;base64,{0}", base64Doc2);
+                        }
+
+                    }
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <a href='@Doc2Img'>
+                                    <img src='@Doc2Img' alt="Lights" style="width:100%">
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Doc3)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Doc3)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Pic1)
+                </dt>
+
+                <dd>
+                    @{ var base64Pic1 = Convert.ToBase64String(Model.Pic1);
+                            var PicImg = string.Format("data:image/jpg;base64,{0}", base64Pic1);
+                    }
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <a href='@PicImg'>
+                                    <img src='@PicImg' alt="Lights" style="width:100%">
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Pic2)
+                </dt>
+
+                <dd>
+                    @{ var base64Pic2 = Convert.ToBase64String(Model.Pic2);
+                            var Pic2Img = string.Format("data:image/jpg;base64,{0}", base64Pic2);
+                    }
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <a href='@Pic2Img'>
+                                    <img src='@Pic2Img' alt="Lights" style="width:100%">
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Pic3)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Pic3)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.RequestSubmitId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.RequestSubmitId)
+                </dd>
+
+                @*<dt>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Status)
+                    </dd>*@
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreatedDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CreatedDate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreatedBy)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CreatedBy)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.RequestTypeId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.RequestTypeId)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.UserName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.MadarsaName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MadarsaName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.RequestTypeName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.RequestTypeName)
+                </dd>
+
+            </dl>
+        </div>
+
+
+        <div class="col-lg-8">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Involve Panel</a></li>
+                    <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Involved Panels </a></li>
+                    <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Member Opinion</a></li>
+                    <li class=""><a href="#tab_4" data-toggle="tab" aria-expanded="false">Board Comments</a></li>
+
+
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab_1">
+                        @using (Html.BeginForm("Involve", "InvolveMember", FormMethod.Post))
+            {
+
+                            <input type="hidden" value="@Model.RequestTypeId" name="RequestTypeId" />
+                            <input type="hidden" value="@Model.RequestSubmitId" name="RequestSubmitId" />
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td><b>Involve Panel</b> </td>
+                                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="checkbox" value="15" name="Involve" />Legal</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" value="13" name="Involve" />Finance</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" value="11" name="Involve" />Ulama</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" value="14" name="Involve" />Advisory</td>
+                                    </tr>
+
+
+                                </tbody>
+                                <tfoot>
+
+                                    <tr>
+                                        <td><button type="submit" class="btn btn-primary">Involve</button></td>
+                                    </tr>
+
+                                </tfoot>
+
+                            </table>
+
+                        }
+
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="tab_2">
+
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <td>Involved Pannels</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.PannelMemberInvolved)
+                                {
+                                    <tr><td>@item.UserTypeName</td></tr>
+
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="tab_3">
+                       @Html.Partial("_MemberOpinion",Model)
+                    </div>
+
+                    <div class="tab-pane" id="tab_4">
+                        <table class="table table-hover table-condensed">
+                            <thead>
+                                <tr>
+                                    <td><b>Comments</b></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.BoardCommentList)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.Comment
+                                            <b><br />@item.UserName ,@item.UserTypeName</b><br />@item.CreatedDate
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="tab-pane" id="tab_5">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                        It has survived not only five centuries, but also the leap into electronic typesetting,
+                        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+                        sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
+                        like Aldus PageMaker including versions of Lorem Ipsum.
+                    </div>
+                    <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">   
+                            <button class="btn btn-default btn-lg" type="button" id="btnAcceptRequest">
+                                Agree
+                            </button>
+                            <button class="btn btn-default btn-lg" type="button" id="btnAcceptReject">
+                                Disagree
+                            </button>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label>Comment</label>
+                        <textarea class="form-control" id="txtComment"></textarea>
+                        <br />
+                        <button type="button" id="btnPostComment" class="btn  btn-primary">Post Comment</button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+@using (Html.BeginForm())
+{
+    <input type="hidden" value="@Model.MemberOpinionId" name="@Model.MemberOpinionId" id="txtMemberOpinionId" />
+
+    <input type="hidden" value="@Model.AlreadyExistsInMemberOpinion.ToString()" name="AlreadyExistsInMemberOpinion" id="txtAlreadyExstId" />
+    <input type="hidden" value="@Model.UserId" name="@Model.UserId" id="txtUserId" />
+    <input type="hidden" value="@Model.RequestSubmitId" name="@Model.RequestSubmitId" id="txtRequestSubmitId" />
+    <input type="hidden" value="@Model.RequestTypeId" name="@Model.RequestTypeId" id="txtRequestTypeId" />
+}
+ 
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+@if (TempData["message"]!=null && TempData["message"].ToString() != string.Empty)
+{
+    <script>
+        alert('Already exixts in panel');
+    </script>
+}
+<script>
+    $(document).ready(function () {
+        $(document).on("click", "#btnAcceptRequest,#btnAcceptReject", function (e) {
+            var status = false;
+            if ($(this).attr("id").trim() == "btnAcceptRequest") {
+                status = true;
+            }
+            var _registrationModel = {
+                MemberOpinionId: $("#txtMemberOpinionId").val(),
+                AlreadyExistsInMemberOpinion: $("#txtAlreadyExstId").val(),
+                UserId: $("#txtUserId").val(),
+                RequestSubmitId: $("#txtRequestSubmitId").val(),
+                Comment: $("#txtComment").val(),
+                Status: status
+
+            };
+            location.reload();
+            $.ajax({
+                url: folderBaseUrl + "/BoardMember/RequestApprove/ARMadarsaExtension",
+                type: "POST",
+                data: _registrationModel,
+                success: function (response) {
+                    //  $("#listCategory").empty().append(response);
+                    refreshMemberOpinion();
+                    location.reload();
+                },
+                error: function (err) {
+                    toastr.error("Registration failed: Internal server error");
+                    location.reload();
+                    console.log(err);
+                }
+            });
+        });
+
+        //$(document).on("click", "#btnAcceptReject", function (e) {
+        //    var _registrationModel = {
+        //        UserId: $("#txtUserId").val(),
+        //        RequestSubmitId: $("#txtRequestSubmitId").val(),
+        //        Comment: $("#txtComment").val(),
+        //        Status: false
+
+        //    };
+        //    buttonDisabledReg();
+        //    $.ajax({
+        //        url: folderBaseUrl + "/BoardMember/RequestApprove/ARMadarsaExtension",
+        //        type: "POST",
+        //        data: _registrationModel,
+        //        success: function (response) {
+        //            //  $("#listCategory").empty().append(response);
+        //            location.reload();
+        //            buttonDisabledReg();
+        //        },
+        //        error: function (err) {
+        //            toastr.error("Registration failed: Internal server error");
+        //            buttonEnableReg();
+        //            console.log(err);
+        //        }
+        //    });
+        //});
+        $(document).on("click", "#btnPostComment", function (e) {
+            var _registrationModel = {
+                UserId: $("#txtUserId").val(),
+                RequestSubmitId: $("#txtRequestSubmitId").val(),
+                Comment: $("#txtComment").val(),
+
+            };
+            buttonDisabledReg();
+            $.ajax({
+                url: folderBaseUrl + "/BoardMember/RequestComment/CommentOnMadarsaExtension",
+                type: "POST",
+                data: _registrationModel,
+                success: function (response) {
+                    //  $("#listCategory").empty().append(response);
+                    buttonEnableReg();
+                    location.reload();
+
+
+                },
+                error: function (err) {
+                    toastr.error("Registration failed: Internal server error");
+                    buttonEnableReg();
+                    console.log(err);
+                }
+            });
+        });
+    });
+
+    function buttonEnableReg() {
+        $("#btnAcceptRequest span,#btnAcceptReject span").hide();
+        $("#btnAcceptRequest,#btnAcceptReject").prop("disabled", false);
+    }
+
+
+    function buttonDisabledReg() {
+        $("#btnAcceptRequest span,#btnAcceptReject span").show();
+        $("#btnAcceptRequest,#btnAcceptReject").prop("disabled", true);
+    }
+    function refreshMemberOpinion() {
+        var model={
+            RequestSubmitId: $("#txtRequestSubmitId").val()
+        }
+        $.ajax({
+            url: folderBaseUrl + "/BoardMember/RequestList/MemberOpinion",
+            data: model,
+            success: function (responseData) {
+                $("#tab_3").empty().append(responseData);
+            },
+            error: function (err) {                
+                console.log(err);
+            }
+        });
+    }
+</script>

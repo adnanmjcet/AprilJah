@@ -1,0 +1,121 @@
+﻿@model CommonLayer.CommonModels.MadarsaModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Madarsa List</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <form class="form-horizontal form-label-left">
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="form-group col-lg-6 col-xs-12">
+
+                        <label for="Name" class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Madarsa Name</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="Name" value="@Model.Name" name="Name" class="form-control" placeholder="Madarsa Name" />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label for="Location" class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Location</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="Location" value="@Model.Location" name="Location" class="form-control" placeholder="Location" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Mobile</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="Mobile" value="@Model.Mobile" name="Mobile" class="form-control" placeholder="Mobile" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label col-lg-4 col-md-2 col-sm-3 col-xs-4">
+
+                            Zone Name
+                        </label>
+                        <div class="col-lg-8 col-md-4 col-sm-9 col-xs-8">
+                            @*<input type="hidden" id="hdnCategoryId" value="@(Model.ParentID)" />*@
+                            <select class="form-control select2  ddnZoneId" aria-hidden="true" name="ZoneId">
+                                <option value="0">Zone Name</option>
+
+                                @if (Model.ZoneLists != null)
+                                {
+                                    foreach (var item in Model.ZoneLists)
+                                    {
+                                        string isSelected = string.Empty;
+                                        if (item.Id == Model.ZoneId)
+                                        {
+                                            isSelected = "selected";
+                                        }
+                                        <option value="@item.Id" @isSelected>@item.Name</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label col-lg-4 col-md-2 col-sm-3 col-xs-4">User Name</label>
+                        <div class="col-lg-8 col-md-4 col-sm-9 col-xs-8">
+                         
+                            <select class="form-control select2_single HeadUserId" id="HeadUserId" name="HeadUserId">
+                                <option value="0">Select User</option>
+
+                                @if (Model.UserLists != null)
+                                {
+                                    foreach (var item in Model.UserLists)
+                                    {
+                                        string isSelected = string.Empty;
+                                        if (item.Id == Model.HeadUserId)
+                                        {
+                                            isSelected = "selected";
+                                        }
+                                        <option value="@item.Id" @isSelected>@item.Name</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <input type="hidden" id="hdnId" value="@Model.Id" name="Id" />
+                    <input type="hidden" id="hdnCreatedBy" value="@Model.CreatedBy" name="CreatedBy" />
+                    <input type="hidden" id="hdnCreatedDate" value="@Model.CreatedDate" name="CreatedDate" />
+
+
+                </div>
+            </div>
+
+
+            <div class="form-group col-lg-12">
+                <div class="col-md-offset-5 col-md-2">
+                    @if (Model.Id != null && Model.Id != 0)
+                    {
+                        <button type="submit" class="btn-block btn btn-success" data-id="@Model.Id" id="btnRegisterUpdate">
+                            Update
+                        </button>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn-block btn btn-success" data-id="0" id="btnRegister">
+                            Register
+                        </button>
+                    }
+                </div>
+                <div class="col-md-2">
+                    <button value="Edit"
+                            class="btn-block btn btn-danger" type="button" id="addressSearch"
+                            onclick="location.href='@Url.Action("Index", "Madarsa")'">
+                        Cancel
+                    </button>
+                </div>
+
+        </form>
+
+    </div>
+
+}

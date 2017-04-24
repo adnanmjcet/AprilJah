@@ -1,0 +1,189 @@
+﻿@model CommonLayer.CommonModels.MadarsaLandRequestModel
+
+@{
+    ViewBag.Title = "Create";
+}
+<h3> Madarsa Land Request </h3>
+@using (Html.BeginForm("Create", "MadarsaLandRequest", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <form class="form-horizontal form-label-left">
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label col-lg-4 col-md-2 col-sm-3 col-xs-4"> Madarsa</label>
+                        <div class="col-lg-8 col-md-4 col-sm-9 col-xs-8">
+                            <select class="form-control select2_single MadarsaId" id="MadarsaId" name="MadarsaId">
+                                <option value="0">Select Madarsa</option>
+
+                                @if (Model.MadarsaModelList != null)
+                                {
+                                    foreach (var item in Model.MadarsaModelList)
+                                    {
+                                        string isSelected = string.Empty;
+                                        if (item.Id == Model.MadarsaId)
+                                        {
+                                            isSelected = "selected";
+                                        }
+                                        <option value="@item.Id" @isSelected>@item.Name</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-xs-12">
+
+                        <label for="ShortDescription" class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Short Description</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="ShortDescription" value="@Model.ShortDescription" name="ShortDescription" class="form-control" placeholder="ShortDescription" />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label for="Location" class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Location</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="Location" value="@Model.Location" name="Location" class="form-control" placeholder="Location" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Area</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="Area" value="@Model.Area" name="Area" class="form-control" placeholder="Area" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">TimePeriod</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="TimePeriod" value="@Model.TimePeriod" name="TimePeriod" class="form-control" placeholder="Time Period in days" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">AmountPaid</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="AmountPaid" value="@Model.AmountPaid" name="AmountPaid" class="form-control" placeholder="AmountPaid" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">AmountNeeded</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="AmountNeeded" value="@Model.AmountNeeded" name="AmountNeeded" class="form-control" placeholder="AmountNeeded" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">LandArea</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="LandArea" value="@Model.LandArea" name="LandArea" class="form-control" placeholder="LandArea" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">LandPrice</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="LandPrice" value="@Model.LandPrice" name="LandPrice" class="form-control" placeholder="LandPrice" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">PurchasingFrom</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="PurchasingFrom" value="@Model.PurchasingFrom" name="PurchasingFrom" class="form-control" placeholder="PurchasingFrom" />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">Doc1</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="file" id="Doc1" name="Files" class="form-control" placeholder="" />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">Doc2</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="file" id="Doc2" name="Files" class="form-control" placeholder="" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">Doc3</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="file" id="Doc3" name="Files" class="form-control" placeholder="" />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">Pic1</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="file" id="Pic1" name="Files" class="form-control" placeholder="" />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">Pic2</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="file" id="Pic2" name="Files" class="form-control" placeholder="" />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">Pic3</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="file" id="Pic3" name="Files" class="form-control" placeholder="" />
+                        </div>
+                    </div>
+                    <input type="hidden" id="hdnId" value="@Model.Id" name="Id" />
+                    <input type="hidden" id="hdnCreatedBy" value="@Model.CreatedBy" name="CreatedBy" />
+                    <input type="hidden" id="hdnCreatedDate" value="@Model.CreatedDate" name="CreatedDate" />
+                    <input type="hidden" id="hdnStatus" value="true" name="@Model.Status" />
+
+                </div>
+            </div>
+
+            <div class="form-group col-lg-12">
+                <div class="col-md-offset-5 col-md-2">
+                    @if (Model.Id != null && Model.Id != 0)
+                    {
+                        <button type="submit" class="btn-block btn btn-success" data-id="@Model.Id" id="btnRegisterUpdate">
+                            Update
+                        </button>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn-block btn btn-success" data-id="0" id="btnRegister">
+                            Register
+                        </button>
+                    }
+                </div>
+                <div class="col-md-2">
+                    <button value="Edit"
+                            class="btn-block btn btn-danger" type="button" id="addressSearch"
+                            onclick="location.href='@Url.Action("Index", "MadarsaLandRequest")'">
+                        Cancel
+                    </button>
+                </div>
+
+        </form>
+
+    </div>
+
+}
+
+<script src="~/Assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="~/Assets/bootstrap/js/bootstrap.min.js"></script>
+<!-- iCheck -->
+<script src="~/Assets/plugins/iCheck/icheck.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        $(document).on("click", "#btnRegisterUpdate", function (e) {
+            $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+                $("#success-alert").slideUp(500);
+                window.location.href=folderBaseUrl + "/User/UserRequest/Index"
+            });
+        })
+
+    })
+</script>

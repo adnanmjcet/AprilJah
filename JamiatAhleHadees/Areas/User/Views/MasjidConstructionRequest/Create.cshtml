@@ -1,0 +1,200 @@
+﻿@model CommonLayer.CommonModels.MasjidConstructionRequestModel
+@{
+    ViewBag.Title = "Create";
+
+}
+
+<div class="box-header with-border">
+    <h3 class="box-title">Add Masjid Construction</h3>
+</div>
+<br />
+
+@using (Html.BeginForm("Create", "MasjidConstructionRequest", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="container">
+        <form class="form-horizontal form-label-left">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label col-lg-4 col-md-2 col-sm-3 col-xs-4"> Masjid</label>
+                        <div class="col-lg-8 col-md-4 col-sm-9 col-xs-8">
+                            <select class="form-control select2_single MasjidId" id="MasjidId" name="MasjidId">
+                                <option value="0">Select Masjid</option>
+
+                                @if (Model.MasjidLists != null)
+                                {
+                                    foreach (var item in Model.MasjidLists)
+                                    {
+                                        string isSelected = string.Empty;
+                                        if (item.Id == Model.MasjidId)
+                                        {
+                                            isSelected = "selected";
+                                        }
+                                        <option value="@item.Id" @isSelected>@item.Name</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label for="ShortDescription" class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Short Description</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="ShortDescription" value="@Model.ShortDescription" name="ShortDescription" class="form-control" placeholder="ShortDescription" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label for="Location" class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Location</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="Location" value="@Model.Location" name="Location" class="form-control" placeholder="Location" />
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label for="Area" class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Area</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="Area" value="@Model.Area" name="Area" class="form-control" placeholder="Area" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label for="ConstructionCost" class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Construction Cost</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="ConstructionCost" value="@Model.ConstructionCost" name="ConstructionCost" class="form-control" placeholder="Construction Cost" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label for="ExistingFloors" class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Existing Floors</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="ExistingFloors" value="@Model.ExistingFloors" name="ExistingFloors" class="form-control" placeholder="ExistingFloors" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label for="AmountNeeded" class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Amount Needed</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="AmountNeeded" value="@Model.AmountNeeded" name="AmountNeeded" class="form-control" placeholder="AmountNeeded" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label for="Engineer" class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Engineer</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="Engineer" value="@Model.Engineer" name="Engineer" class="form-control" placeholder="Engineer" />
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">Elevation</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="file" id="Elevation" name="Files" class="form-control" placeholder="Engineer Name" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">Plan</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="file" id="Plan" name="Files" class="form-control" placeholder="Engineer Name" />
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">Doc1</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="file" id="Doc1" name="Files" class="form-control" placeholder="Engineer Name" />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">Doc2</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="file" id="Doc2" name="Files" class="form-control" placeholder="Engineer Name" />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">Doc3</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="file" id="Doc3" name="Files" class="form-control" placeholder="Engineer Name" />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">Pic1</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="file" id="Pic1" name="Files" class="form-control" placeholder="Engineer Name" />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">Pic2</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="file" id="Pic2" name="Files" class="form-control" placeholder="Engineer Name" />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">Pic3</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="file" id="Pic3" name="Files" class="form-control" placeholder="Engineer Name" />
+                        </div>
+                    </div>
+
+                    <input type="hidden" id="hdnId" value="@Model.Id" name="Id" />
+                    <input type="hidden" id="hdnCreatedDate" value="@Model.CreatedDate" name="CreatedDate" />
+                    <input type="hidden" id="hdnStatus" value="true" name="@Model.Status" />
+
+                    <div class="form-group col-lg-12">
+                        <div class="col-md-offset-5 col-md-2">
+                            @if (Model.Id != null && Model.Id != 0)
+                            {
+                                <button type="submit" class="btn-block btn btn-success" data-id="@Model.Id" id="btnRegisterUpdate">
+                                    Update
+                                </button>
+                            }
+                            else
+                            {
+                                <button type="submit" class="btn-block btn btn-success" data-id="0" id="btnRegister">
+                                    Register
+                                </button>
+                            }
+                        </div>
+                        <div class="col-md-2">
+                            <button value="Edit"
+                                    class="btn-block btn btn-danger" type="button" id="addressSearch"
+                                    onclick="location.href='@Url.Action("Index", "MasjidConstructionRequest")'">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+}
+
+
+<script src="~/Assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="~/Assets/bootstrap/js/bootstrap.min.js"></script>
+<!-- iCheck -->
+<script src="~/Assets/plugins/iCheck/icheck.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        $(document).on("click", "#btnRegisterUpdate", function (e) {
+            $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+                $("#success-alert").slideUp(500);
+                window.location.href=folderBaseUrl + "/User/UserRequest/Index"
+            });
+        })
+
+    })
+</script>

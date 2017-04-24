@@ -1,0 +1,68 @@
+﻿@model CommonLayer.CommonModels.RequestSubmitModel
+
+@{
+    ViewBag.Title = "GetDetailsbyId";
+}
+
+
+<div class="row">
+    <div class="col-md-8">
+        @Html.Partial("MasjidConstructionRequest")
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        @Html.Partial("ExistingMadarsaOperationsRequest")
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-8">
+        @Html.Partial("MadarsaExtensionRequest")
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-md-8">
+        @Html.Partial("MadarsaLandRequest")
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-8">
+        @Html.Partial("MasjidExtensionRequest")
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-8">
+        @Html.Partial("MasjidLandRequest")
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-8">
+        @Html.Partial("MasjidRenovationRequest")
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-md-8">
+        @Html.Partial("NewMadarsaOperationsRequest")
+    </div>
+</div>
+
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

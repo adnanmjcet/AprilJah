@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9F08CAB4-4458-426F-8528-F169D24D85E3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BusinessLayer</RootNamespace>
+    <AssemblyName>BusinessLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Implementation\ExistingMadarsaOperationsRequestBs.cs" />
+    <Compile Include="Implementation\LoginBs.cs" />
+    <Compile Include="Implementation\MadarsaBs.cs" />
+    <Compile Include="Implementation\MadarsaExtensionRequestBs.cs" />
+    <Compile Include="Implementation\MadarsaLandRequestBs.cs" />
+    <Compile Include="Implementation\MasjidBs.cs" />
+    <Compile Include="Implementation\MasjidConstructionRequestBs.cs" />
+    <Compile Include="Implementation\MasjidExtensionRequestBs.cs" />
+    <Compile Include="Implementation\MasjidLandRequestBs.cs" />
+    <Compile Include="Implementation\MasjidRenovationRequestBs.cs" />
+    <Compile Include="Implementation\NewMadarsaOperationsRequestBs.cs" />
+    <Compile Include="Implementation\PanelInvolveBs.cs" />
+    <Compile Include="Implementation\RequestApproveRejectBs.cs" />
+    <Compile Include="Implementation\RequestCommentBs.cs" />
+    <Compile Include="Implementation\RequestLikeDisLikeBs.cs" />
+    <Compile Include="Implementation\RequestSubmitBs.cs" />
+    <Compile Include="Implementation\UserRegistrationBs.cs" />
+    <Compile Include="Interface\IExistingMadarsaOperationsRequest.cs" />
+    <Compile Include="Interface\ILogin.cs" />
+    <Compile Include="Interface\IMadarsa.cs" />
+    <Compile Include="Interface\IMadarsaExtenstionRequest.cs" />
+    <Compile Include="Interface\IMadarsaLandRequest.cs" />
+    <Compile Include="Interface\IMasjid.cs" />
+    <Compile Include="Interface\IMasjidConstructionRequest.cs" />
+    <Compile Include="Interface\IMasjidExtensionRequest.cs" />
+    <Compile Include="Interface\IMasjidLandRequest.cs" />
+    <Compile Include="Interface\IMasjidRenovationRequest.cs" />
+    <Compile Include="Interface\INewMadarsaOperationsRequest.cs" />
+    <Compile Include="Interface\IPInvolve.cs" />
+    <Compile Include="Interface\IRequestComment.cs" />
+    <Compile Include="Interface\IRequestLikeDisLike.cs" />
+    <Compile Include="Interface\IUserRegistration.cs" />
+    <Compile Include="Interface\RequestApproveReject.cs" />
+    <Compile Include="Interface\RequestSubmit.cs" />
+    <Compile Include="LoginedUserDetails.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CommonLayer\CommonLayer.csproj">
+      <Project>{c1c979b3-c285-4602-880a-cae046ca1098}</Project>
+      <Name>CommonLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
+      <Project>{6559d327-d041-4d80-aff0-a08d92790540}</Project>
+      <Name>DataAccessLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

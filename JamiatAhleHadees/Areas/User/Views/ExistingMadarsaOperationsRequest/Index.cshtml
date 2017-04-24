@@ -1,0 +1,76 @@
+﻿@model IEnumerable<CommonLayer.CommonModels.ExistingMadarsaOperationsRequestModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="box-header with-border">
+    <h3 class="box-title">Existing Madarsa</h3>
+</div>
+<br />
+
+
+<div class="col-lg-12">
+    <button value="Create New"
+            class="btn btn-primary btn-sm" type="button" id="addressSearch"
+            onclick="location.href='@Url.Action("Create")'">
+        Create New
+    </button>
+</div>
+<div class="col-lg-12">
+    <table class="table table-bordered table-hover table-responsive">
+        <thead>
+            <tr>
+                <td><b>Description</b></td>
+                <td><b>Location</b></td>
+                <td><b>Total Area</b></td>
+                <td><b>Revenue Source</b></td>
+                <td><b>Madarsa Name</b></td>
+                <td><b>User Name</b></td>
+                <td><b>Request Name</b></td>
+                <td><b>Edit</b></td>
+                <td><b>Details</b></td>
+                <td><b>Delete</b></td>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ShortDescription</td>
+                    <td>@item.Location</td>
+                    <td>@item.TotalLandArea</td>
+                    <td>@item.RevenueSource</td>
+                    <td>@item.MadarsaName</td>
+                    <td>@item.UserName</td>
+                    <td>@item.RequestTypeName</td>
+
+                    <td>
+                        <button value="Edit"
+                                class="btn btn-primary btn-sm" type="button" id="addressSearch"
+                                onclick="location.href='@Url.Action("Create", "ExistingMadarsaOperationsRequest" ,new {id = item.Id })'">
+                            Edit
+                        </button>
+                    </td>
+                    <td>
+                        <button value="Details"
+                                class="btn btn-info btn-sm" type="button" id="addressSearch"
+                                onclick="location.href='@Url.Action("Details", "ExistingMadarsaOperationsRequest" ,new {id = item.Id })'">
+                            Details
+                        </button>
+                    </td>
+                    <td>
+                        <button value="Delete"
+                                class="btn btn-danger btn-sm" type="button" id="addressSearch"
+                                onclick="location.href='@Url.Action("Delete", "ExistingMadarsaOperationsRequest" ,new {id = item.Id })'">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
+

@@ -1,0 +1,244 @@
+﻿@model CommonLayer.CommonModels.ExistingMadarsaOperationsRequestModel
+
+@{
+    ViewBag.Title = "Create";
+}
+<div class="box-header with-border">
+    <h3 class="box-title">Existing Madarsa</h3>
+</div>
+<br />
+@using (Html.BeginForm("Create", "ExistingMadarsaOperationsRequest", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <form class="form-horizontal form-label-left">
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="form-group col-lg-6 col-xs-12">
+
+                        <label for="ShortDescription" class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Short Description</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="ShortDescription" value="@Model.ShortDescription" name="ShortDescription" class="form-control" placeholder="ShortDescription" />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label for="Location" class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Location</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="Location" value="@Model.Location" name="Location" class="form-control" placeholder="Location" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Area</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="Area" value="@Model.Area" name="Area" class="form-control" placeholder="Area" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Expected Students</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="ExpectedStudents" value="@Model.ExpectedStudents" name="ExpectedStudents" class="form-control" placeholder="Expected Students" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">Boys</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="txtBoys" value="@Model.Boys" name="Boys" class="form-control" placeholder="Boys" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">Girls</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="txtGirls" value="@Model.Girls" name="Girls" class="form-control" placeholder="Girls" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">Teachers</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="txtTeachers" value="@Model.Teachers" name="Teachers" class="form-control" placeholder="Teachers" />
+                        </div>
+                    </div>
+                 
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">Residential facility</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <div class="col-md-6portfolio-item">
+
+                                <div class="form-group">
+
+                                    <div class="col-md-6portfolio-item">
+                                        @Html.EditorFor(model => model.IsResidential, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.IsResidential, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">Monthly Cost</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="MonthlyConst" value="@Model.MonthlyConst" name="MonthlyConst" class="form-control" placeholder="Monthly Cost" />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">Per Student Cost</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="CostPerStudent" value="@Model.CostPerStudent" name="CostPerStudent" class="form-control" placeholder="Per Student Cost" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">If Charging How much</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="IfChargingHowmuch" value="@Model.IfChargingHowmuch" name="IfChargingHowmuch" class="form-control" placeholder="If Charging Howmuch" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">Source of Revenue</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="RevenueSource" value="@Model.RevenueSource" name="RevenueSource" class="form-control" placeholder="Source of Revenue" />
+                        </div>
+                    </div>                   
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">House Own/Rented</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <div class="col-md-6portfolio-item">
+
+                                <div class="form-group">
+
+                                    <div class="col-md-6portfolio-item">
+                                        @Html.EditorFor(model => model.IsRented, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.IsRented, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">Total Land Area</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="txtTotalLandArea" value="@Model.TotalLandArea" name="TotalLandArea" class="form-control" placeholder="Total Land Area" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">Constructed Area</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <input type="text" id="txtConstructedArea" value="@Model.ConstructedArea" name="ConstructedArea" class="form-control" placeholder="Constructed Area" />
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">Charging Student</label>
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                            <div class="col-md-6portfolio-item">
+
+                                <div class="form-group">
+
+                                    <div class="col-md-6portfolio-item">
+                                        @Html.EditorFor(model => model.ChargingStudent, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ChargingStudent, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label col-lg-4 col-md-2 col-sm-3 col-xs-4">User Name</label>
+                        <div class="col-lg-8 col-md-4 col-sm-9 col-xs-8">
+                            <select class="form-control select2_single UserId"  name="UserId">
+                                <option value="0">Select User</option>
+
+                                @if (Model.UserModelList != null)
+                                {
+                                    foreach (var item in Model.UserModelList)
+                                    {
+                                        string isSelected = string.Empty;
+                                        if (item.Id == Model.UserId)
+                                        {
+                                            isSelected = "selected";
+                                        }
+                                        <option value="@item.Id" @isSelected>@item.Name</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label col-lg-4 col-md-2 col-sm-3 col-xs-4">Madarsa Name</label>
+                        <div class="col-lg-8 col-md-4 col-sm-9 col-xs-8">
+                            <select class="form-control select2_single ddnMadarsaId" aria-hidden="true" name="MadarsaId">
+                                <option value="0">Select Madarsa</option>
+
+                                @if (Model.MadarsaModelList != null)
+                                {
+                                    foreach (var item in Model.MadarsaModelList)
+                                    {
+                                        string isSelected = string.Empty;
+                                        if (item.Id == Model.MadarsaId)
+                                        {
+                                            isSelected = "selected";
+                                        }
+                                        <option value="@item.Id" @isSelected>@item.Name</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-xs-12">
+                        <label class="control-label col-lg-4 col-md-2 col-sm-3 col-xs-4">Request Name</label>
+                        <div class="col-lg-8 col-md-4 col-sm-9 col-xs-8">
+                            <select class="form-control select2_single RequestTypeId" id="RequestTypeId" name="RequestTypeId">
+                                <option value="0">Select Request</option>
+
+                                @if (Model.RequestTypeModelList != null)
+                                {
+                                    foreach (var item in Model.RequestTypeModelList)
+                                    {
+                                        string isSelected = string.Empty;
+                                        if (item.Id == Model.RequestTypeId)
+                                        {
+                                            isSelected = "selected";
+                                        }
+                                        <option value="@item.Id" @isSelected>@item.Name</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <input type="hidden" id="hdnId" value="@Model.Id" name="Id" />
+                    <input type="hidden" id="hdnCreatedBy" value="@Model.CreatedBy" name="CreatedBy" />
+                    <input type="hidden" id="hdnCreatedDate" value="@Model.CreatedDate" name="CreatedDate" />
+                    <input type="hidden" id="hdnStatus" value="true" name="@Model.Status" />
+                </div>
+            </div>
+
+            <div class="form-group col-lg-12">
+                <div class="col-md-offset-5 col-md-2">
+                    @if (Model.Id != null && Model.Id != 0)
+                    {
+                        <button type="submit" class="btn-block btn btn-success" data-id="@Model.Id" id="btnRegisterUpdate">
+                            Update
+                        </button>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn-block btn btn-success" data-id="0" id="btnRegister">
+                            Register
+                        </button>
+                    }
+                </div>
+                <div class="col-md-2">
+                    <button value="Edit"
+                            class="btn-block btn btn-danger" type="button" id="addressSearch"
+                            onclick="location.href='@Url.Action("Index", "ExistingMadarsaOperationsRequest")'">
+                        Cancel
+                    </button>
+                </div>
+
+        </form>
+
+    </div>
+
+}

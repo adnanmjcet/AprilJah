@@ -1,0 +1,66 @@
+﻿@model IEnumerable<CommonLayer.CommonModels.RequestSubmitModel>
+
+@{
+    ViewBag.Title = "Index";
+
+}
+
+<h4>Rejected List</h4>
+
+<table class="table  table-hover table-responsive ">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ShortDesc)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.RequestTypeName)
+        </th>
+
+
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsApproved)
+        </th>
+       
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDesc)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.RequestTypeName)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsApproved)
+            </td>
+          
+            <td>
+                @Html.ActionLink("Details", actionName: "GetDetailsbyId", controllerName: "RequestList", routeValues: new { id = @item.Id, RequestTypeId = @item.RequestTypeId }, htmlAttributes: null)
+               
+            </td>
+        </tr>
+    }
+
+</table>
+

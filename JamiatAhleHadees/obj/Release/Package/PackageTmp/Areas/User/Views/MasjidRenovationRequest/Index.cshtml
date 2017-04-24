@@ -1,0 +1,104 @@
+﻿@model IEnumerable<CommonLayer.CommonModels.MasjidRenovationRequestModel>
+@{
+    ViewBag.Title = "Index";
+
+}
+<div class="box-header with-border">
+    <h3 class="box-title">Masjid Renovation List</h3>
+</div>
+<br />
+
+
+<div class="col-lg-12">
+    <button value="Create New"
+            class="btn btn-primary" type="button" id="addressSearch"
+            onclick="location.href='@Url.Action("Create")'">
+        Create New
+    </button>
+    <table class="table table-bordered table-hover table-responsive">
+        <thead>
+            <tr>
+                <td><b>Id</b></td>
+                <td><b>Short Description</b></td>
+                <td><b>User Name</b></td>
+                <td><b>Masjid Name</b></td>
+                <td><b>Location</b></td>
+                <td><b>Area</b></td>
+                <td><b>Construction Cost</b></td>
+                <td><b>ExistingFloors</b></td>
+                <td><b>Amount Needed</b></td>
+                @*<td><b>Engineer</b></td>
+                    <td><b>Elevation</b></td>
+                    <td><b>Plan</b></td>*@
+                @*<td><b>Doc1</b></td>
+                    <td><b>Doc2</b></td>
+                    <td><b>Doc3</b></td>
+                    <td><b>Pic1</b></td>
+                    <td><b>Pic2</b></td>
+                    <td><b>Pic3</b></td>*@
+                @*<td><b>Request Submit Name</b></td>*@
+                <td><b>Status</b></td>
+                @*<td><b>CreateDate</b></td>*@
+                <td><b>Request Type Name</b></td>
+                <td>Edit</td>
+                <td>Details</td>
+                <td>Delete</td>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.ShortDescription</td>
+                    <td>@item.UserName</td>
+                    <td>@item.MasjidName</td>
+                    <td>@item.Location</td>
+                    <td>@item.Area</td>
+                    <td>@item.ConstructionCost</td>
+                    <td>@item.ExistingFloors</td>
+                    <td>@item.AmountNeeded</td>
+                    @*<td>@item.Engineer</td>
+                        <td>@item.Elevation</td>
+                        <td>@item.Paln</td>*@
+                    @*<td>@item.Doc1</td>
+                        <td>@item.Doc2</td>
+                        <td>@item.Doc3</td>
+                        <td>@item.Pic1</td>
+                        <td>@item.Pic2</td>
+                        <td>@item.Pic3</td>*@
+                    @*<td>@item.RequestSubmitName</td>*@
+                    <td>@item.Status</td>
+                    <td>@item.RequestTypeName</td>
+
+
+
+                    <td>
+                        <button value="Edit"
+                                class="btn btn-primary" type="button" id="addressSearch"
+                                onclick="location.href='@Url.Action("Create", "MasjidRenovationRequest" ,new {id = item.Id })'">
+                            Edit
+                        </button>
+                    </td>
+
+                    <td>
+                        <button value="Details"
+                                class="btn btn-info" type="button" id="addressSearch"
+                                onclick="location.href='@Url.Action("Details", "MasjidRenovationRequest" ,new {id = item.Id })'">
+                            Details
+                        </button>
+                    </td>
+                    <td>
+                        <button value="Delete"
+                                class="btn btn-danger" type="button" id="addressSearch"
+                                onclick="location.href='@Url.Action("Delete", "MasjidRenovationRequest" ,new {id = item.Id })'">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,105 @@
+﻿@model CommonLayer.CommonModels.UserModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="box-header with-border">
+    <h3 class="box-title">New Registration</h3>
+</div>
+<br />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    if (ViewBag.Success != null)
+    {
+        <div class="callout callout-success">
+            <h4>
+                @ViewBag.Success
+               
+            </h4>
+            <p>Please Login with your Credentials.</p>
+        </div>
+    }
+
+    <div class="container">
+        <div class="col-md-6 col-lg-offset-3">
+
+            <form class="form-horizontal form-label-left">
+
+                <div class="form-group row">
+                    <label for="example-search-input" class="col-2 col-form-label">Full Name</label>
+                    <div class="col-10">
+                        <input type="text" id="Name" value="@Model.Name" name="Name" class="form-control" placeholder="User Name" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="example-search-input" class="col-2 col-form-label">Contact</label>
+                    <div class="col-10">
+                        <input type="text" id="Contact" value="@Model.Contact" name="Contact" class="form-control" placeholder="Contact" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="example-search-input" class="col-2 col-form-label">Email Address</label>
+                    <div class="col-10">
+                        <input type="email" id="Email" value="@Model.Email" name="Email" class="form-control" placeholder="Email Address" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="example-search-input" class="col-2 col-form-label">User Name</label>
+                    <div class="col-10">
+                        <input type="text" id="UserName" value="@Model.UserName" name="UserName" class="form-control" placeholder="User Name" style="word-spacing:unset" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="example-search-input" class="col-2 col-form-label">Password</label>
+                    <div class="col-10">
+                        <input type="Password" id="Password" value="@Model.Password" name="Password" class="form-control" placeholder="********" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="example-search-input" class="col-2 col-form-label">Area</label>
+                    <div class="col-10">
+                        <input type="text" id="Area" value="@Model.Area" name="Area" class="form-control" placeholder="Area" />
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        @if (Model.Id != null && Model.Id != 0)
+                        {
+                            <button type="submit" class="btn-block btn btn-success" data-id="@Model.Id" id="btnRegisterUpdate">
+                                Update
+                            </button>
+                        }
+                        else
+                        {
+                            <button type="submit" class="btn-block btn btn-success" data-id="0" id="btnRegister">
+                                Register
+                            </button>
+                        }
+                    </div>
+                    <div class="col-md-3">
+                        <button value="Edit"
+                                class="btn-block btn btn-danger" type="button" id="addressSearch"
+                                onclick="location.href='@Url.Action("Index", "UserRegistration")'">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+}
+@Url.Action("Index", "Login", new { area = "User" })
+
+

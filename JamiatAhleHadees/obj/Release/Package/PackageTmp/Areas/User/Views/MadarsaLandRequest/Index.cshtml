@@ -1,0 +1,90 @@
+﻿@model IEnumerable<CommonLayer.CommonModels.MadarsaLandRequestModel>
+@{
+    ViewBag.Title = "Index";
+
+}
+
+<h2>Madarsa Land Request</h2>
+
+
+<div class="col-lg-12">
+    <button value="Create New"
+            class="btn btn-info btn-sm" type="button" id="addressSearch"
+            onclick="location.href='@Url.Action("Create")'">
+        <span class="glyphicon glyphicon-plus"></span>Add New
+    </button>
+</div>
+<div class="col-lg-12">
+    <table class="table table-bordered table-hover table-responsive">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>ShortDescription</td>
+                <td>Location</td>
+                @*<td>LandArea</td>*@
+                <td>PurchasingFrom</td>
+                <td>AmountPaid</td>
+                <td>AmountNeeded</td>
+                @*<td>Time Period In days</td>*@
+                <td>MadarsaName</td>
+                <td>UserName</td>
+                @*<td>Request Name</td>
+                    <td>CreatedDate</td>
+                    <td>CreatedBy</td>
+                    <td>Status</td>*@
+
+                <td>Edit</td>
+                <td>Details</td>
+                <td>Delete</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.ShortDescription</td>
+                    <td>@item.Location</td>
+
+                    @*<td>@item.LandArea</td>*@
+                    <td>@item.PurchasingFrom</td>
+                    <td>@item.AmountPaid</td>
+                    <td>@item.AmountNeeded</td>
+                    @*<td>@item.TimePeriod</td>*@
+
+
+                    <td>@item.MadarsaName</td>
+                    <td>@item.UserName</td>
+                    @*<td>@item.RequestTypeName</td>
+                        <td>@item.CreatedDate</td>
+                        <td>@item.CreatedBy</td>
+                        <td>@item.Status</td>*@
+
+
+                    <td>
+                        <button value="Edit"
+                                class="btn btn-primary btn-sm" type="button" id="addressSearch"
+                                onclick="location.href='@Url.Action("Create", "MadarsaLandRequest", new { id = item.Id })'">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                    </td>
+                    <td>
+                        <button value="Details"
+                                class="btn btn-primary btn-primary" type="button" id="addressSearch"
+                                onclick="location.href='@Url.Action("Details", "MadarsaLandRequest" ,new {id = item.Id })'">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </button>
+                    </td>
+                    <td>
+                        <button value="Delete"
+                                class="btn btn-danger btn-sm" type="button" id="addressSearch"
+                                onclick="location.href='@Url.Action("Delete", "MadarsaLandRequest", new { id = item.Id })'">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

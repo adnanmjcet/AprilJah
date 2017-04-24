@@ -1,0 +1,386 @@
+﻿@model CommonLayer.CommonModels.MasjidConstructionRequestModel
+
+@{
+    ViewBag.Title = "GetMasjidConstructionDetails";
+    
+}
+
+<h4>Masjid Construction Request</h4>
+<hr />
+<div class="row">
+    `
+
+    <div class="col-lg-5">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ShortDescription)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ShortDescription)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UserId)
+            </dt>
+
+            <dd>
+
+                @Html.DisplayFor(model => model.UserId, new { @id = "UserId" })
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Location)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Location)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Area)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Area)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MasjidId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MasjidId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MasjidName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MasjidName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ConstructionCost)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ConstructionCost)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ExistingFloors)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ExistingFloors)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AmountNeeded)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AmountNeeded)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Engineer)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Engineer)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Elevation)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Elevation)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Paln)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Paln)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Doc1)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Doc1)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Doc2)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Doc2)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Doc3)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Doc3)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Pic1)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Pic1)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Pic2)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Pic2)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Pic3)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Pic3)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RequestSubmitId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RequestSubmitId, new { @class = "RequestSubmitId" })
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RequestSubmitName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RequestSubmitName)
+            </dd>
+
+            @*<dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>*@
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CreatedDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RequestTypeId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RequestTypeId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RequestTypeName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RequestTypeName)
+            </dd>
+
+        </dl>
+    </div>
+
+    <div class="col-lg-4">
+
+        <table class="table table-bordered">
+            <tr>
+                <td><b>Involve Panel</b> </td>
+            </tr>
+            <tbody>
+                <tr>
+                    <td><input type="checkbox" />Ulema</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" />Finance</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" />Legal</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" />Advisory</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td><button class="btn btn-primary">Involve</button></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="btn btn-success btn-sm" type="button" id="btnAcceptRequest">
+
+                            Agree
+                        </button>
+                        <button class="btn btn-danger btn-sm" type="button" id="btnRejectRequest">
+                            Disagree
+                        </button>
+
+
+                </tr>
+            </tfoot>
+        </table>
+        <div class="form-group">
+            <div class="row">
+                <div class="form-group">
+                    <label>Comment</label>
+                    <textarea class="form-control" id="txtComment"></textarea>
+                    <br />
+                    <button type="button" id="btnPostComment" class="btn  btn-primary">Post Comment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3">
+        <table class="table table-hover table-condensed">
+            <thead>
+                <tr>
+                    <td><b>Comments</b></td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.RequestCommentList)
+                {
+                    <tr>
+                        <td>
+                            @item.Comment
+                            <b><br />@item.UserName ,@item.UserTypeName</b><br />@item.CreatedDate
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+@using (Html.BeginForm())
+{
+    <input type="hidden" value="@Model.UserId" name="@Model.UserId" id="txtUserId" />
+        <input type="hidden" value="@Model.RequestSubmitId" name="@Model.RequestSubmitId" id="txtRequestSubmitId" />
+        <input type="hidden" value="@Model.RequestTypeId" name="@Model.RequestTypeId" id="txtRequestTypeId" />
+        <input type="hidden" value="@Model.Status" name="@Model.Status" id="txtStatus" />
+}
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+        $(document).ready(function () {
+            $(document).on("click", "#btnAcceptRequest", function (e) {
+                var _registrationModel = {                    
+                    Id: $("#txtRequestSubmitId").val(),
+                    Comment: $("#txtComment").val()                    
+                };
+                buttonDisabledReg();
+                $.ajax({
+                    url: folderBaseUrl + "/Admin/AmeerApproveRequest/ApproveReject",
+                    type: "POST",
+                    data: _registrationModel,
+                    success: function (response) {
+                        //  $("#listCategory").empty().append(response);
+                        buttonEnableReg();
+                    },
+                    error: function (err) {
+                        toastr.error("Registration failed: Internal server error");
+                        buttonEnableReg();
+                        console.log(err);
+                    }
+                });
+            });
+
+            $(document).on("click", "#btnRejectRequest", function (e) {
+                var _registrationModel = {
+                    Id: $("#txtRequestSubmitId").val(),
+                    Comment: $("#txtComment").val()
+                };
+                buttonDisabledReg();
+                $.ajax({
+                    url: folderBaseUrl + "/Admin/AmeerApproveRequest/RejectRequest",
+                    type: "POST",
+                    data: _registrationModel,
+                    success: function (response) {
+                        //  $("#listCategory").empty().append(response);
+                        buttonEnableReg();
+                    },
+                    error: function (err) {
+                        toastr.error("Registration failed: Internal server error");
+                        buttonEnableReg();
+                        console.log(err);
+                    }
+                });
+            });
+
+            $(document).on("click", "#btnPostComment", function (e) {
+                var _registrationModel = {                   
+                    Id: $("#txtRequestSubmitId").val(),
+                    Comment: $("#txtComment").val(),
+
+                };
+                buttonDisabledReg();
+                $.ajax({
+                    url: folderBaseUrl + "/Admin/RequestComment/CommentOnMasjidConstruction",
+                    type: "POST",
+                    data: _registrationModel,
+                    success: function (response) {
+                        //  $("#listCategory").empty().append(response);
+                        buttonEnableReg();
+                        location.reload();
+                    },
+                    error: function (err) {
+                        toastr.error("Registration failed: Internal server error");
+                        buttonEnableReg();
+                        console.log(err);
+                    }
+                });
+            });
+        });
+
+        function buttonEnableReg() {
+            $("#btnAcceptRequest span,#btnAcceptReject span").hide();
+            $("#btnAcceptRequest,#btnAcceptReject").prop("disabled", false);
+        }
+
+
+        function buttonDisabledReg() {
+            $("#btnAcceptRequest span,#btnAcceptReject span").show();
+            $("#btnAcceptRequest,#btnAcceptReject").prop("disabled", true);
+        }
+
+</script>

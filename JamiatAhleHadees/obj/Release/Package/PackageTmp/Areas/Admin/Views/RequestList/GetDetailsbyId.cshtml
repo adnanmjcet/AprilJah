@@ -1,0 +1,16 @@
+﻿@model CommonLayer.CommonModels.RequestSubmitModel
+
+@{
+    ViewBag.Title = "GetDetailsbyId";
+}
+
+
+<div class="row">
+    <div class="col-md-8">
+        @Html.Partial("MasjidConstructionRequest")
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

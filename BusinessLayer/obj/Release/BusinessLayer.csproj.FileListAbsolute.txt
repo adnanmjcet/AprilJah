@@ -1,0 +1,11 @@
+E:\Running Projects\Demo Version\JAH\BusinessLayer\bin\Release\BusinessLayer.dll
+E:\Running Projects\Demo Version\JAH\BusinessLayer\bin\Release\BusinessLayer.pdb
+E:\Running Projects\Demo Version\JAH\BusinessLayer\bin\Release\CommonLayer.dll
+E:\Running Projects\Demo Version\JAH\BusinessLayer\bin\Release\DataAccessLayer.dll
+E:\Running Projects\Demo Version\JAH\BusinessLayer\bin\Release\EntityFramework.dll
+E:\Running Projects\Demo Version\JAH\BusinessLayer\bin\Release\CommonLayer.pdb
+E:\Running Projects\Demo Version\JAH\BusinessLayer\bin\Release\DataAccessLayer.pdb
+E:\Running Projects\Demo Version\JAH\BusinessLayer\bin\Release\EntityFramework.xml
+E:\Running Projects\Demo Version\JAH\BusinessLayer\obj\Release\BusinessLayer.csprojResolveAssemblyReference.cache
+E:\Running Projects\Demo Version\JAH\BusinessLayer\obj\Release\BusinessLayer.dll
+E:\Running Projects\Demo Version\JAH\BusinessLayer\obj\Release\BusinessLayer.pdb

@@ -1,0 +1,74 @@
+﻿
+@model IEnumerable<CommonLayer.CommonModels.RequestApproveModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/BoardMember/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="box-header with-border">
+    <h3 class="box-title">Rejected List</h3>
+</div>
+<br />
+
+<div class="container">
+    <div class="row">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <td>
+                        Request Submit Id
+                    </td>
+
+                    <td>
+                        Shore Desc
+                    </td>
+
+                    <td>
+                        User Name
+                    </td>
+
+                    <td>
+                        User Type
+                    </td>
+
+                    <td>
+                        IsApproved
+                    </td>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.RequestSubmitId</td>
+
+
+                        <td>@item.ShortDesc</td>
+
+
+                        <td>@item.UserName</td>
+
+                        <td>@item.UserTypeName</td>
+
+                        @if (item.IsApproved == null)
+                        {
+                            <td style="color:orange">Pending</td>
+                        }
+                        else if (item.IsApproved == false)
+                        {
+                            <td style="color:red">Rejected</td>
+                        }
+                        else
+                        {
+                            <td style="color:green">Approved</td>
+                        }
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

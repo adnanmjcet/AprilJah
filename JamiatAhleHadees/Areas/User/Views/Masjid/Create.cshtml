@@ -1,0 +1,260 @@
+﻿@model CommonLayer.CommonModels.MasjidModel
+@{
+    ViewBag.Title = "Create";
+}
+
+
+@using (Html.BeginForm("Create", "Masjid", FormMethod.Post))
+{
+    <h2>Masjid</h2>
+
+    <form class="form-horizontal form-label-left">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-md-6portfolio-item">
+                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <label class="control-label col-lg-offset-2 col-lg-2 col-xs-12">
+                            Masjid Name
+                        </label>
+                        <div class="col-md-4 col-sm-4 col-xs-4 col-xs-12">
+                            <input type="text" id="MasjidName" value="@Model.Name" name="Name" class="form-control" placeholder="MasjidName" />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <label class="control-label col-lg-offset-2 col-lg-2 col-xs-12">
+                            Location
+                        </label>
+                        <div class="col-md-4 col-sm-4 col-xs-4 col-xs-12">
+                            <input type="text" id="Location" value="@Model.Location" name="Location" class="form-control" placeholder="Location" />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <label class="control-label col-lg-offset-2 col-lg-2 col-xs-12">
+
+                            User Name
+                        </label>
+                        <div class="col-md-4 col-sm-4 col-xs-4 col-xs-12">
+                            @*<input type="hidden" id="hdnCategoryId" value="@(Model.ParentID)" />*@
+                            <select class="form-control select2  ddnHeadUserId" aria-hidden="true" name="HeadUserId">
+                                <option value="0">User Name</option>
+
+                                @if (Model.UserLists != null)
+                                {
+                                    foreach (var item in Model.UserLists)
+                                    {
+                                        string isSelected = string.Empty;
+                                        if (item.Id == Model.HeadUserId)
+                                        {
+                                            isSelected = "selected";
+                                        }
+                                        <option value="@item.Id" @isSelected>@item.Name</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    
+
+
+                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <label class="control-label col-lg-offset-2 col-lg-2 col-xs-12">
+
+                            Zone Name
+                        </label>
+                        <div class="col-md-4 col-sm-4 col-xs-4 col-xs-12">
+                            @*<input type="hidden" id="hdnCategoryId" value="@(Model.ParentID)" />*@
+                            <select class="form-control select2  ddnZoneId" aria-hidden="true" name="ZoneId">
+                                <option value="0">Zone Name</option>
+
+                                @if (Model.ZoneLists != null)
+                                {
+                                    foreach (var item in Model.ZoneLists)
+                                    {
+                                        string isSelected = string.Empty;
+                                        if (item.Id == Model.ZoneId)
+                                        {
+                                            isSelected = "selected";
+                                        }
+                                        <option value="@item.Id" @isSelected>@item.Name</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                @*</div>*@
+
+
+                <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                    <label class="control-label col-lg-offset-2 col-lg-2 col-xs-12">
+                        Mobile
+                    </label>
+                    <div class="col-md-4 col-sm-4 col-xs-4 col-xs-12">
+                        <input type="text" id="Mobile" value="@Model.Mobile" name="Mobile" class="form-control" placeholder="Mobile" />
+                    </div>
+                </div>
+                
+                <input type="hidden" id="hdnId" value="@Model.Id" name="Id" />
+                <input type="hidden" id="hdnCreatedBy" value="@Model.CreatedBy" name="CreatedBy" />
+                <input typeof="date" type="hidden" id="hdnCreatedDate" value="@Model.CreatedDate" name="CreatedDate" />
+                <br />
+                <div class="col-md-offset-4 col-md-2 col-xs-12">
+                    @if (Model.Id != null && Model.Id != 0)
+                {
+                        <button type="submit" class="btn-block btn btn-success" data-id="@Model.Id" id="btnRegisterUpdate">
+                            Update
+                        </button>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn-block btn btn-success" data-id="0" id="btnRegister">
+                            Register
+                        </button>
+                    }
+                </div>
+                <div class="col-md-2 col-xs-12">
+                    <button value="Edit"
+                            class="btn btn-block btn-danger" type="button" id="addressSearch"
+                            onclick="location.href='@Url.Action("Index", "Masjid")'">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+            </div>
+    </form>
+}
+
+
+
+
+@*<div class="box-header with-border">
+        @if (Model.Id != null && Model.Id != 0)
+        {
+            <h3 class="box-title">Update Halqa</h3>
+        }
+        else
+        {
+            <h3 class="box-title">Add Halqa</h3>
+        }
+    </div>
+    <br />
+    <br />
+
+    @using (Html.BeginForm("Create", "Halqa", FormMethod.Post))
+    {
+
+        <div class="container">
+
+            <div class="row">
+
+                <form class="form-horizontal form-label-left">
+                    <div class="form-group col-lg-12">
+                        <label class="control-label col-lg-offset-3 col-md-2 col-sm-1 col-xs-12">Halqa Name</label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <input type="text" class="form-control" id="txtHalqaName" value="@Model.Name" placeholder="Name">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <label class="control-label col-lg-offset-3 col-md-2 col-sm-1 col-xs-12">Ameer</label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <input type="text" class="form-control" id="txtAmeer" value="@Model.Ameer" placeholder="Ameer">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="control-label col-lg-offset-3 col-md-2 col-sm-1 col-xs-12">Nayab</label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <input type="text" class="form-control" id="txtNayab" value="@Model.Nayab" placeholder="Nayab">
+                        </div>
+                    </div>
+
+                    <input type="hidden" id="hdnId" value="@Model.Id" />
+                    <input type="hidden" id="hdnCreatedDate" value="@Model.CreatedDate" />
+                    <div class="form-group col-lg-12">
+                        <div class="col-md-offset-5 col-md-2">
+                            @if (Model.Id != null && Model.Id != 0)
+                            {
+                                <button type="submit" class="btn-block btn btn-success" data-id="@Model.Id" id="btnRegisterUpdate">
+                                    Update
+                                </button>
+                            }
+                            else
+                            {
+                                <button type="submit" class="btn-block btn btn-success" data-id="0" id="btnRegister">
+                                    Register
+                                </button>
+                            }
+                        </div>
+                        <div class="col-md-2">
+                            <button value="Cancel"
+                                    class="btn-block btn btn-danger" type="button" id="addressSearch"
+                                    onclick="location.href='@Url.Action("Index")'">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    }*@
+
+
+
+
+
+
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(document).on("click", "#btnRegister,#btnRegisterUpdate", function (e) {
+                var _Halqa = {
+                    Id: $("#hdnId").val(),
+                    HalqaName: $("#txtHalqaName").val(),
+                    Ameer: $("#txtAmeer").val(),
+                    Nayab: $("#txtNayab").val(),
+
+                    CreatedDate: $("#hdnCreatedDate").val(),
+                };
+                buttonDisabledReg();
+                $.ajax({
+                    url: "http://localhost:49248/Admin/AddHalqa/Create",
+                    type: "POST",
+                    data: _Halqa,
+                    success: function (response) {
+                        location.href = '/User/Halqa/Index';
+                      //  $("#HalqaList").empty().append(response);
+                    },
+                    error: function (err) {
+                        toastr.error("Registration failed: Internal server error");
+                        buttonEnableReg();
+                        console.log(err);
+                    }
+                });
+            });
+        });
+            function buttonEnableReg() {
+            $("#btnRegisterUpdate span,#btnRegister span").hide();
+            $("#btnRegisterUpdate,#btnRegister").prop("disabled", false);
+        }
+
+
+            function buttonDisabledReg() {
+                $("#btnRegisterUpdate span,#btnRegister span").show();
+                $("#btnRegisterUpdate,#btnRegister").prop("disabled", true);
+
+                function ClearFields() {
+                    $(".RequiredTextField").each(function () {
+                        $(this).val('');
+                    });
+
+                }
+            }
+
+    </script>*@
+
+

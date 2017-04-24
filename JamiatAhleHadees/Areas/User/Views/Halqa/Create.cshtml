@@ -1,0 +1,213 @@
+﻿@model CommonLayer.CommonModels.HalqaModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="box-header with-border">
+    @if (Model.Id != null && Model.Id != 0)
+    {
+        <h3 class="box-title">Update Halqa</h3>
+    }
+    else
+    {
+        <h3 class="box-title">Add Halqa</h3>
+    }
+</div>
+<br />
+<br />
+
+@using (Html.BeginForm("Create", "Halqa", FormMethod.Post))
+{
+
+    <div class="container">
+
+        <div class="row">
+
+            <form class="form-horizontal form-label-left">
+                <div class="form-group col-lg-12">
+                    <label class="control-label col-lg-offset-3 col-md-2 col-sm-1 col-xs-12">Halqa Name</label>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <input type="text" class="form-control" id="txtHalqaName" value="@Model.Name" name="Name"placeholder="Name">
+                    </div>
+                </div>
+
+
+                <div class="form-group col-lg-12">
+                    <label class="control-label col-lg-offset-3 col-md-2 col-sm-1 col-xs-12">Ameer</label>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <input type="text" class="form-control" id="txtAmeer" value="@Model.Ameer" name="Ameer" placeholder="Ameer">
+                    </div>
+                </div>
+
+                <div class="form-group col-lg-12">
+                    <label class="control-label col-lg-offset-3 col-md-2 col-sm-1 col-xs-12">Nayab</label>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <input type="text" class="form-control" id="txtNayab" value="@Model.Nayab" name="Nayab" placeholder="Nayab">
+                    </div>
+                </div>
+                <input type="hidden" id="hdnId" value="@Model.Id" />
+                <input type="hidden" id="hdnCreatedDate" value="@Model.CreatedDate" />
+                <div class="form-group col-lg-12">
+                    <div class="col-md-offset-5 col-md-2">
+                        @if (Model.Id != null && Model.Id != 0)
+                        {
+                            <button type="button" class="btn-block btn btn-success" data-id="@Model.Id" id="btnRegisterUpdate">
+                                Update
+                            </button>
+                        }
+                        else
+                        {
+                            <button type="submit" class="btn-block btn btn-success" data-id="0" id="btnRegister">
+                                Register
+                            </button>
+                        }
+                    </div>
+                    <div class="col-md-2">
+                        <button value="Cancel"
+                                class="btn-block btn btn-danger" type="button" id="addressSearch"
+                                onclick="location.href='@Url.Action("Index")'">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+}
+
+
+
+
+
+
+@*<div class="box-header with-border">
+        @if (Model.Id != null && Model.Id != 0)
+        {
+            <h3 class="box-title">Update Halqa</h3>
+        }
+        else
+        {
+            <h3 class="box-title">Add Halqa</h3>
+        }
+    </div>
+    <br />
+    <br />
+
+    @using (Html.BeginForm("Create", "Halqa", FormMethod.Post))
+    {
+
+        <div class="container">
+
+            <div class="row">
+
+                <form class="form-horizontal form-label-left">
+                    <div class="form-group col-lg-12">
+                        <label class="control-label col-lg-offset-3 col-md-2 col-sm-1 col-xs-12">Halqa Name</label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <input type="text" class="form-control" id="txtHalqaName" value="@Model.Name" placeholder="Name">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <label class="control-label col-lg-offset-3 col-md-2 col-sm-1 col-xs-12">Ameer</label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <input type="text" class="form-control" id="txtAmeer" value="@Model.Ameer" placeholder="Ameer">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="control-label col-lg-offset-3 col-md-2 col-sm-1 col-xs-12">Nayab</label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <input type="text" class="form-control" id="txtNayab" value="@Model.Nayab" placeholder="Nayab">
+                        </div>
+                    </div>
+
+                    <input type="hidden" id="hdnId" value="@Model.Id" />
+                    <input type="hidden" id="hdnCreatedDate" value="@Model.CreatedDate" />
+                    <div class="form-group col-lg-12">
+                        <div class="col-md-offset-5 col-md-2">
+                            @if (Model.Id != null && Model.Id != 0)
+                            {
+                                <button type="submit" class="btn-block btn btn-success" data-id="@Model.Id" id="btnRegisterUpdate">
+                                    Update
+                                </button>
+                            }
+                            else
+                            {
+                                <button type="submit" class="btn-block btn btn-success" data-id="0" id="btnRegister">
+                                    Register
+                                </button>
+                            }
+                        </div>
+                        <div class="col-md-2">
+                            <button value="Cancel"
+                                    class="btn-block btn btn-danger" type="button" id="addressSearch"
+                                    onclick="location.href='@Url.Action("Index")'">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    }*@
+
+
+
+
+
+
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(document).on("click", "#btnRegister,#btnRegisterUpdate", function (e) {
+                var _Halqa = {
+                    Id: $("#hdnId").val(),
+                    HalqaName: $("#txtHalqaName").val(),
+                    Ameer: $("#txtAmeer").val(),
+                    Nayab: $("#txtNayab").val(),
+
+                    CreatedDate: $("#hdnCreatedDate").val(),
+                };
+                buttonDisabledReg();
+                $.ajax({
+                    url: "http://localhost:49248/Admin/AddHalqa/Create",
+                    type: "POST",
+                    data: _Halqa,
+                    success: function (response) {
+                        location.href = '/User/Halqa/Index';
+                      //  $("#HalqaList").empty().append(response);
+                    },
+                    error: function (err) {
+                        toastr.error("Registration failed: Internal server error");
+                        buttonEnableReg();
+                        console.log(err);
+                    }
+                });
+            });
+        });
+            function buttonEnableReg() {
+            $("#btnRegisterUpdate span,#btnRegister span").hide();
+            $("#btnRegisterUpdate,#btnRegister").prop("disabled", false);
+        }
+
+
+            function buttonDisabledReg() {
+                $("#btnRegisterUpdate span,#btnRegister span").show();
+                $("#btnRegisterUpdate,#btnRegister").prop("disabled", true);
+
+                function ClearFields() {
+                    $(".RequiredTextField").each(function () {
+                        $(this).val('');
+                    });
+
+                }
+            }
+
+    </script>*@
+
+

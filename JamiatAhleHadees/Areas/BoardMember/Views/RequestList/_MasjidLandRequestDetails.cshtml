@@ -1,0 +1,42 @@
+﻿@model CommonLayer.CommonModels.MasjidLandRequestModel
+
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <td><b>Member</b></td>
+            <td><b>UserType</b>
+            <td><b>Status</b></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ApprovedList)
+            {
+            <tr>
+
+                <td> @item.UserName</td>
+                <td> @item.UserTypeName</td>
+
+                @if (item.IsApproved == true)
+                {
+                    <td>
+
+                        <img src="~/Assets/Img/th3MHOFP7G.jpg" height="30" width="30" />
+                    </td>
+                }
+                else
+                {
+                    <td>
+
+                        <img src="~/Assets/Img/No.png" height="30" width="30" />
+                    </td>
+                }
+
+
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+

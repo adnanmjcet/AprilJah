@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="JamiatDb1-Web.config Connection String" description="JamiatDb1 Connection String used in web.config by the application to access the database." defaultValue="Data Source=SBS\SQLEXPRESS;Initial Catalog=JamiatAhlehadeesV2;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\Running\ Projects\\Demo\ Version\\JAH\\JamiatAhleHadees\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='JamiatDb1']/@connectionString" />
+  </parameter>
+</parameters>

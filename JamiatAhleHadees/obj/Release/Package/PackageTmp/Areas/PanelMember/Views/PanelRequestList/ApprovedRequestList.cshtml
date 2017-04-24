@@ -1,0 +1,82 @@
+﻿@model IEnumerable<CommonLayer.CommonModels.RequestSubmitModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h4>Approved List</h4>
+
+<table class="table  table-hover table-responsive ">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ShortDesc)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.RequestTypeName)
+        </th>
+
+
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsApproved)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdateDate)
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDesc)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.RequestTypeName)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsApproved)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdateDate)
+                </td>*@
+            <td>
+                @Html.ActionLink("Details", actionName: "GetDetailsbyId", controllerName: "RequestList", routeValues: new { id = @item.Id, RequestTypeId = @item.RequestTypeId }, htmlAttributes: null)
+                @*@Html.ActionLink("Details", "GetDetailsbyId", new { Id=@item.Id})*@
+
+            </td>
+        </tr>
+    }
+
+</table>
+
