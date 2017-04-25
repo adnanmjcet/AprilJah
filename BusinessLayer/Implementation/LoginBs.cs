@@ -53,6 +53,20 @@ namespace BusinessLayer.Implementation
 
         }
 
+        public int LoginAuthentication(string userName, string password)
+        {
+
+            try
+            {
+                return _User.GetAll().Where(x => x.UserName == userName && x.Password == password).Select(x => x.Id).FirstOrDefault();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         public int Save(LoginModel model)
         {
             throw new NotImplementedException();

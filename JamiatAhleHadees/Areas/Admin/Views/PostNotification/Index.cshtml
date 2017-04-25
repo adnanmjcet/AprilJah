@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
+}
+
+<div class="box-header with-border">
+    <h3 class="box-title">Post Notification</h3>
+</div>
+<br />
+
+@using (Html.BeginForm("Index", "PostNotification", FormMethod.Post))
+{
+    <div class="container">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="form-group col-lg-6 col-xs-12">
+
+                    <label for="message" class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Message</label>
+                    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                        @Html.TextArea("notificationMessage", new { @class = "form-control", @placeholder = "Message" })
+                        @*<textarea  row="4" cols="150" name="notificationMessage" id="notificationMessage"  class="form-control" placeholder="Message" />*@
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="form-group col-lg-12">
+            <div class="col-md-offset-5 col-md-2">
+                <button type="submit" class="btn-block btn btn-success" id="btnSend">
+                    Send
+                </button>
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+}

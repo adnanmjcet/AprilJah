@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26228.9
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{9F08CAB4-4458-426F-8528-F169D24D85E3}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{6559D327-D041-4D80-AFF0-A08D92790540}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JamiatAhleHadees", "JamiatAhleHadees\JamiatAhleHadees.csproj", "{E62C9280-72AD-4EFE-9AEF-1EA0EA595122}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiLayer", "ApiLayer\ApiLayer.csproj", "{6EDDB454-9E6A-42A7-9E5E-C2DF0800A7D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{E62C9280-72AD-4EFE-9AEF-1EA0EA595122}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E62C9280-72AD-4EFE-9AEF-1EA0EA595122}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E62C9280-72AD-4EFE-9AEF-1EA0EA595122}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EDDB454-9E6A-42A7-9E5E-C2DF0800A7D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EDDB454-9E6A-42A7-9E5E-C2DF0800A7D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EDDB454-9E6A-42A7-9E5E-C2DF0800A7D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EDDB454-9E6A-42A7-9E5E-C2DF0800A7D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

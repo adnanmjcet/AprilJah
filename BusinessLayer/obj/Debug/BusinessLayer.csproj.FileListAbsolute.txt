@@ -171,3 +171,14 @@ C:\Users\user\Documents\GitHub\AprilJah\BusinessLayer\bin\Debug\EntityFramework.
 C:\Users\user\Documents\GitHub\AprilJah\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
 C:\Users\user\Documents\GitHub\AprilJah\BusinessLayer\obj\Debug\BusinessLayer.dll
 C:\Users\user\Documents\GitHub\AprilJah\BusinessLayer\obj\Debug\BusinessLayer.pdb
+E:\Workspance\AprilJah\BusinessLayer\bin\Debug\BusinessLayer.dll
+E:\Workspance\AprilJah\BusinessLayer\bin\Debug\BusinessLayer.pdb
+E:\Workspance\AprilJah\BusinessLayer\bin\Debug\CommonLayer.dll
+E:\Workspance\AprilJah\BusinessLayer\bin\Debug\DataAccessLayer.dll
+E:\Workspance\AprilJah\BusinessLayer\bin\Debug\EntityFramework.dll
+E:\Workspance\AprilJah\BusinessLayer\bin\Debug\CommonLayer.pdb
+E:\Workspance\AprilJah\BusinessLayer\bin\Debug\DataAccessLayer.pdb
+E:\Workspance\AprilJah\BusinessLayer\bin\Debug\EntityFramework.xml
+E:\Workspance\AprilJah\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
+E:\Workspance\AprilJah\BusinessLayer\obj\Debug\BusinessLayer.dll
+E:\Workspance\AprilJah\BusinessLayer\obj\Debug\BusinessLayer.pdb

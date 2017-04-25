@@ -16,5 +16,7 @@ namespace BusinessLayer.Interface
         int Save(LoginModel model);
 
         LoginModel GetById(int id);
+
+        int LoginAuthentication(string userName, string password);
     }
 }

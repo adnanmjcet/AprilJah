@@ -166,3 +166,15 @@ C:\Users\user\Documents\GitHub\AprilJah\DataAccessLayer\bin\Debug\EntityFramewor
 C:\Users\user\Documents\GitHub\AprilJah\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
 C:\Users\user\Documents\GitHub\AprilJah\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 C:\Users\user\Documents\GitHub\AprilJah\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+E:\Workspance\AprilJah\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+E:\Workspance\AprilJah\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+E:\Workspance\AprilJah\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+E:\Workspance\AprilJah\DataAccessLayer\bin\Debug\CommonLayer.dll
+E:\Workspance\AprilJah\DataAccessLayer\bin\Debug\EntityFramework.dll
+E:\Workspance\AprilJah\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+E:\Workspance\AprilJah\DataAccessLayer\bin\Debug\CommonLayer.pdb
+E:\Workspance\AprilJah\DataAccessLayer\bin\Debug\EntityFramework.xml
+E:\Workspance\AprilJah\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+E:\Workspance\AprilJah\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
+E:\Workspance\AprilJah\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+E:\Workspance\AprilJah\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
