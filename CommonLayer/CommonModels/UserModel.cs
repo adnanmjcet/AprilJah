@@ -36,6 +36,10 @@ namespace CommonLayer.CommonModels
 
         public DateTime? CreatedDate { get; set; }
 
+        public string DeviceID { get; set; }
+
+
+        public int? Platform { get; set; }
 
         //public List<RoleModel> RoleList { get; set; }
 

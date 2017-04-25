@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CommonLayer.CommonModels
 {
-  public  class LoginModel
+    public class LoginModel
     {
         public int Id { get; set; }
 
@@ -32,9 +32,9 @@ namespace CommonLayer.CommonModels
 
         public DateTime? CreatedDate { get; set; }
 
-         
-
-        public  List<UserTypeModel> UserType { get; set; }
+        public string DeviceID { get; set; }
+        public int? Platform { get; set; }
+        public List<UserTypeModel> UserType { get; set; }
 
         public List<RoleModel> RoleList { get; set; }
     }

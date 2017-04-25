@@ -95,6 +95,8 @@ namespace BusinessLayer.Implementation
                //Name = item.UserName,
                 Password = item.Password,
                 CreatedDate=item.CreatedDate,
+                DeviceID=item.DeviceID,
+                Platform=item.Platform
             };
             return _UserModel;
         }

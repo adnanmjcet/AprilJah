@@ -49,6 +49,13 @@ namespace DataAccessLayer.DataModel
         [StringLength(50)]
         public string Password { get; set; }
 
+
+        [StringLength(50)]
+        public string DeviceID { get; set; }
+       
+        
+        public int? Platform { get; set; }
+
         public int? RoleId { get; set; }
 
         public int? UserTypeId { get; set; }

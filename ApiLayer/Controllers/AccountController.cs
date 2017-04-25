@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Implementation;
+﻿using ApiLayer.Helpers;
+using BusinessLayer.Implementation;
 using CommonLayer.CommonModels;
 using System;
 using System.Collections.Generic;
@@ -53,6 +54,48 @@ namespace ApiLayer.Controllers
             //else
             //    return Ok("User Or Password Incorrect!");
 
+
+        }
+
+
+        [HttpGet]
+        public IHttpActionResult GetLogout()
+        {
+
+            // update device id as null  of user    
+            int userid = User.Identity.GetUserID();
+
+            Int64? accountID = null;
+
+            var useraccountdata = _userRegistrationBs.GetById(userid);
+            if (useraccountdata != null)
+            {
+                useraccountdata.DeviceID = string.Empty;
+                useraccountdata.Platform = 0;
+            }
+            _userRegistrationBs.Save(useraccountdata);
+
+            return Ok();
+
+        }
+
+
+        [ActionName("DefaultAction")]
+        public IHttpActionResult GetAddPlatform(string deviceid, string platform)
+        {
+
+            // update device id and platform of user  for push notification    
+            int userid = User.Identity.GetUserID();
+
+
+            var useraccountdata = _userRegistrationBs.GetById(userid);
+            if (useraccountdata != null)
+            {
+                useraccountdata.DeviceID = deviceid;
+                useraccountdata.Platform = Convert.ToInt32(platform);
+            }
+            _userRegistrationBs.Save(useraccountdata);
+            return Ok();
 
         }
     }

@@ -25,7 +25,15 @@ namespace BusinessLayer.Implementation
 
         public LoginModel GetById(int id)
         {
-            throw new NotImplementedException();
+            return _User.GetAll().Where(x => x.Id == id).Select(x =>new CommonLayer.CommonModels.LoginModel
+            {
+                Id=x.Id,
+                Name=x.Name,
+                DeviceID=x.DeviceID,
+                Platform=x.Platform,
+                Area=x.Area,
+
+            }).FirstOrDefault();
         }
 
         public LoginModel GetDetails(LoginModel model)
