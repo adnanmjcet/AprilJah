@@ -10,6 +10,7 @@ namespace DataAccessLayer.GenericPattern.Interface
     public interface IGenericPattern<T>
     {
         IEnumerable<T> GetAll();
+        IQueryable<T> GetWithInclude(global::System.Linq.Expressions.Expression<Func<T, bool>> predicate, params string[] include);
         IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate);
         T Insert(T entity);
         void Delete(int id);

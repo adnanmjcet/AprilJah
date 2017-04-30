@@ -27,8 +27,7 @@ namespace JamiatAhleHadees.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Index(string notificationMessage)
         {
-            var varial = _userRegistrationBs.UserRegistrationList().Select(x => x.Contact).ToList();
-
+            _userRegistrationBs.SendPushNotification(notificationMessage);
             return View();
         }
     }

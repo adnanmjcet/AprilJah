@@ -13,9 +13,11 @@ namespace DataAccessLayer.GenericPattern.Implementation
     public class GenericPattern<T> : IGenericPattern<T> where T : class
     {
         private readonly JamiatDb db;
+        internal IDbSet<T> DbSet;
         public GenericPattern()
         {
             db = new JamiatDb();
+            this.DbSet = this.db.Set<T>();
         }
 
         public IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate)
@@ -44,6 +46,13 @@ namespace DataAccessLayer.GenericPattern.Implementation
             db.Set<T>().Add(entity);
             db.SaveChanges();
             return entity;
+        }
+
+        public IQueryable<T> GetWithInclude(System.Linq.Expressions.Expression<Func<T, bool>> predicate, params string[] include)
+        {
+            IQueryable<T> query = this.DbSet;
+            query = include.Aggregate(query, (current, inc) => current.Include(inc));
+            return query.Where(predicate);
         }
         public void Update(T entity)
         {

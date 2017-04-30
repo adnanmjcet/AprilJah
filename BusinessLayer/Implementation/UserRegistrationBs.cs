@@ -8,6 +8,7 @@ using CommonLayer.CommonModels;
 using DataAccessLayer.DataModel;
 using DataAccessLayer.GenericPattern.Interface;
 using DataAccessLayer.GenericPattern.Implementation;
+using FirebaseNet.Messaging;
 
 namespace BusinessLayer.Implementation
 {
@@ -21,7 +22,7 @@ namespace BusinessLayer.Implementation
         public UserRegistrationBs()
         {
             tbl_UserRegistration = new GenericPattern<User>();
-            tbl_UserType= new GenericPattern<UserType>();
+            tbl_UserType = new GenericPattern<UserType>();
         }
 
         public List<UserModel> UserRegistrationList()
@@ -51,9 +52,11 @@ namespace BusinessLayer.Implementation
             var UserTypeList = tbl_UserType.FindBy(m => m.MainUserType == mainUserType);
             if (UserTypeList != null && UserTypeList.Any())
             {
-                _UserModelList = (from @item in UserTypeList select new UserModel {
-                    UserTypeId= @item.Id
-                }).ToList();
+                _UserModelList = (from @item in UserTypeList
+                                  select new UserModel
+                                  {
+                                      UserTypeId = @item.Id
+                                  }).ToList();
             }
             return _UserModelList;
         }
@@ -91,12 +94,12 @@ namespace BusinessLayer.Implementation
                 Name = item.Name,
                 Contact = item.Contact,
                 Area = item.Area,
-                Email=item.Email,
-               //Name = item.UserName,
+                Email = item.Email,
+                //Name = item.UserName,
                 Password = item.Password,
-                CreatedDate=item.CreatedDate,
-                DeviceID=item.DeviceID,
-                Platform=item.Platform
+                CreatedDate = item.CreatedDate,
+                DeviceID = item.DeviceID,
+                Platform = item.Platform
             };
             return _UserModel;
         }
@@ -106,7 +109,7 @@ namespace BusinessLayer.Implementation
             if (model.Id != 0)
             {
                 model.UserLists = UserRegistrationList();
-               
+
             }
             model.UserLists = UserRegistrationList();
 
@@ -125,11 +128,29 @@ namespace BusinessLayer.Implementation
             else
             {
                 // tbl_UserRegistration.CreatedDate = System.DateTime.Now;
-                
+
                 tbl_UserRegistration.Insert(_UserModel);
             }
 
             return _UserModel.Id;
+        }
+
+        public void SendPushNotification(string notiMessage)
+        {
+            var deviceList = tbl_UserRegistration.GetWithInclude(x => x.DeviceID != null).Select(x => x.DeviceID).ToList();
+            deviceList.ForEach(x =>
+            {
+                FCMClient client = new FCMClient("AAAAylgXv6E:APA91bHxCtlKnoU7NBp9P989-zIh8KS6oy6dG2ESyReH6DyaawXz9zfyogpiO6STy7-8ajMzlvpi1jAQ0VqOkKjSf8DtOk5vNbklD9q-F1V3rmAnR_oH-zYamaeTludLGqItoSjykVDe");
+                var message = new Message()
+                {
+                    To = x,
+                    Notification = new AndroidNotification()
+                    {
+                        Title = notiMessage,
+                    }
+                };
+                var result = client.SendMessageAsync(message);
+            });
         }
 
     }

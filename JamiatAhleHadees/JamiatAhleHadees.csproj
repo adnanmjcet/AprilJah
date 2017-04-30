@@ -93,6 +93,7 @@
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Mvc">
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
@@ -1229,8 +1230,8 @@
     <Content Include="Areas\User\Views\NewMadarsaOperationRequest\Index.cshtml" />
     <Content Include="Areas\User\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\UserRegistration\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\UserRegistration\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\UserRegistration\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\UserRegistration\Index.cshtml" />
     <Content Include="Areas\BoardMember\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\PanelMember\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\User\Views\Shared\_Layout.cshtml" />
@@ -1239,6 +1240,7 @@
     <Content Include="Areas\BoardMember\Views\RequestList\_MasjidExtensionDetails.cshtml" />
     <Content Include="Areas\BoardMember\Views\RequestList\_MasjidRenovationRequestDetails.cshtml" />
     <Content Include="Areas\Admin\Views\PostNotification\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\JamaitPublish.pubxml" />
     <None Include="Properties\PublishProfiles\test.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
