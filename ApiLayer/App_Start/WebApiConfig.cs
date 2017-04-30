@@ -14,12 +14,21 @@ namespace ApiLayer
             // Web API routes
             config.MapHttpAttributeRoutes();
 
+          
+
+            config.Routes.MapHttpRoute(
+              name: "WithActionApi",
+              routeTemplate: "api/{controller}/{action}/{id}",
+              defaults: new { id = RouteParameter.Optional }
+          );
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                defaults: new { action = "DefaultAction", id = RouteParameter.Optional }
             );
 
+            config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
             //config.Routes.MapHttpRoute(
             //    name: "DefaultApi",
             //    routeTemplate: "api/{controller}/{action}/{id}",

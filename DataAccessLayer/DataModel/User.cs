@@ -56,6 +56,15 @@ namespace DataAccessLayer.DataModel
         
         public int? Platform { get; set; }
 
+        [StringLength(50)]
+        public string OTPPassword { get; set; }
+
+
+        [Column(TypeName = "date")]
+        public DateTime? OTPGeneratedTime { get; set; }
+
+        public bool? IsOTPCheck { get; set; }
+
         public int? RoleId { get; set; }
 
         public int? UserTypeId { get; set; }

@@ -25,13 +25,13 @@ namespace BusinessLayer.Implementation
 
         public LoginModel GetById(int id)
         {
-            return _User.GetAll().Where(x => x.Id == id).Select(x =>new CommonLayer.CommonModels.LoginModel
+            return _User.GetAll().Where(x => x.Id == id).Select(x => new CommonLayer.CommonModels.LoginModel
             {
-                Id=x.Id,
-                Name=x.Name,
-                DeviceID=x.DeviceID,
-                Platform=x.Platform,
-                Area=x.Area,
+                Id = x.Id,
+                Name = x.Name,
+                DeviceID = x.DeviceID,
+                Platform = x.Platform,
+                Area = x.Area,
 
             }).FirstOrDefault();
         }
@@ -54,7 +54,7 @@ namespace BusinessLayer.Implementation
                                 Password = item.Password,
                                 RoleId = item.RoleId,
                                 UserTypeId = item.UserTypeId,
-                                RoleName=item.Role.Name
+                                RoleName = item.Role.Name
 
                             }).OrderByDescending(x => x.Id).ToList();
             return _MadarsaList;
@@ -75,10 +75,37 @@ namespace BusinessLayer.Implementation
                 throw;
             }
         }
+
+        public UserModel OTPAuthenticationCheck(string contactNo, string otpPassword)
+        {
+
+            try
+            {
+                return _User.GetAll().Where(x => x.Contact == contactNo && x.OTPPassword == otpPassword).Select(x => new UserModel
+                {
+                    Id = x.Id,
+                    OTPPassword = x.OTPPassword,
+                    OTPGeneratedTime = x.OTPGeneratedTime,
+                    IsOTPCheck = x.IsOTPCheck
+                }).FirstOrDefault();
+
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
+
         public int Save(LoginModel model)
         {
             throw new NotImplementedException();
         }
+
+
 
     }
 
@@ -263,16 +290,16 @@ namespace BusinessLayer.Implementation
         public override bool ValidateUser(string username, string password)
         {
 
-          int count = obj.LoginList().Where(x => x.UserName == username && x.Password == password).ToList().Count();
+            int count = obj.LoginList().Where(x => x.UserName == username && x.Password == password).ToList().Count();
 
 
-            if (count>0)
+            if (count > 0)
             {
                 return true;
             }
             else
             {
-                return false; 
+                return false;
             }
 
 
@@ -354,4 +381,3 @@ namespace BusinessLayer.Implementation
         }
     }
 }
- 

@@ -18,5 +18,6 @@ namespace BusinessLayer.Interface
         LoginModel GetById(int id);
 
         int LoginAuthentication(string userName, string password);
+        UserModel OTPAuthenticationCheck(string contactNo, string otpPassword);
     }
 }

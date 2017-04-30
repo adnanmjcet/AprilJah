@@ -60,3 +60,4 @@ E:\Workspance\AprilJah\CommonLayer\bin\Debug\CommonLayer.dll
 E:\Workspance\AprilJah\CommonLayer\bin\Debug\CommonLayer.pdb
 E:\Workspance\AprilJah\CommonLayer\obj\Debug\CommonLayer.dll
 E:\Workspance\AprilJah\CommonLayer\obj\Debug\CommonLayer.pdb
+E:\Workspance\AprilJah\CommonLayer\obj\Debug\CommonLayer.csprojResolveAssemblyReference.cache

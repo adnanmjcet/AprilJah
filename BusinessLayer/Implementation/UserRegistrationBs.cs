@@ -99,7 +99,10 @@ namespace BusinessLayer.Implementation
                 Password = item.Password,
                 CreatedDate = item.CreatedDate,
                 DeviceID = item.DeviceID,
-                Platform = item.Platform
+                Platform = item.Platform,
+                OTPPassword = item.OTPPassword,
+                OTPGeneratedTime = item.OTPGeneratedTime,
+                IsOTPCheck = item.IsOTPCheck
             };
             return _UserModel;
         }

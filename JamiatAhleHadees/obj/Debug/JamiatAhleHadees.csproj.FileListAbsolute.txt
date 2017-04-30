@@ -694,3 +694,6 @@ E:\Workspance\AprilJah\JamiatAhleHadees\bin\System.Web.Mvc.xml
 E:\Workspance\AprilJah\JamiatAhleHadees\obj\Debug\JamiatAhleHadees.csprojResolveAssemblyReference.cache
 E:\Workspance\AprilJah\JamiatAhleHadees\obj\Debug\JamiatAhleHadees.dll
 E:\Workspance\AprilJah\JamiatAhleHadees\obj\Debug\JamiatAhleHadees.pdb
+E:\Workspance\AprilJah\JamiatAhleHadees\bin\FirebaseNet.dll
+E:\Workspance\AprilJah\JamiatAhleHadees\bin\Newtonsoft.Json.dll
+E:\Workspance\AprilJah\JamiatAhleHadees\bin\Newtonsoft.Json.xml

@@ -441,6 +441,11 @@ namespace DataAccessLayer.DataModel
             RoleId = item.RoleId;
             UserTypeId = item.UserTypeId;
             CreatedDate = item.CreatedDate;
+            DeviceID = item.DeviceID;
+            Platform = item.Platform;
+            OTPPassword = item.OTPPassword;
+            OTPGeneratedTime = item.OTPGeneratedTime;
+            IsOTPCheck = item.IsOTPCheck;
         }
     }
 

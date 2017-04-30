@@ -41,6 +41,14 @@ namespace CommonLayer.CommonModels
 
         public int? Platform { get; set; }
 
+
+        public string OTPPassword { get; set; }
+
+
+        public DateTime? OTPGeneratedTime { get; set; }
+
+        public bool? IsOTPCheck { get; set; }
+
         //public List<RoleModel> RoleList { get; set; }
 
         //public List<UserTypeModel> UserTypeList { get; set; }

@@ -198,3 +198,8 @@ D:\WorkSpace\AprilJah\BusinessLayer\bin\Debug\EntityFramework.xml
 D:\WorkSpace\AprilJah\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
 D:\WorkSpace\AprilJah\BusinessLayer\obj\Debug\BusinessLayer.dll
 D:\WorkSpace\AprilJah\BusinessLayer\obj\Debug\BusinessLayer.pdb
+E:\Workspance\AprilJah\BusinessLayer\bin\Debug\FirebaseNet.dll
+E:\Workspance\AprilJah\BusinessLayer\bin\Debug\Microsoft.Web.Infrastructure.dll
+E:\Workspance\AprilJah\BusinessLayer\bin\Debug\Newtonsoft.Json.dll
+E:\Workspance\AprilJah\BusinessLayer\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\Workspance\AprilJah\BusinessLayer\bin\Debug\Newtonsoft.Json.xml
