@@ -39,7 +39,8 @@ namespace ApiLayer.Controllers
         [HttpPost]
         public IHttpActionResult Post(List<CategoryModel> model)
         {
-            _categoryBs.UpdateCategory(model);
+            int userid = User.Identity.GetUserID();
+            _categoryBs.UpdateCategory(model,userid);
 
             return Ok();
         }

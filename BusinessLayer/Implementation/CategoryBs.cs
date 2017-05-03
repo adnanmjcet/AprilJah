@@ -14,12 +14,14 @@ namespace BusinessLayer.Implementation
     public class CategoryBs : ICategory
     {
         private readonly IGenericPattern<Category> _Category;
+        private readonly IGenericPattern<UserCategoryMapping> _userCategoryMapping;
         //private readonly CategoryModel _CategoryModel;
 
 
         public CategoryBs()
         {
             _Category = new GenericPattern<Category>();
+            _userCategoryMapping = new GenericPattern<UserCategoryMapping>();
             //_CategoryModel = new CategoryModel();
         }
 
@@ -70,9 +72,27 @@ namespace BusinessLayer.Implementation
         }
 
 
-        public void UpdateCategory(List<CategoryModel> lstmodel)
+        public void UpdateCategory(List<CategoryModel> lstmodel, int userid)
         {
-            throw new NotImplementedException();
+            lstmodel.ForEach(x =>
+            {
+                var userCategory = _userCategoryMapping.GetWithInclude(z => z.UserID == userid && z.CategoryID == x.Id).FirstOrDefault();
+
+                if (userCategory != null)
+                {
+                    userCategory.IsSelected = x.IsChecked;
+                    _userCategoryMapping.Update(userCategory);
+                }
+                else
+                {
+                    UserCategoryMapping catergorymap = new UserCategoryMapping();
+                    catergorymap.UserID = userid;
+                    catergorymap.CategoryID = x.Id;
+                    catergorymap.IsSelected = x.IsChecked;
+                    _userCategoryMapping.Insert(catergorymap);
+                }
+            });
+            return;
         }
     }
 }

@@ -15,6 +15,8 @@ namespace BusinessLayer.Implementation
     public class UserRegistrationBs : IUserRegistration
     {
         private readonly IGenericPattern<User> tbl_UserRegistration;
+        private readonly IGenericPattern<Category> tbl_Category;
+        private readonly IGenericPattern<UserCategoryMapping> tbl_UserCategoryMap;
         private readonly IGenericPattern<UserType> tbl_UserType;
 
         private readonly RequestSubmitModel _RequestSubmitModel;
@@ -23,6 +25,8 @@ namespace BusinessLayer.Implementation
         {
             tbl_UserRegistration = new GenericPattern<User>();
             tbl_UserType = new GenericPattern<UserType>();
+            tbl_Category = new GenericPattern<Category>();
+            tbl_UserCategoryMap = new GenericPattern<UserCategoryMapping>();
         }
 
         public List<UserModel> UserRegistrationList()
@@ -138,9 +142,27 @@ namespace BusinessLayer.Implementation
             return _UserModel.Id;
         }
 
-        public void SendPushNotification(string notiMessage)
+        public List<CategoryModel> CategoryList()
         {
-            var deviceList = tbl_UserRegistration.GetWithInclude(x => x.DeviceID != null).Select(x => x.DeviceID).ToList();
+            return tbl_Category.GetAll().Select(x => new CategoryModel
+            {
+                Id = x.Id,
+                Name = x.Name,
+            }).ToList();
+
+        }
+        public void SendPushNotification(string notiMessage, int? categoryID)
+        {
+            var userIDs = tbl_UserCategoryMap.GetWithInclude(x => x.CategoryID == categoryID && x.IsSelected == true).Select(x => x.UserID).ToList();
+
+            if (userIDs.Count == 0)
+                return;
+
+            var deviceList = tbl_UserRegistration.GetWithInclude(x => userIDs.Contains(x.Id) && x.DeviceID != null).Select(x => x.DeviceID).ToList();
+
+            if (deviceList.Count == 0)
+                return;
+
             deviceList.ForEach(x =>
             {
                 FCMClient client = new FCMClient("AAAAylgXv6E:APA91bHxCtlKnoU7NBp9P989-zIh8KS6oy6dG2ESyReH6DyaawXz9zfyogpiO6STy7-8ajMzlvpi1jAQ0VqOkKjSf8DtOk5vNbklD9q-F1V3rmAnR_oH-zYamaeTludLGqItoSjykVDe");

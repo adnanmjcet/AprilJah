@@ -18,5 +18,7 @@ namespace BusinessLayer.Interface
         int Save(UserModel model);
 
         UserModel GetById(int id);
+
+        List<CategoryModel> CategoryList();
     }
 }
