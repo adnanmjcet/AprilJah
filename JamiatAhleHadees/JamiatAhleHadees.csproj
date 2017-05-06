@@ -1242,6 +1242,11 @@
     <Content Include="Areas\Admin\Views\PostNotification\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Master\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Master\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Course\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Course\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Master\Sessions.cshtml" />
+    <Content Include="Areas\Admin\Views\Course\Sessions.cshtml" />
+    <Content Include="Areas\Admin\Views\Course\SessionCreate.cshtml" />
     <None Include="Properties\PublishProfiles\JamaitPublish.pubxml" />
     <None Include="Properties\PublishProfiles\test.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -1256,6 +1261,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AmeerApproveRequestController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CourseController.cs" />
     <Compile Include="Areas\Admin\Controllers\MasterController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostNotificationController.cs" />
     <Compile Include="Areas\Admin\Controllers\RequestListController.cs" />

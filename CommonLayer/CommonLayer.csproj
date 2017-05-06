@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonModels\CategoryModel.cs" />
+    <Compile Include="CommonModels\CourseModel.cs" />
+    <Compile Include="CommonModels\CourseSessionModel.cs" />
     <Compile Include="CommonModels\DefaultInovlvementModel.cs" />
     <Compile Include="CommonModels\EventMasterModel.cs" />
     <Compile Include="CommonModels\EventRequestDetailModel.cs" />

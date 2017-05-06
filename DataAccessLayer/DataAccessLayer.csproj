@@ -52,6 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataModel\Category.cs" />
+    <Compile Include="DataModel\Course.cs" />
+    <Compile Include="DataModel\CourseSession.cs" />
     <Compile Include="DataModel\DefaultInovlvement.cs" />
     <Compile Include="DataModel\EventMaster.cs" />
     <Compile Include="DataModel\EventRequest.cs" />

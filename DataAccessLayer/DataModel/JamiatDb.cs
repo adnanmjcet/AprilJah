@@ -41,6 +41,12 @@ namespace DataAccessLayer.DataModel
         public virtual DbSet<Category> Categorys { get; set; }
 
         public virtual DbSet<UserCategoryMapping> UserCategoryMappings { get; set; }
+
+        public virtual DbSet<Course> Courses { get; set; }
+
+
+        public virtual DbSet<CourseSession> CourseSessiones { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<EventMaster>()
