@@ -4,6 +4,9 @@
 # User-specific files
 *.suo
 *.user
+_ReSharper.*
+bin
+obj
 *.userosscache
 *.sln.docstates
 
@@ -20,8 +23,7 @@ x86/
 bld/
 [Bb]in/
 [Oo]bj/
-bin
-obj
+
 
 # Visual Studio 2015 cache/options directory
 .vs/
