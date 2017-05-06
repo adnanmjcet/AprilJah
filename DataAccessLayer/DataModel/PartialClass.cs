@@ -493,5 +493,42 @@ namespace DataAccessLayer.DataModel
 
         }
     }
+
+
+    public partial class Course
+    {
+
+        public Course(CourseModel item)
+        {
+            Id = item.Id;
+            Name = item.Name;
+            Description = item.Description;
+            IsDelete = item.IsDelete;
+            Status = item.Status;
+            CreatedOn = item.CreatedOn;
+            CreatedBy = item.CreatedBy;
+            UpdatedOn = item.UpdatedOn;
+            UpdatedBy = item.UpdatedBy;
+
+        }
+    }
+
+    public partial class CourseSession
+    {
+
+        public CourseSession(CourseSessionModel item)
+        {
+            Id = item.Id;
+            Topic = item.Topic;
+            CourseID= item.CourseID;
+            Document1 = item.Document1;
+            Document2= item.Document2;
+            CreatedOn = item.CreatedOn;
+            CreatedBy = item.CreatedBy;
+            VideoLink = item.VideoLink;
+            AudioLink = item.AudioLink;
+
+        }
+    }
 }
 
