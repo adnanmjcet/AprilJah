@@ -78,6 +78,7 @@
     <Compile Include="Implementation\RequestCommentBs.cs" />
     <Compile Include="Implementation\RequestLikeDisLikeBs.cs" />
     <Compile Include="Implementation\RequestSubmitBs.cs" />
+    <Compile Include="Implementation\UserCategoryMappingBs.cs" />
     <Compile Include="Implementation\UserRegistrationBs.cs" />
     <Compile Include="Interface\ICategory.cs" />
     <Compile Include="Interface\IExistingMadarsaOperationsRequest.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Interface\IPInvolve.cs" />
     <Compile Include="Interface\IRequestComment.cs" />
     <Compile Include="Interface\IRequestLikeDisLike.cs" />
+    <Compile Include="Interface\IUserCategoryMapping.cs" />
     <Compile Include="Interface\IUserRegistration.cs" />
     <Compile Include="Interface\RequestApproveReject.cs" />
     <Compile Include="Interface\RequestSubmit.cs" />

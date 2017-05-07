@@ -480,5 +480,18 @@ namespace DataAccessLayer.DataModel
         }
     }
 
+
+    public partial class UserCategoryMapping
+    {
+
+        public UserCategoryMapping(UserCategoryMappingModel item)
+        {
+            Id = item.Id;
+            UserID = item.UserID;
+            CategoryID = item.CategoryID;
+            IsSelected = item.IsSelected;
+
+        }
+    }
 }
 

@@ -25,12 +25,13 @@ namespace BusinessLayer.Implementation
 
         public List<CategoryModel> CategoryList()
         {
-            return _Category.GetAll().Where(x => x.IsDelete == false).Select(x => new CategoryModel
+            return _Category.GetWithInclude(x => x.IsDelete == false).Select(x => new CategoryModel
             {
                 Id = x.Id,
                 Name = x.Name,
                 IsDelete = x.IsDelete,
-                CreatedDate = x.CreatedDate
+                CreatedDate = x.CreatedDate,
+
             }).ToList();
         }
 
@@ -66,6 +67,12 @@ namespace BusinessLayer.Implementation
             }
 
             return _tbl_category.Id;
+        }
+
+
+        public void UpdateCategory(List<CategoryModel> lstmodel)
+        {
+            throw new NotImplementedException();
         }
     }
 }

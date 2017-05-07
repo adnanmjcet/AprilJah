@@ -63,6 +63,7 @@
     <Compile Include="CommonModels\RequestSubmitModel.cs" />
     <Compile Include="CommonModels\RequestTypeModel.cs" />
     <Compile Include="CommonModels\RoleModel.cs" />
+    <Compile Include="CommonModels\UserCategoryMappingModel.cs" />
     <Compile Include="CommonModels\UserModel.cs" />
     <Compile Include="CommonModels\UserTypeModel.cs" />
     <Compile Include="CommonModels\ZoneModel.cs" />

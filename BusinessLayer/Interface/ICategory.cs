@@ -16,5 +16,7 @@ namespace BusinessLayer.Interface
         int Save(CategoryModel model);
 
         CategoryModel GetById(int id);
+
+        void UpdateCategory(List<CategoryModel> lstmodel);
     }
 }

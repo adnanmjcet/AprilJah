@@ -15,5 +15,6 @@ namespace CommonLayer.CommonModels
         public bool IsDelete { get; set; }
 
         public DateTime? CreatedDate { get; set; }
+        public bool IsChecked { get; set; }
     }
 }
