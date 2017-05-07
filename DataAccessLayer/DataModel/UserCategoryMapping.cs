@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace DataAccessLayer.DataModel
 {
     [Table("UserCategoryMapping")]
-    public class UserCategoryMapping
+    public partial class UserCategoryMapping
     {
         public UserCategoryMapping()
         {
