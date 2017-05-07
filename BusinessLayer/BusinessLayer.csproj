@@ -65,6 +65,7 @@
     <Compile Include="Implementation\CourseBs.cs" />
     <Compile Include="Implementation\CourseSessionBs.cs" />
     <Compile Include="Implementation\ExistingMadarsaOperationsRequestBs.cs" />
+    <Compile Include="Interface\IUserGroupBS.cs" />
     <Compile Include="Implementation\LoginBs.cs" />
     <Compile Include="Implementation\MadarsaBs.cs" />
     <Compile Include="Implementation\MadarsaExtensionRequestBs.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Implementation\RequestLikeDisLikeBs.cs" />
     <Compile Include="Implementation\RequestSubmitBs.cs" />
     <Compile Include="Implementation\UserCategoryMappingBs.cs" />
+    <Compile Include="Implementation\UserGroupBS.cs" />
     <Compile Include="Implementation\UserRegistrationBs.cs" />
     <Compile Include="Interface\ICategory.cs" />
     <Compile Include="Interface\ICourse.cs" />

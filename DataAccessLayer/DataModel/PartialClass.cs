@@ -513,6 +513,8 @@ namespace DataAccessLayer.DataModel
         }
     }
 
+   
+
     public partial class CourseSession
     {
 
@@ -528,6 +530,35 @@ namespace DataAccessLayer.DataModel
             VideoLink = item.VideoLink;
             AudioLink = item.AudioLink;
 
+        }
+    }
+
+    public partial class UserGroup
+    {
+
+        public UserGroup(UserGroupModel item)
+        {
+            Id = item.Id;
+            Name = item.Name;
+            IsActive = item.IsActive;
+            CreatedOn = item.CreatedOn;
+            CreatedBy = item.CreatedBy;
+            UpdatedOn = item.UpdatedOn;
+            UpdatedBy = item.UpdatedBy;
+
+        }
+    }
+
+    public partial class UserGroup_Mapping
+    {
+
+        public UserGroup_Mapping(UserGroupModel item)
+        {
+            Id = item.Id;
+            UserGroupID = item.UserGroupID;
+            UserID = item.UserID;
+            IsActive = item.IsActive;
+            CreatedOn = item.CreatedOn;
         }
     }
 }

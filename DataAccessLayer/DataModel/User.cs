@@ -27,6 +27,7 @@ namespace DataAccessLayer.DataModel
             RequestComments = new HashSet<RequestComment>();
             RequestLikes = new HashSet<RequestLike>();
             RequestSubmits = new HashSet<RequestSubmit>();
+            this.UserGroup_Mapping = new List<UserGroup_Mapping>();
         }
 
         public int Id { get; set; }
@@ -120,5 +121,6 @@ namespace DataAccessLayer.DataModel
         public virtual Role Role { get; set; }
 
         public virtual UserType UserType { get; set; }
+        public virtual ICollection<UserGroup_Mapping> UserGroup_Mapping { get; set; }
     }
 }

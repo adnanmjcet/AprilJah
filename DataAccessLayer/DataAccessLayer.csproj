@@ -80,6 +80,8 @@
     <Compile Include="DataModel\Role.cs" />
     <Compile Include="DataModel\User.cs" />
     <Compile Include="DataModel\UserCategoryMapping.cs" />
+    <Compile Include="DataModel\UserGroup.cs" />
+    <Compile Include="DataModel\UserGroup_Mapping.cs" />
     <Compile Include="DataModel\UserType.cs" />
     <Compile Include="DataModel\Zone.cs" />
     <Compile Include="GenericPattern\Implementation\GenericPattern.cs" />
