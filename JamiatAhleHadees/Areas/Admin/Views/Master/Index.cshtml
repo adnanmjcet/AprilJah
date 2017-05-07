@@ -1,0 +1,61 @@
+﻿@model IEnumerable<CommonLayer.CommonModels.CategoryModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="box-header with-border">
+    <h3 class="box-title">Users List</h3>
+</div>
+<br />
+
+
+<div class="col-lg-12">
+    <button value="Create New"
+            class="btn btn-primary btn-sm" type="button" id="addressSearch"
+            onclick="location.href='@Url.Action("Create")'">
+        Create New
+    </button>
+</div>
+<div class="col-lg-12">
+    <table class="table table-bordered table-hover table-responsive">
+        <thead>
+            <tr>
+                <td><b>ID</b></td>
+                <td><b>Name</b></td>
+
+
+                <td><b>Edit</b></td>
+                <td><b>Delete</b></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    @*<td>@item.ConfirmPassword</td>*@
+
+                    <td>
+                        <button value="Edit"
+                                class="btn btn-primary btn-sm" type="button" id="addressSearch"
+                                onclick="location.href='@Url.Action("Create", "Master" ,new {id = item.Id })'">
+                            Edit
+                        </button>
+                    </td>
+                    <td>
+                        <button value="Delete"
+                                class="btn btn-danger btn-sm" type="button" id="addressSearch"
+                                onclick="location.href='@Url.Action("Delete", "Master" ,new {id = item.Id })'">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
+

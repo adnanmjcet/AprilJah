@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementation\CategoryBs.cs" />
     <Compile Include="Implementation\ExistingMadarsaOperationsRequestBs.cs" />
     <Compile Include="Implementation\LoginBs.cs" />
     <Compile Include="Implementation\MadarsaBs.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Implementation\RequestLikeDisLikeBs.cs" />
     <Compile Include="Implementation\RequestSubmitBs.cs" />
     <Compile Include="Implementation\UserRegistrationBs.cs" />
+    <Compile Include="Interface\ICategory.cs" />
     <Compile Include="Interface\IExistingMadarsaOperationsRequest.cs" />
     <Compile Include="Interface\ILogin.cs" />
     <Compile Include="Interface\IMadarsa.cs" />

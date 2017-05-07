@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonModels\CategoryModel.cs" />
     <Compile Include="CommonModels\DefaultInovlvementModel.cs" />
     <Compile Include="CommonModels\EventMasterModel.cs" />
     <Compile Include="CommonModels\EventRequestDetailModel.cs" />

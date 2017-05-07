@@ -466,5 +466,19 @@ namespace DataAccessLayer.DataModel
             IsObject = item.IsObject;          
         }
     }
+
+
+    public partial class Category
+    {
+
+        public Category(CategoryModel item)
+        {
+            Id = item.Id;
+            Name = item.Name;
+            IsDelete = item.IsDelete;
+            CreatedDate = item.CreatedDate;
+        }
+    }
+
 }
 
