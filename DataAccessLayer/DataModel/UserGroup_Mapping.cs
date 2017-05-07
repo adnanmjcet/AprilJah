@@ -13,9 +13,9 @@ namespace DataAccessLayer.DataModel
        {
            
        }
-       public int Id { get; set; }
+       public Int64 Id { get; set; }
        public Int64? UserGroupID { get; set; }
-       public Int64? UserID { get; set; }
+       public int? UserID { get; set; }
        public bool IsActive { get; set; }
        [Column(TypeName = "date")]
        public DateTime? CreatedOn { get; set; }

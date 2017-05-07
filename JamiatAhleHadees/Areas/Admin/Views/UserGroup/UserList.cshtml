@@ -1,0 +1,53 @@
+﻿@model CommonLayer.CommonModels.UserGroupModel
+@{
+    ViewBag.Title = "UserList";
+    Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
+}
+<style>
+    div.scroll {
+        height: 500px;
+        overflow: scroll;
+    }
+</style>
+<div class="box-header with-border">
+    <h3 class="box-title">Select Users</h3>
+</div>
+@using (Html.BeginForm("AddUser", "UserGroup", FormMethod.Post))
+{
+    <div class="container">
+        <div class="col-md-6 scroll">
+            @Html.HiddenFor(x => x.UserGroupID)
+            @foreach (var item in Model.UserList)
+            {
+                <div class="form-group row">
+                    <div class="col-10">
+                        <input type="checkbox" class="checkbox" @(@item.IsSelected==true ?"checked":"") name="UserCheckList" value="@item.UserID" id="@item.UserID" />
+                        <label style="margin-left: 35px;margin-top: -17px;">@item.Name</label>
+                    </div>
+
+                </div>
+            }
+
+
+        </div>
+        <div class="col-md-6 " style="margin-top:450px">
+            <div class="form-group row">
+                <div class="col-md-3">
+                    <button type="submit" class="btn-block btn btn-success" data-id="0" id="btnRegister">
+                        Submit
+                    </button>
+                </div>
+                <div class="col-md-3">
+                    <button value="Edit"
+                            class="btn-block btn btn-danger" type="button" id="addressSearch"
+                            onclick="location.href='@Url.Action("Index", "UserGroup")'">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+

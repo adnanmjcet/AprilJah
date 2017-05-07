@@ -16,7 +16,7 @@ namespace DataAccessLayer.DataModel
         {
             this.UserGroup_Mapping = new List<UserGroup_Mapping>();
         }
-        public int Id { get; set; }
+        public Int64 Id { get; set; }
         public int? CreatedBy { get; set; }
         public int? UpdatedBy { get; set; }
 
