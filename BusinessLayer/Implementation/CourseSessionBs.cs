@@ -36,7 +36,24 @@ namespace BusinessLayer.Implementation
             }).ToList();
         }
 
-        public CourseSessionModel GetById(int id)
+        public List<CourseSessionModel> GetSessionByCourseID(long courseID)
+        {
+            return _CourseSession.GetWithInclude(x=>x.CourseID==courseID).Select(x => new CourseSessionModel
+            {
+                Id = x.Id,
+                Topic = x.Topic,
+                CourseID = x.CourseID,
+                Document1 = x.Document1,
+                Document2 = x.Document2,
+                AudioLink = x.AudioLink,
+                VideoLink = x.VideoLink,
+                CreatedOn = x.CreatedOn,
+                CreatedBy = x.CreatedBy
+
+            }).ToList();
+        }
+
+        public CourseSessionModel GetById(long id)
         {
             return _CourseSession.GetWithInclude(x=>x.Id==id).Select(x => new CourseSessionModel
             {

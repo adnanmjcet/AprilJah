@@ -15,6 +15,8 @@ namespace BusinessLayer.Interface
 
         long Save(CourseSessionModel model);
 
-        CourseSessionModel GetById(int id);
+        CourseSessionModel GetById(long id);
+
+        List<CourseSessionModel> GetSessionByCourseID(long courseID);
     }
 }

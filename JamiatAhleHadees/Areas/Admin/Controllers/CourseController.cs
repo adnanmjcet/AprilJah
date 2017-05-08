@@ -31,7 +31,7 @@ namespace JamiatAhleHadees.Areas.Admin.Controllers
         {
             var course = _courseBs.CourseList();
             return View(course);
-            
+
         }
 
         public ActionResult Create(int? id)
@@ -78,46 +78,69 @@ namespace JamiatAhleHadees.Areas.Admin.Controllers
             return RedirectToAction("Index", "Course", new { area = "Admin" });
         }
 
-        public ActionResult Sessions()
+        public ActionResult Sessions(long? id)
         {
-            var courseSession = _courseSessionBs.CourseSessionList();
+            var courseSession = _courseSessionBs.GetSessionByCourseID(id.Value);
+            TempData["CourseID"] = id.Value;
             return View(courseSession);
-            
+
         }
 
-        public ActionResult SessionCreate(int? id)
+        public ActionResult SessionCreate(long? id)
         {
-            CourseSessionModel model = new CourseSessionModel();
             if (id != null)
             {
                 var Varial = _courseSessionBs.GetById(Convert.ToInt32(id));
-
                 return View(Varial);
 
             }
+            CourseSessionModel model = new CourseSessionModel();
+            if (TempData["CourseID"] != null)
+                model.CourseID = Convert.ToInt64(TempData["CourseID"]);
 
             return View(model);
         }
         [HttpPost]
-        public ActionResult SessionCreate(CourseSessionModel model)
+        public ActionResult SessionCreate(FormCollection form)
         {
-            long i = 0;
 
-            if (model != null)
+            List<CourseSessionModel> model = new List<CourseSessionModel>();
+
+            var keys = form.AllKeys.Where(x => x.StartsWith("Topic")).ToList();
+
+            var obj = new CourseSessionModel();
+            foreach (var item in keys)
             {
-                i = _courseSessionBs.Save(model);
+                var currentKeyNum = item.Replace("Topic", "");
+                obj.Id = Convert.ToInt64(form["Id"]);
+                obj.CourseID = Convert.ToInt64(form["CourseID"]);
+                obj.Topic = form["Topic" + currentKeyNum];
+                obj.AudioLink = form["AudioLink" + currentKeyNum];
+                obj.VideoLink = form["VideoLink" + currentKeyNum];
+                obj.Document1 = form["FirstDocument" + currentKeyNum];
+                obj.Document2 = form["SecondDocument" + currentKeyNum];
+
+                _courseSessionBs.Save(obj);
             }
 
-            if (i > 0)
-            {
-                TempData["msg"] = "Save Successfully";
-            }
-            else
-            {
-                TempData["msg"] = "Error while saving data";
-            }
 
-            return RedirectToAction("Sessions", "Course", new { area = "Admin" });
+            //long i = 0;
+
+            //if (model != null)
+            //{
+            //    i = _courseSessionBs.Save(model);
+            //}
+
+            //if (i > 0)
+            //{
+            //    TempData["msg"] = "Save Successfully";
+            //}
+            //else
+            //{
+            //    TempData["msg"] = "Error while saving data";
+            //}
+
+            return RedirectToAction("Sessions", "Course", new { area = "Admin", id = obj.CourseID });
 
         }
 
