@@ -194,8 +194,10 @@
     <Content Include="Assets\documentation\index.html" />
     <Content Include="Assets\documentation\style.css" />
     <Content Include="Assets\Images\logo-transparent_400.png" />
+    <None Include="Assets\Img\sendnotification" />
     <Content Include="Assets\Img\jamiat-facebook-post.jpg" />
     <Content Include="Assets\Img\No.png" />
+    <Content Include="Assets\Img\send.png" />
     <Content Include="Assets\Img\th3MHOFP7G.jpg" />
     <Content Include="Assets\pages\calendar.html" />
     <Content Include="Assets\pages\charts\chartjs.html" />
@@ -1250,6 +1252,7 @@
     <Content Include="Areas\Admin\Views\UserGroup\Index.cshtml" />
     <Content Include="Areas\Admin\Views\UserGroup\Create.cshtml" />
     <Content Include="Areas\Admin\Views\UserGroup\UserList.cshtml" />
+    <Content Include="Areas\Admin\Views\Course\ViewCourse.cshtml" />
     <None Include="Properties\PublishProfiles\JamaitPublish.pubxml" />
     <None Include="Properties\PublishProfiles\test.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

@@ -151,5 +151,12 @@ namespace JamiatAhleHadees.Areas.Admin.Controllers
             _courseBs.Save(getCourse);
             return RedirectToAction("Sessions", "Course", new { area = "Admin" });
         }
+
+        public ActionResult ViewCourse(int? id)
+        {
+            var res = _courseBs.GetCourseSessions(id.Value);
+             
+            return View(res);
+        }
     }
 }

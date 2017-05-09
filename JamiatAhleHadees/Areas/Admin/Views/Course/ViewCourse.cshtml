@@ -1,0 +1,55 @@
+﻿@model CommonLayer.CommonModels.CourseModel
+@{
+    ViewBag.Title = "ViewCourse";
+    Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
+}
+
+<div class="box-header with-border">
+    <h3 class="box-title">Course Details</h3>
+</div>
+<br />
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h4>ID:@Model.Id</h4>
+            <h1>@Model.Name</h1>
+            <p>@Model.Description</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="col-lg-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Topic Name</th>
+                            <th>Send Notification</th>
+                            <th>Last Sent</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.CourseSessionList)
+                        {
+                            <tr>
+                                <td>@item.Topic</td>
+                                <td> <img src="~/Assets/Img/send.png" height="50" width="60" /> </td>
+                                <td>12/7/2017 12:30pm</td>
+                            </tr>
+                        }
+                       
+                         
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <button class="btn btn-default">Edit Test</button><br /><br />
+                <button class="btn btn-default">Results</button><br /><br />
+                <button class="btn btn-default">Start Test</button><br /><br />
+                <button class="btn btn-default">End Test</button><br /><br />
+
+            </div>
+        </div>
+    </div>

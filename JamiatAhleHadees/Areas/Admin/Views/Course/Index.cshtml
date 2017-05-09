@@ -28,6 +28,7 @@
                 <td><b>Edit</b></td>
                 <td><b>Delete</b></td>
                 <td><b>Sessions</b></td>
+                <td><b>View Details</b></td>
             </tr>
         </thead>
         <tbody>
@@ -58,6 +59,13 @@
                                 class="btn btn-success btn-sm" type="button" id="addressSearch"
                                 onclick="location.href='@Url.Action("Sessions", "Course",new {id = item.Id })'">
                             Add Session
+                        </button>
+                    </td>
+                    <td>
+                        <button value="AddSession"
+                                class="btn btn-success btn-sm" type="button" id="addressSearch"
+                                onclick="location.href='@Url.Action("ViewCourse", "Course",new {id = item.Id })'">
+                            View Details
                         </button>
                     </td>
                 </tr>

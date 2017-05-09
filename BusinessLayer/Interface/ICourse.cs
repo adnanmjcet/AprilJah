@@ -17,6 +17,9 @@ namespace BusinessLayer.Interface
 
         CourseModel GetById(int id);
 
-        
+        CourseModel GetCourseSessions(int id);
+
+
+
     }
 }

@@ -46,6 +46,28 @@ namespace BusinessLayer.Implementation
             }).FirstOrDefault();
         }
 
+        public CourseModel GetCourseSessions(int id)
+        {
+            CourseModel _CourseSessionList = new CourseModel();
+
+            var resdata = _Course.GetAll().Where(x => x.Id == id).ToList();
+            _CourseSessionList = (from item in resdata
+                                  select new CourseModel
+                                  {
+                                      Id = item.Id,
+                                      Name = item.Name,
+                                      Description = item.Description,
+                                      Status = item.Status,
+                                      IsDelete = item.IsDelete,
+                                      CreatedOn = item.CreatedOn,
+                                      CourseSessionList = new CourseSessionBs().CourseSessionList().Where(x => x.CourseID == id).ToList()
+
+                                  }).FirstOrDefault();
+
+            return _CourseSessionList;
+
+        }
+
         public CourseModel GetCourse(CourseModel model)
         {
             throw new NotImplementedException();

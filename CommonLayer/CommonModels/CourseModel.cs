@@ -26,5 +26,7 @@ namespace CommonLayer.CommonModels
 
         public long UpdatedBy { get; set; }
 
+        public List<CourseSessionModel> CourseSessionList { get; set; }
+
     }
 }

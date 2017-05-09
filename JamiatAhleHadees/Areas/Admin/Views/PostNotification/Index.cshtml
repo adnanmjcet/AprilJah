@@ -6,7 +6,7 @@
 
     Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
 }
-
+<link href="~/Assets/plugins/select2/select2.min.css" rel="stylesheet" />
 <div class="box-header with-border">
     <h3 class="box-title">Post Notification</h3>
 </div>
@@ -45,7 +45,7 @@
 
                     <label for="message" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-2">User Group</label>
                     <div class="col-lg-10 col-md-10 col-sm-10 col-xs-8">
-                        @Html.DropDownList("Id", @UserGrouList, "Select", new { @class = "form-control" })
+                        @Html.DropDownList("Id", @UserGrouList, "Select", new { @class = "form-control select2", multiple = "multiple" })
                         @*<textarea  row="4" cols="150" name="notificationMessage" id="notificationMessage"  class="form-control" placeholder="Message" />*@
 
                     </div>
@@ -64,6 +64,7 @@
                 </div>
             </div>
         </div>
+        
         <div class="form-group col-lg-12">
             <div class="col-md-offset-5 col-md-2">
                 <button type="submit" class="btn-block btn btn-success" id="btnSend">
@@ -79,3 +80,12 @@
 
 
 }
+
+<script src="~/Assets/plugins/select2/select2.full.min.js"></script>
+<script src="~/Assets/plugins/select2/select2.full.js"></script>
+<script>
+    $(function () {
+        //Initialize Select2 Elements
+        $(".select2").select2();
+    });
+</script>
