@@ -28,7 +28,26 @@ namespace DataAccessLayer.DataModel
             CreatedDate = item.CreatedDate;
         }
     }
-   
+    public partial class Volunteer
+    {
+        public Volunteer()
+        {
+
+        }
+        public Volunteer(VolunteerModel item)
+        {
+            Id = item.Id;
+            Name = item.Name;
+            Email = item.Email;
+            Contact = item.Contact;
+            CreatedDate = Convert.ToDateTime(item.CreatedDate);
+            ZoneId = item.ZoneId;
+            Skills = item.Skills;
+            Occupation = item.Occupation;
+            VolunteerFor = item.VolunteerFor;
+        }
+    }
+
     public partial class Masjid
     {
         public Masjid(MasjidModel _obj)

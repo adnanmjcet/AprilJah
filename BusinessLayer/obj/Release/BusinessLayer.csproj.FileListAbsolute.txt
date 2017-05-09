@@ -9,3 +9,19 @@ E:\Running Projects\Demo Version\JAH\BusinessLayer\bin\Release\EntityFramework.x
 E:\Running Projects\Demo Version\JAH\BusinessLayer\obj\Release\BusinessLayer.csprojResolveAssemblyReference.cache
 E:\Running Projects\Demo Version\JAH\BusinessLayer\obj\Release\BusinessLayer.dll
 E:\Running Projects\Demo Version\JAH\BusinessLayer\obj\Release\BusinessLayer.pdb
+E:\JahGit\BusinessLayer\bin\Release\BusinessLayer.dll
+E:\JahGit\BusinessLayer\bin\Release\BusinessLayer.pdb
+E:\JahGit\BusinessLayer\bin\Release\CommonLayer.dll
+E:\JahGit\BusinessLayer\bin\Release\DataAccessLayer.dll
+E:\JahGit\BusinessLayer\bin\Release\FirebaseNet.dll
+E:\JahGit\BusinessLayer\bin\Release\Microsoft.Web.Infrastructure.dll
+E:\JahGit\BusinessLayer\bin\Release\Newtonsoft.Json.dll
+E:\JahGit\BusinessLayer\bin\Release\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\JahGit\BusinessLayer\bin\Release\EntityFramework.dll
+E:\JahGit\BusinessLayer\bin\Release\CommonLayer.pdb
+E:\JahGit\BusinessLayer\bin\Release\DataAccessLayer.pdb
+E:\JahGit\BusinessLayer\bin\Release\Newtonsoft.Json.xml
+E:\JahGit\BusinessLayer\bin\Release\EntityFramework.xml
+E:\JahGit\BusinessLayer\obj\Release\BusinessLayer.csprojResolveAssemblyReference.cache
+E:\JahGit\BusinessLayer\obj\Release\BusinessLayer.dll
+E:\JahGit\BusinessLayer\obj\Release\BusinessLayer.pdb

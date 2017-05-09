@@ -1,6 +1,9 @@
 ﻿@{
     ViewBag.Title = "Index";
     SelectList selectList = ViewBag.CategoryList as SelectList;
+    SelectList UserGrouList = ViewBag.UserGroupList as SelectList;
+
+
     Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
 }
 
@@ -14,27 +17,51 @@
     <div class="container">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="row">
+                <div class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <label>Broadcast</label>
+                </div>
+                <div class="col-lg-2 form-group col-xs-12">
+                   <input type="checkbox" id="chksms" />SMS
+                </div>
+                <div class="col-lg-8 form-group col-xs-12">
+                    <input type="checkbox" id="chkMobileNotification" />MobileApp Notification
 
-                <div class="form-group col-lg-6 col-xs-12">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-12 col-xs-12">
 
-                    <label for="message" class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Category</label>
-                    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
-                        @Html.DropDownList("CategoryID", @selectList, "Select")
+                    <label for="message" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-2">Category</label>
+                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-8">
+                        @Html.DropDownList("CategoryID", @selectList, "Select",new {@class="form-control"})
                         @*<textarea  row="4" cols="150" name="notificationMessage" id="notificationMessage"  class="form-control" placeholder="Message" />*@
 
                     </div>
                 </div>
-                <div class="form-group col-lg-6 col-xs-12">
+               
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-12 col-xs-12">
 
-                    <label for="message" class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Message</label>
-                    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                    <label for="message" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-2">User Group</label>
+                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-8">
+                        @Html.DropDownList("Id", @UserGrouList, "Select", new { @class = "form-control" })
+                        @*<textarea  row="4" cols="150" name="notificationMessage" id="notificationMessage"  class="form-control" placeholder="Message" />*@
+
+                    </div>
+                </div>                 
+            </div>
+
+            <div class="row">
+                <div class="form-group col-lg-12 col-xs-12">
+
+                    <label for="message" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-2">Message</label>
+                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-8">
                         @Html.TextArea("notificationMessage", new { @class = "form-control", @placeholder = "Message" })
                         @*<textarea  row="4" cols="150" name="notificationMessage" id="notificationMessage"  class="form-control" placeholder="Message" />*@
 
                     </div>
                 </div>
-
-
             </div>
         </div>
         <div class="form-group col-lg-12">

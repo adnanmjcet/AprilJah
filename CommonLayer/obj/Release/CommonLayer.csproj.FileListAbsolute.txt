@@ -3,3 +3,8 @@ E:\Running Projects\Demo Version\JAH\CommonLayer\bin\Release\CommonLayer.pdb
 E:\Running Projects\Demo Version\JAH\CommonLayer\obj\Release\CommonLayer.csprojResolveAssemblyReference.cache
 E:\Running Projects\Demo Version\JAH\CommonLayer\obj\Release\CommonLayer.dll
 E:\Running Projects\Demo Version\JAH\CommonLayer\obj\Release\CommonLayer.pdb
+E:\JahGit\CommonLayer\bin\Release\CommonLayer.dll
+E:\JahGit\CommonLayer\bin\Release\CommonLayer.pdb
+E:\JahGit\CommonLayer\obj\Release\CommonLayer.csprojResolveAssemblyReference.cache
+E:\JahGit\CommonLayer\obj\Release\CommonLayer.dll
+E:\JahGit\CommonLayer\obj\Release\CommonLayer.pdb

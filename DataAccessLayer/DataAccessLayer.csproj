@@ -83,6 +83,7 @@
     <Compile Include="DataModel\UserGroup.cs" />
     <Compile Include="DataModel\UserGroup_Mapping.cs" />
     <Compile Include="DataModel\UserType.cs" />
+    <Compile Include="DataModel\Volunteer.cs" />
     <Compile Include="DataModel\Zone.cs" />
     <Compile Include="GenericPattern\Implementation\GenericPattern.cs" />
     <Compile Include="GenericPattern\Interface\IGenericPattern.cs" />
@@ -100,7 +101,9 @@
       <Name>CommonLayer</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="DataModel\test\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

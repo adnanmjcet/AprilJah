@@ -25,7 +25,7 @@ namespace BusinessLayer.Implementation
 
         public List<UserGroupModel> UserGroupList()
         {
-            return _userGroup.GetWithInclude(x => x.IsActive == false).Select(x => new UserGroupModel
+            return _userGroup.GetWithInclude(x => x.IsActive == true).Select(x => new UserGroupModel
             {
                 Id = x.Id,
                 Name = x.Name,

@@ -47,8 +47,35 @@ namespace DataAccessLayer.DataModel
 
         public virtual DbSet<CourseSession> CourseSessiones { get; set; }
 
+        public virtual DbSet<Volunteer> Volunteers { get; set; }
+
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Volunteer>()
+               .Property(e => e.Name)
+               .IsUnicode(false);
+
+            modelBuilder.Entity<Volunteer>()
+                .Property(e => e.Email)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Volunteer>()
+                .Property(e => e.Contact)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Volunteer>()
+                .Property(e => e.Occupation)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Volunteer>()
+                .Property(e => e.Skills)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Volunteer>()
+                .Property(e => e.VolunteerFor)
+                .IsUnicode(false);
+
             modelBuilder.Entity<EventMaster>()
                 .Property(e => e.Name)
                 .IsUnicode(false);
