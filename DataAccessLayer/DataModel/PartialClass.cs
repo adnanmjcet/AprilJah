@@ -482,7 +482,7 @@ namespace DataAccessLayer.DataModel
             UserTypeId = item.UserTypeId;
             RequestSubmitId = item.RequestSubmitId;
             CreatedDate = Convert.ToDateTime(item.CreatedDate);
-            IsObject = item.IsObject;          
+            IsObject = item.IsObject;
         }
     }
 
@@ -531,8 +531,29 @@ namespace DataAccessLayer.DataModel
 
         }
     }
+    public partial class Course_Test
+    {
 
-   
+        public Course_Test(CourseTestModel item)
+        {
+            Id = item.Id;
+            CourseID = item.CourseID;
+            Question = item.Question;
+            Answer1 = item.Answer1;
+            Answer2 = item.Answer2;
+            Answer3 = item.Answer3;
+            Answer4 = item.Answer4;
+            CorrectAnswer = item.CorrectAnswer;
+            Mark = item.Mark;
+            Reason = item.Reason;
+            CreatedOn = item.CreatedOn;
+            CreatedBy = item.CreatedBy;
+
+        }
+    }
+
+
+
 
     public partial class CourseSession
     {
@@ -541,9 +562,9 @@ namespace DataAccessLayer.DataModel
         {
             Id = item.Id;
             Topic = item.Topic;
-            CourseID= item.CourseID;
+            CourseID = item.CourseID;
             Document1 = item.Document1;
-            Document2= item.Document2;
+            Document2 = item.Document2;
             CreatedOn = item.CreatedOn;
             CreatedBy = item.CreatedBy;
             VideoLink = item.VideoLink;

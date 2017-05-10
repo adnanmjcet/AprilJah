@@ -194,6 +194,8 @@
     <Content Include="Assets\documentation\index.html" />
     <Content Include="Assets\documentation\style.css" />
     <Content Include="Assets\Images\logo-transparent_400.png" />
+    <Content Include="Areas\Admin\Views\Course\CourseTest.cshtml" />
+    <Content Include="Areas\Admin\Views\Course\CourseTestCreate.cshtml" />
     <None Include="Assets\Img\sendnotification" />
     <Content Include="Assets\Img\jamiat-facebook-post.jpg" />
     <Content Include="Assets\Img\No.png" />

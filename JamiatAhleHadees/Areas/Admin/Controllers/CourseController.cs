@@ -14,7 +14,8 @@ namespace JamiatAhleHadees.Areas.Admin.Controllers
         private readonly CourseBs _courseBs;
         private readonly CourseSessionModel _courseSessionModel;
         private readonly CourseSessionBs _courseSessionBs;
-
+        private readonly CourseTestModel _courseTestModel;
+        private readonly CourseTestBs _courseTestBs;
 
         public CourseController()
         {
@@ -22,6 +23,8 @@ namespace JamiatAhleHadees.Areas.Admin.Controllers
             _courseBs = new CourseBs();
             _courseSessionModel = new CourseSessionModel();
             _courseSessionBs = new CourseSessionBs();
+            _courseTestBs = new CourseTestBs();
+            _courseTestModel = new CourseTestModel();
 
 
 
@@ -155,8 +158,87 @@ namespace JamiatAhleHadees.Areas.Admin.Controllers
         public ActionResult ViewCourse(int? id)
         {
             var res = _courseBs.GetCourseSessions(id.Value);
-             
+
             return View(res);
         }
+
+        public ActionResult CourseTest(long? id)
+        {
+            var courseTestSession = _courseTestBs.GetCourseTestList(id.Value);
+            TempData["CourseID"] = id.Value;
+            
+            return View(courseTestSession);
+        }
+
+
+        public ActionResult CourseTestCreate(long? id)
+        {
+            if (id != null)
+            {
+                var Varial = _courseTestBs.GetById(id.Value);
+                return View(Varial);
+
+            }
+            CourseTestModel model = new CourseTestModel();
+            if (TempData["CourseID"] != null)
+                model.CourseID = Convert.ToInt64(TempData["CourseID"]);
+
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult CourseTestCreate(FormCollection form)
+        {
+
+            List<CourseTestModel> model = new List<CourseTestModel>();
+
+            var keys = form.AllKeys.Where(x => x.StartsWith("Question")).ToList();
+
+            var obj = new CourseTestModel();
+            foreach (var item in keys)
+            {
+                var currentKeyNum = item.Replace("Question", "");
+                obj.Id = Convert.ToInt64(form["Id"]);
+                obj.CourseID = Convert.ToInt64(form["CourseID"]);
+                obj.Question= form["Question" + currentKeyNum];
+                obj.Answer1= form["Answer1" + currentKeyNum];
+                obj.Answer2= form["Answer2" + currentKeyNum];
+                obj.Answer3= form["Answer3" + currentKeyNum];
+                obj.Answer4= form["Answer4" + currentKeyNum];
+                obj.CorrectAnswer = form["CorrectAnswer" + currentKeyNum];
+                obj.Mark = form["Mark" + currentKeyNum];
+                obj.Reason= form["Reason" + currentKeyNum];
+
+                _courseTestBs.Save(obj);
+            }
+
+
+            //long i = 0;
+
+            //if (model != null)
+            //{
+            //    i = _courseSessionBs.Save(model);
+            //}
+
+            //if (i > 0)
+            //{
+            //    TempData["msg"] = "Save Successfully";
+            //}
+            //else
+            //{
+            //    TempData["msg"] = "Error while saving data";
+            //}
+
+            return RedirectToAction("CourseTest", "Course", new { area = "Admin", id = obj.CourseID });
+
+        }
+
+        public ActionResult CourseTestDelete(int? id)
+        {
+            var getCourse = _courseBs.GetById(id.Value);
+            getCourse.IsDelete = true;
+            _courseBs.Save(getCourse);
+            return RedirectToAction("Sessions", "Course", new { area = "Admin" });
+        }
+
     }
 }

@@ -48,7 +48,7 @@ namespace DataAccessLayer.DataModel
         public virtual DbSet<CourseSession> CourseSessiones { get; set; }
 
         public virtual DbSet<Volunteer> Volunteers { get; set; }
-
+        public virtual DbSet<Course_Test> CourseTests { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
