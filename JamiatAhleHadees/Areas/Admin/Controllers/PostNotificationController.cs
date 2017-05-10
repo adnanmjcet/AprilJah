@@ -24,15 +24,16 @@ namespace JamiatAhleHadees.Areas.Admin.Controllers
         public ActionResult Index()
         {
             ViewBag.CategoryList = new SelectList(_userRegistrationBs.CategoryList(), "Id", "Name");
-            ViewBag.UserGroupList = new SelectList(_userGroupBS.UserGroupList(), "Id", "Name");
+            ViewBag.UserGroupList = _userGroupBS.UserGroupList();
             return View();
         }
 
         [HttpPost]
-        public ActionResult Index(string notificationMessage, int? CategoryID)
+        public ActionResult Index(PostNotificationModel model)
         {
-            _userRegistrationBs.SendPushNotification(notificationMessage,CategoryID);
+            _userRegistrationBs.SendPushNotification(model.Message,model.CategoryID);
             ViewBag.CategoryList = new SelectList(_userRegistrationBs.CategoryList(), "Id", "Name");
+            ViewBag.UserGroupList = _userGroupBS.UserGroupList();
             return View();
         }
     }

@@ -1,11 +1,18 @@
-﻿@{
+﻿@model CommonLayer.CommonModels.PostNotificationModel
+@{
     ViewBag.Title = "Index";
     SelectList selectList = ViewBag.CategoryList as SelectList;
-    SelectList UserGrouList = ViewBag.UserGroupList as SelectList;
-
-
     Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
 }
+<style>
+    div.scroll {
+        height: 150px;
+        overflow: scroll;
+        border: 1px solid black;
+        width: 300px;
+        margin-left: 16px;
+    }
+</style>
 <link href="~/Assets/plugins/select2/select2.min.css" rel="stylesheet" />
 <div class="box-header with-border">
     <h3 class="box-title">Post Notification</h3>
@@ -21,10 +28,12 @@
                     <label>Broadcast</label>
                 </div>
                 <div class="col-lg-2 form-group col-xs-12">
-                   <input type="checkbox" id="chksms" />SMS
+                    @*<input type="checkbox" id="chksms" />*@SMS
+                    @Html.CheckBoxFor(Model => Model.IsSms)
                 </div>
                 <div class="col-lg-8 form-group col-xs-12">
-                    <input type="checkbox" id="chkMobileNotification" />MobileApp Notification
+                    @*<input type="checkbox" id="chkMobileNotification" />*@
+                    @Html.CheckBoxFor(Model => Model.IsMobileNotification)MobileApp Notification
 
                 </div>
             </div>
@@ -33,23 +42,33 @@
 
                     <label for="message" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-2">Category</label>
                     <div class="col-lg-10 col-md-10 col-sm-10 col-xs-8">
-                        @Html.DropDownList("CategoryID", @selectList, "Select",new {@class="form-control"})
+                        @Html.DropDownListFor(Model => Model.CategoryID, @selectList, "Select", new { @class = "form-control" })
                         @*<textarea  row="4" cols="150" name="notificationMessage" id="notificationMessage"  class="form-control" placeholder="Message" />*@
 
                     </div>
                 </div>
-               
+
             </div>
+
             <div class="row">
                 <div class="form-group col-lg-12 col-xs-12">
 
                     <label for="message" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-2">User Group</label>
-                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-8">
-                        @Html.DropDownList("Id", @UserGrouList, "Select", new { @class = "form-control select2", multiple = "multiple" })
+                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-8 scroll">
+                        @*@Html.DropDownList("Id", @UserGrouList, "Select", new { @class = "form-control select2", multiple = "multiple" })*@
                         @*<textarea  row="4" cols="150" name="notificationMessage" id="notificationMessage"  class="form-control" placeholder="Message" />*@
+                        @foreach (var item in ViewBag.UserGroupList)
+                        {
+                        <div class="form-group row" style="margin-left:0px;">
+                            <div class="col-10">
+                                <input type="checkbox" class="checkbox" name="UserGroupList" value="@item.Id" id="@item.Id" />
+                                <label style="margin-left: 35px;margin-top: -17px;">@item.Name</label>
+                            </div>
+                        </div>
+                        }
 
                     </div>
-                </div>                 
+                </div>
             </div>
 
             <div class="row">
@@ -57,14 +76,14 @@
 
                     <label for="message" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-2">Message</label>
                     <div class="col-lg-10 col-md-10 col-sm-10 col-xs-8">
-                        @Html.TextArea("notificationMessage", new { @class = "form-control", @placeholder = "Message" })
+                        @Html.TextAreaFor(Model => Model.Message, new { @class = "form-control", @placeholder = "Message" })
                         @*<textarea  row="4" cols="150" name="notificationMessage" id="notificationMessage"  class="form-control" placeholder="Message" />*@
 
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <div class="form-group col-lg-12">
             <div class="col-md-offset-5 col-md-2">
                 <button type="submit" class="btn-block btn btn-success" id="btnSend">

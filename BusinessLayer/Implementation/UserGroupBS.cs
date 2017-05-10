@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace BusinessLayer.Implementation
 {
@@ -30,7 +31,8 @@ namespace BusinessLayer.Implementation
                 Id = x.Id,
                 Name = x.Name,
                 CreatedOn = x.CreatedOn,
-            }).ToList();
+                UserCount = x.UserGroup_Mapping.Count(),
+            }).OrderByDescending(x => x.Id).ToList();
         }
 
         public UserGroupModel GetById(int id)
@@ -49,12 +51,13 @@ namespace BusinessLayer.Implementation
             if (model.Id != null && model.Id != 0)
             {
                 _tbl_userGroup.UpdatedOn = System.DateTime.Now;
+                _tbl_userGroup.IsActive = true;
                 _userGroup.Update(_tbl_userGroup);
 
             }
             else
             {
-                _tbl_userGroup.IsActive = false;
+                _tbl_userGroup.IsActive = true;
                 _tbl_userGroup.CreatedOn = System.DateTime.Now;
                 _userGroup.Insert(_tbl_userGroup);
             }
@@ -90,15 +93,42 @@ namespace BusinessLayer.Implementation
 
         public bool AddUserList(UserGroupModel model)
         {
-            model.UserCheckList.ForEach(x =>
+            using (var scope = new TransactionScope())
             {
-                UserGroup_Mapping usermap = new UserGroup_Mapping();
-                usermap.UserGroupID = model.UserGroupID;
-                usermap.UserID = x;
-                usermap.IsActive = true;
-                usermap.CreatedOn = DateTime.Now;
-                _userGroupMap.Insert(usermap);
-            });
+                var userGroups = _userGroupMap.GetWithInclude(x => x.UserGroupID == model.UserGroupID).ToList();
+                if (model.UserCheckList.Count == 0)
+                {
+                    userGroups.ForEach(x =>
+                    {
+                        _userGroupMap.Delete(Convert.ToInt32(x.Id));
+
+                    });
+                    scope.Complete();
+                    return true;
+                }
+
+
+                var userGroupList = userGroups.Select(x => x.UserID.Value).ToList();
+                var addedList = model.UserCheckList.Except(userGroupList).ToList();
+                var deleteList = userGroupList.Except(model.UserCheckList).ToList();
+                var usergroupMap = userGroups.Where(x => deleteList.Contains(x.UserID.Value)).Select(x => x.Id).ToList();
+                usergroupMap.ForEach(x =>
+                {
+                    _userGroupMap.Delete(Convert.ToInt32(x));
+                });
+
+                addedList.ForEach(x =>
+                {
+                    UserGroup_Mapping usermap = new UserGroup_Mapping();
+                    usermap.UserGroupID = model.UserGroupID;
+                    usermap.UserID = x;
+                    usermap.IsActive = true;
+                    usermap.CreatedOn = DateTime.Now;
+                    _userGroupMap.Insert(usermap);
+                });
+                scope.Complete();
+
+            }
             return true;
         }
     }

@@ -66,3 +66,7 @@ E:\JahGit\CommonLayer\bin\Debug\CommonLayer.pdb
 E:\JahGit\CommonLayer\obj\Debug\CommonLayer.csprojResolveAssemblyReference.cache
 E:\JahGit\CommonLayer\obj\Debug\CommonLayer.dll
 E:\JahGit\CommonLayer\obj\Debug\CommonLayer.pdb
+D:\WorkSpace\AprilJah\CommonLayer\bin\Debug\CommonLayer.dll
+D:\WorkSpace\AprilJah\CommonLayer\bin\Debug\CommonLayer.pdb
+D:\WorkSpace\AprilJah\CommonLayer\obj\Debug\CommonLayer.dll
+D:\WorkSpace\AprilJah\CommonLayer\obj\Debug\CommonLayer.pdb

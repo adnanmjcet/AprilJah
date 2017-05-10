@@ -23,6 +23,7 @@
             <tr>
                 <td><b>ID</b></td>
                 <td><b>Name</b></td>
+                <td><b>UserCount</b></td>
                 <td><b>Edit</b></td>
                 <td><b>Delete</b></td>
                 <td><b></b></td>
@@ -34,6 +35,7 @@
                 <tr>
                     <td>@item.Id</td>
                     <td>@item.Name</td>
+                    <td>@item.UserCount</td>
                     <td>
                         <button value="Edit"
                                 class="btn btn-primary btn-sm" type="button" id="addressSearch"
@@ -44,12 +46,12 @@
                     <td>
                         <button value="Delete"
                                 class="btn btn-danger btn-sm" type="button" id="addressSearch"
-                                onclick="location.href='@Url.Action("Delete", "Course" ,new {id = item.Id })'">
+                                onclick="">
                             Delete
                         </button>
                     </td>
                     <td>
-                        <button value="AddSession"
+                        <button value="AddUserList"
                                 class="btn btn-success btn-sm" type="button" id="addressSearch"
                                 onclick="location.href='@Url.Action("UserList", "UserGroup", new { userGroupID=@item.Id })'">
                             Add User

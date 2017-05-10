@@ -59,6 +59,7 @@
     <Compile Include="CommonModels\MasjidRenovationRequestModel.cs" />
     <Compile Include="CommonModels\NewMadarsaOperationsRequestModel.cs" />
     <Compile Include="CommonModels\PanelInvolvementModel.cs" />
+    <Compile Include="CommonModels\PostNotificationModel.cs" />
     <Compile Include="CommonModels\RequestApproveModel.cs" />
     <Compile Include="CommonModels\RequestCommentModel.cs" />
     <Compile Include="CommonModels\RequestLikeModel.cs" />
