@@ -1,4 +1,5 @@
 ﻿using ApiLayer.Helpers;
+using BusinessLayer.Extension;
 using BusinessLayer.Implementation;
 using CommonLayer.CommonModels;
 using System;
@@ -40,6 +41,7 @@ namespace ApiLayer.Controllers
                 if (checkUserName)
                     return Ok("UserName alreay exsist!");
                 res = _userRegistrationBs.Save(model);
+                new SendSMS().SendSMS(model.Contact, "OTP is "  + otp + " for Registration");
             }
             if (res != 0)
                 return Ok("User Registered Successfully and OTP is " + otp);
