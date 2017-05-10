@@ -190,6 +190,7 @@ E:\JahGit\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
 E:\JahGit\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
 E:\JahGit\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 E:\JahGit\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+<<<<<<< HEAD
 E:\Work\AprilJah\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
 E:\Work\AprilJah\DataAccessLayer\bin\Debug\DataAccessLayer.dll
 E:\Work\AprilJah\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
@@ -202,3 +203,17 @@ E:\Work\AprilJah\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
 E:\Work\AprilJah\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
 E:\Work\AprilJah\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 E:\Work\AprilJah\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+=======
+D:\WorkSpace\AprilJah\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+D:\WorkSpace\AprilJah\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+D:\WorkSpace\AprilJah\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+D:\WorkSpace\AprilJah\DataAccessLayer\bin\Debug\CommonLayer.dll
+D:\WorkSpace\AprilJah\DataAccessLayer\bin\Debug\EntityFramework.dll
+D:\WorkSpace\AprilJah\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+D:\WorkSpace\AprilJah\DataAccessLayer\bin\Debug\CommonLayer.pdb
+D:\WorkSpace\AprilJah\DataAccessLayer\bin\Debug\EntityFramework.xml
+D:\WorkSpace\AprilJah\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+D:\WorkSpace\AprilJah\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
+D:\WorkSpace\AprilJah\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+D:\WorkSpace\AprilJah\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+>>>>>>> origin/master

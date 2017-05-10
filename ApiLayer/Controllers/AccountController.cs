@@ -15,15 +15,17 @@ namespace ApiLayer.Controllers
         private readonly UserModel _userModel;
         private readonly UserRegistrationBs _userRegistrationBs;
         private readonly LoginBs _loginBs;
+        APIResponseModel apiResponse;
         public AccountController()
         {
             _userModel = new UserModel();
             _userRegistrationBs = new UserRegistrationBs();
             _loginBs = new LoginBs();
+            apiResponse = new APIResponseModel();
         }
 
         [HttpPost]
-        
+
         public IHttpActionResult UserRegistration(UserModel model)
         {
             int res = 0;
@@ -34,6 +36,9 @@ namespace ApiLayer.Controllers
                 model.OTPPassword = otp;
                 model.OTPGeneratedTime = DateTime.Now;
                 model.IsOTPCheck = false;
+                var checkUserName = _userRegistrationBs.CheckUserName(model.UserName);
+                if (checkUserName)
+                    return Ok("UserName alreay exsist!");
                 res = _userRegistrationBs.Save(model);
             }
             if (res != 0)
@@ -44,16 +49,33 @@ namespace ApiLayer.Controllers
 
 
         [HttpPost]
-        
+
         public IHttpActionResult Login(UserModel model)
         {
 
-            int res = _loginBs.LoginAuthentication(model.UserName, model.Password);
+            var userData = _loginBs.LoginAuthentication(model.UserName, model.Password);
 
-            if (res != 0)
-                return Ok("Login Successfully!");
+            if (userData != null)
+            {
+                if (userData.IsOTPCheck == false)
+                {
+                    apiResponse.IsSuccess = false;
+                    apiResponse.Message = "OTP Not Verified!";
+                    return Ok(apiResponse);
+                }
+
+                apiResponse.Data = userData.Id;
+                apiResponse.IsSuccess = true;
+                return Ok(apiResponse);
+            }
+
             else
-                return Ok("User Or Password Incorrect!");
+            {
+                apiResponse.IsSuccess = false;
+                apiResponse.Message = "User Or Password Incorrect!!";
+                return Ok(apiResponse);
+            }
+
             //if (Membership.ValidateUser(model.UserName, model.Password))
             //    return Ok("Login Successfully!");
             //else
@@ -63,7 +85,6 @@ namespace ApiLayer.Controllers
         }
 
         [HttpGet]
-        [ActionName("DefaultAction")]
         public IHttpActionResult OTPAuthentication(string contactNo, string otpPassword)
         {
             var user = _loginBs.OTPAuthenticationCheck(contactNo, otpPassword);
@@ -74,14 +95,16 @@ namespace ApiLayer.Controllers
                 DateTime expTime = OTPTime.AddMinutes(15);
                 if (DateTime.Now <= expTime)
                 {
-                    int userid = User.Identity.GetUserID();
+                    //int userid = User.Identity.GetUserID();
+                    //int userid = user.Id;
 
-                    var useraccountdata = _userRegistrationBs.GetById(userid);
-                    if (useraccountdata != null)
-                    {
-                        useraccountdata.IsOTPCheck = true;
-                    }
-                    _userRegistrationBs.Save(useraccountdata);
+                    //var useraccountdata = _userRegistrationBs.GetById(userid);
+                    //if (useraccountdata != null)
+                    //{
+                    //    useraccountdata.IsOTPCheck = true;
+
+                    user.IsOTPCheck = true;
+                    _userRegistrationBs.Save(user);
 
                     return Ok("OTP Password Varified Successfylly!");
                 }
@@ -100,44 +123,35 @@ namespace ApiLayer.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult GetLogout()
+        public IHttpActionResult GetLogout(int userid)
         {
 
             // update device id as null  of user    
-            int userid = User.Identity.GetUserID();
-
-            Int64? accountID = null;
-
-            var useraccountdata = _userRegistrationBs.GetById(userid);
-            if (useraccountdata != null)
+            var response = _userRegistrationBs.UpdateUser(userid, null, null);
+            if (!response)
             {
-                useraccountdata.DeviceID = string.Empty;
-                useraccountdata.Platform = 0;
+                apiResponse.IsSuccess = response;
+                apiResponse.Message = "User Not Found!";
             }
-            _userRegistrationBs.Save(useraccountdata);
-
-            return Ok();
+            apiResponse.IsSuccess = response;
+            return Ok(response);
 
         }
 
         [HttpGet]
-        [ActionName("DefaultAction")]
-        public IHttpActionResult GetAddPlatform(string deviceid, string platform)
+        public IHttpActionResult GetAddPlatform(int userID, string deviceid, string platform)
         {
 
             // update device id and platform of user  for push notification    
-            int userid = User.Identity.GetUserID();
-
-
-            var useraccountdata = _userRegistrationBs.GetById(userid);
-            if (useraccountdata != null)
+            //int userid = User.Identity.GetUserID();
+            var response = _userRegistrationBs.UpdateUser(userID, deviceid, platform);
+            if (!response)
             {
-                useraccountdata.DeviceID = deviceid;
-                useraccountdata.Platform = Convert.ToInt32(platform);
+                apiResponse.IsSuccess = response;
+                apiResponse.Message = "User Not Found!";
             }
-            _userRegistrationBs.Save(useraccountdata);
-            return Ok();
-
+            apiResponse.IsSuccess = response;
+            return Ok(apiResponse);
         }
 
         [NonAction]

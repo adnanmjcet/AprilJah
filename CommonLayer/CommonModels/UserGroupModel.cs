@@ -23,7 +23,7 @@ namespace CommonLayer.CommonModels
         public List<int> UserCheckList { get; set; }
         public string UserTypeName { get; set; }
         public bool IsActive { get; set; }
-     
+        public int UserCount { get; set; }
         public DateTime? CreatedOn { get; set; }
 
         public DateTime? UpdatedOn { get; set; }

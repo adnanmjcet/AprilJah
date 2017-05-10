@@ -15,6 +15,7 @@ namespace BusinessLayer.Implementation
     public class UserRegistrationBs : IUserRegistration
     {
         private readonly IGenericPattern<User> tbl_UserRegistration;
+        private readonly IGenericPattern<UserGroup_Mapping> tbl_userGroupMap;
         private readonly IGenericPattern<Category> tbl_Category;
         private readonly IGenericPattern<UserCategoryMapping> tbl_UserCategoryMap;
         private readonly IGenericPattern<UserType> tbl_UserType;
@@ -27,6 +28,7 @@ namespace BusinessLayer.Implementation
             tbl_UserType = new GenericPattern<UserType>();
             tbl_Category = new GenericPattern<Category>();
             tbl_UserCategoryMap = new GenericPattern<UserCategoryMapping>();
+            tbl_userGroupMap = new GenericPattern<UserGroup_Mapping>();
         }
 
         public List<UserModel> UserRegistrationList()
@@ -89,7 +91,7 @@ namespace BusinessLayer.Implementation
         public UserModel GetById(int id)
         {
             UserModel _UserModel = new UserModel();
-            var item = tbl_UserRegistration.GetById(id);
+            var item = tbl_UserRegistration.GetWithInclude(x => x.Id == id).FirstOrDefault();
 
 
             _UserModel = new UserModel
@@ -99,7 +101,7 @@ namespace BusinessLayer.Implementation
                 Contact = item.Contact,
                 Area = item.Area,
                 Email = item.Email,
-                //Name = item.UserName,
+                UserName = item.UserName,
                 Password = item.Password,
                 CreatedDate = item.CreatedDate,
                 DeviceID = item.DeviceID,
@@ -121,6 +123,15 @@ namespace BusinessLayer.Implementation
             model.UserLists = UserRegistrationList();
 
             return model;
+        }
+
+        public bool CheckUserName(string userName)
+        {
+
+            var user = tbl_UserRegistration.GetWithInclude(x => x.UserName.ToLower() == userName.ToLower()).FirstOrDefault();
+            if (user == null)
+                return false;
+            return true;
         }
         public int Save(UserModel model)
         {
@@ -151,14 +162,23 @@ namespace BusinessLayer.Implementation
             }).ToList();
 
         }
-        public void SendPushNotification(string notiMessage, int? categoryID)
+        public void SendPushNotification(PostNotificationModel model)
         {
-            var userIDs = tbl_UserCategoryMap.GetWithInclude(x => x.CategoryID == categoryID && x.IsSelected == true).Select(x => x.UserID).ToList();
+            var userIds = new List<int>();
+            if (model.UserType == 1)//if usertype is usergroup
+            {
+                if (model.UserGroupList.Count == 0)
+                    return;
 
-            if (userIDs.Count == 0)
+                userIds = tbl_userGroupMap.GetWithInclude(x => model.UserGroupList.Contains(x.Id)).Select(x => x.UserID.Value).ToList();
+            }
+            else // else categoryId
+                userIds = tbl_UserCategoryMap.GetWithInclude(x => x.CategoryID == model.CategoryID && x.IsSelected == true).Select(x => x.UserID).ToList();
+
+            if (userIds.Count == 0)
                 return;
 
-            var deviceList = tbl_UserRegistration.GetWithInclude(x => userIDs.Contains(x.Id) && x.DeviceID != null).Select(x => x.DeviceID).ToList();
+            var deviceList = tbl_UserRegistration.GetWithInclude(x => userIds.Contains(x.Id) && x.DeviceID != null).Select(x => x.DeviceID).ToList();
 
             if (deviceList.Count == 0)
                 return;
@@ -171,12 +191,24 @@ namespace BusinessLayer.Implementation
                     To = x,
                     Notification = new AndroidNotification()
                     {
-                        Title = notiMessage,
+                        Title = model.Message,
                     }
                 };
                 var result = client.SendMessageAsync(message);
             });
         }
 
+        public bool UpdateUser(int userid, string deviceID, string platformID)
+        {
+            var userData = tbl_UserRegistration.GetWithInclude(x => x.Id == userid).FirstOrDefault();
+            if (userData != null)
+            {
+                userData.DeviceID = deviceID;
+                userData.Platform = !string.IsNullOrEmpty(platformID) ? Convert.ToInt32(platformID) : 0;
+                tbl_UserRegistration.Update(userData);
+                return true;
+            }
+            return false;
+        }
     }
 }

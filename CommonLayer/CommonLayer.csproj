@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonModels\APIResponseModel.cs" />
     <Compile Include="CommonModels\CategoryModel.cs" />
     <Compile Include="CommonModels\CourseModel.cs" />
     <Compile Include="CommonModels\CourseSessionModel.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="CommonModels\MasjidRenovationRequestModel.cs" />
     <Compile Include="CommonModels\NewMadarsaOperationsRequestModel.cs" />
     <Compile Include="CommonModels\PanelInvolvementModel.cs" />
+    <Compile Include="CommonModels\PostNotificationModel.cs" />
     <Compile Include="CommonModels\RequestApproveModel.cs" />
     <Compile Include="CommonModels\RequestCommentModel.cs" />
     <Compile Include="CommonModels\RequestLikeModel.cs" />

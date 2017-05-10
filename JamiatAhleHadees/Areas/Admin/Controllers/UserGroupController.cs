@@ -68,13 +68,8 @@ namespace JamiatAhleHadees.Areas.Admin.Controllers
         }
         public ActionResult AddUser(UserGroupModel model, int[] UserCheckList)
         {
-            if (UserCheckList == null)
-            {
-                  TempData["msg"] = "Please Select User.";
-                  return RedirectToAction("UserList", new { userGroupID=model.UserGroupID });
-            }
 
-            model.UserCheckList = UserCheckList.ToList();
+            model.UserCheckList = UserCheckList == null ? new List<int>() : UserCheckList.ToList();
             bool response = _userGroupBs.AddUserList(model);
             if (response)
             {
