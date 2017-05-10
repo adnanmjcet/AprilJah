@@ -31,7 +31,7 @@ namespace JamiatAhleHadees.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Index(PostNotificationModel model)
         {
-            _userRegistrationBs.SendPushNotification(model.Message,model.CategoryID);
+            _userRegistrationBs.SendPushNotification(model);
             ViewBag.CategoryList = new SelectList(_userRegistrationBs.CategoryList(), "Id", "Name");
             ViewBag.UserGroupList = _userGroupBS.UserGroupList();
             return View();

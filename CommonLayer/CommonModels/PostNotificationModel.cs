@@ -10,7 +10,7 @@ namespace CommonLayer.CommonModels
     {
         public PostNotificationModel()
         {
-            UserGroupList = new List<int>();
+            UserGroupList = new List<Int64>();
         }
         public int UserType { get; set; }
         public int CategoryID { get; set; }
