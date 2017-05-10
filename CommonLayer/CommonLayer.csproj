@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonModels\APIResponseModel.cs" />
     <Compile Include="CommonModels\CategoryModel.cs" />
     <Compile Include="CommonModels\CourseModel.cs" />
     <Compile Include="CommonModels\CourseSessionModel.cs" />

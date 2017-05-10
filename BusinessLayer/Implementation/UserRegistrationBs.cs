@@ -91,7 +91,7 @@ namespace BusinessLayer.Implementation
         public UserModel GetById(int id)
         {
             UserModel _UserModel = new UserModel();
-            var item = tbl_UserRegistration.GetById(id);
+            var item = tbl_UserRegistration.GetWithInclude(x => x.Id == id).FirstOrDefault();
 
 
             _UserModel = new UserModel
@@ -101,7 +101,7 @@ namespace BusinessLayer.Implementation
                 Contact = item.Contact,
                 Area = item.Area,
                 Email = item.Email,
-                //Name = item.UserName,
+                UserName = item.UserName,
                 Password = item.Password,
                 CreatedDate = item.CreatedDate,
                 DeviceID = item.DeviceID,
@@ -123,6 +123,15 @@ namespace BusinessLayer.Implementation
             model.UserLists = UserRegistrationList();
 
             return model;
+        }
+
+        public bool CheckUserName(string userName)
+        {
+
+            var user = tbl_UserRegistration.GetWithInclude(x => x.UserName.ToLower() == userName.ToLower()).FirstOrDefault();
+            if (user == null)
+                return false;
+            return true;
         }
         public int Save(UserModel model)
         {
@@ -189,5 +198,17 @@ namespace BusinessLayer.Implementation
             });
         }
 
+        public bool UpdateUser(int userid, string deviceID, string platformID)
+        {
+            var userData = tbl_UserRegistration.GetWithInclude(x => x.Id == userid).FirstOrDefault();
+            if (userData != null)
+            {
+                userData.DeviceID = deviceID;
+                userData.Platform = !string.IsNullOrEmpty(platformID) ? Convert.ToInt32(platformID) : 0;
+                tbl_UserRegistration.Update(userData);
+                return true;
+            }
+            return false;
+        }
     }
 }

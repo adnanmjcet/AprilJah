@@ -61,12 +61,18 @@ namespace BusinessLayer.Implementation
 
         }
 
-        public int LoginAuthentication(string userName, string password)
+        public UserModel LoginAuthentication(string userName, string password)
         {
 
             try
             {
-                return _User.GetAll().Where(x => x.UserName == userName && x.Password == password).Select(x => x.Id).FirstOrDefault();
+                return _User.GetWithInclude(x => x.UserName.ToLower() == userName.ToLower() && x.Password == password).Select(x => new UserModel
+                {
+
+                    Id = x.Id,
+                    IsOTPCheck = x.IsOTPCheck,
+
+                }).FirstOrDefault();
 
             }
             catch (Exception)
@@ -86,7 +92,16 @@ namespace BusinessLayer.Implementation
                     Id = x.Id,
                     OTPPassword = x.OTPPassword,
                     OTPGeneratedTime = x.OTPGeneratedTime,
-                    IsOTPCheck = x.IsOTPCheck
+                    IsOTPCheck = x.IsOTPCheck,
+                    Name = x.Name,
+                    Contact = x.Contact,
+                    Area = x.Area,
+                    Email = x.Email,
+                    UserName = x.UserName,
+                    Password = x.Password,
+                    CreatedDate = x.CreatedDate,
+                    DeviceID = x.DeviceID,
+                    Platform = x.Platform,
                 }).FirstOrDefault();
 
 

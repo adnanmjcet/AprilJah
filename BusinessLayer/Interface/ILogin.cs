@@ -1,4 +1,5 @@
 ﻿using CommonLayer.CommonModels;
+using DataAccessLayer.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace BusinessLayer.Interface
 
         LoginModel GetById(int id);
 
-        int LoginAuthentication(string userName, string password);
+        UserModel LoginAuthentication(string userName, string password);
         UserModel OTPAuthenticationCheck(string contactNo, string otpPassword);
     }
 }
