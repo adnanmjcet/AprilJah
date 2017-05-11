@@ -32,7 +32,7 @@
                     <button class="btn btn-primary">Results</button><br /><br />
                 </div>
                 <div class="col-sm-3">
-                    <button class="btn btn-primary">Start Test</button><br /><br />
+                    <a href="@Url.Action("StartTest", "Course", new { courseID = @Model.Id })" class="btn btn-primary">Start Test</a><br /><br />
                 </div>
                 <div class="col-sm-3">
                     <button class="btn btn-primary">End Test</button><br /><br />
@@ -58,11 +58,11 @@
                     <tbody>
                         @foreach (var item in Model.CourseSessionList)
                         {
-                        <tr>
-                            <td>@item.Topic</td>
-                            <td> <button type="button" class="btn btn-success">Send</button> </td>
-                            <td>12/7/2017 12:30pm</td>
-                        </tr>
+                            <tr>
+                                <td>@item.Topic</td>
+                                <td> <button type="button" class="btn btn-success">Send</button> </td>
+                                <td>12/7/2017 12:30pm</td>
+                            </tr>
                         }
 
 
@@ -70,6 +70,6 @@
                 </table>
             </div>
         </div>
-       
+
     </div>
 </div>
