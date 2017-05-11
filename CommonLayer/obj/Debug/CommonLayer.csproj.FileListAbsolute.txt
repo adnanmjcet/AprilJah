@@ -77,3 +77,4 @@ D:\WorkSpace\AprilJah\CommonLayer\bin\Debug\CommonLayer.pdb
 D:\WorkSpace\AprilJah\CommonLayer\obj\Debug\CommonLayer.dll
 D:\WorkSpace\AprilJah\CommonLayer\obj\Debug\CommonLayer.pdb
 >>>>>>> origin/master
+E:\Work\AprilJah\CommonLayer\obj\Debug\CommonLayer.csprojResolveAssemblyReference.cache
