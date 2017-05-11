@@ -1,0 +1,93 @@
+﻿
+@model CommonLayer.CommonModels.CourseModel
+@{
+    ViewBag.Title = "ViewResult";
+    Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
+}
+
+<div class="box-header with-border">
+    <h3 class="box-title">Result Details</h3>
+    <div style="float:right">
+        <button value="Create New"
+                class="btn btn-primary btn-sm" type="button" id="addressSearch"
+                onclick="location.href='@Url.Action("CourseTest","Course",new { id=Model.Id})'">
+            Back
+        </button>
+    </div>
+</div>
+<br />
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h4 style="float:right">ID:@Model.Id</h4>
+            <h1>@Model.Name</h1>
+            <p>@Model.Description</p>
+        </div>
+    </div>
+    <div style="height:25px">
+
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <p class="col-lg-4">
+                <span style="font-size:large"><b> Result</b></span><br />
+                <span>Average</span><br />
+                <span>Score</span>
+
+            </p>
+            <div class="col-lg-8">
+                <div class="col-sm-3">
+                    <button class="btn btn-primary">Edit Test</button><br /><br />
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div style="height:50px">
+
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="col-lg-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Score</th>
+                            <th>Test Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>Abdus Samad</td>
+                            <td> 80</td>
+                            <td>01 Jan 2017</td>
+                        </tr>
+
+                        <tr>
+                            <td>Rashed</td>
+                            <td> 77</td>
+                            <td>02 Jan 2017</td>
+                        </tr>
+
+
+                        <tr>
+                            <td>Asif</td>
+                            <td> 75</td>
+                            <td>03 Jan 2017</td>
+                        </tr>
+
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

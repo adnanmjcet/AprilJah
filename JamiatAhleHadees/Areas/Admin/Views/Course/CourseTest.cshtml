@@ -1,13 +1,19 @@
 ﻿
 @model IEnumerable<CommonLayer.CommonModels.CourseTestModel>
 @{
-    
     Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
     TempData.Keep("CourseID");
 }
 
 <div class="box-header with-border">
     <h3 class="box-title">CourseTest List</h3>
+    <div style="float:right">
+        <button value="Create New"
+                class="btn btn-primary btn-sm" type="button" id="addressSearch"
+                onclick="location.href='@Url.Action("Index","Course")'">
+            Back
+        </button>
+    </div>
 </div>
 <br />
 
@@ -45,6 +51,13 @@
 
                         <td>
                             <button value="Edit"
+                                    class="btn btn-success btn-sm" type="button" id="result"
+                                    onclick="location.href='@Url.Action("ViewResult", "Course" ,new {id = item.CourseID })'">
+                                View Result
+                            </button>
+                        </td>
+                        <td>
+                            <button value="Edit"
                                     class="btn btn-primary btn-sm" type="button" id="addressSearch"
                                     onclick="location.href='@Url.Action("CourseTestCreate", "Course" ,new {id = item.Id })'">
                                 Edit
@@ -62,7 +75,7 @@
 
                 }
             }
-       
+
         </tbody>
     </table>
 </div>
