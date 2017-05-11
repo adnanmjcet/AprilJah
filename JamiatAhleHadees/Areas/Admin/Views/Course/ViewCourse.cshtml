@@ -12,11 +12,37 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <h4>ID:@Model.Id</h4>
+            <h4 style="float:right">ID:@Model.Id</h4>
             <h1>@Model.Name</h1>
             <p>@Model.Description</p>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            @*<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>*@
         </div>
+    </div>
+    <div style="height:25px">
+
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <p class="col-lg-4"><span style="font-size:large"><b> Current Enrolments </b></span>  :<span style="color:lightseagreen;font-size:large">500</span></p>
+            <div class="col-lg-8">
+                <div class="col-sm-3">
+                    <button class="btn btn-primary">Edit Test</button><br /><br />
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-primary">Results</button><br /><br />
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-primary">Start Test</button><br /><br />
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-primary">End Test</button><br /><br />
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div style="height:50px">
+
     </div>
     <div class="row">
         <div class="col-lg-8">
@@ -32,24 +58,18 @@
                     <tbody>
                         @foreach (var item in Model.CourseSessionList)
                         {
-                            <tr>
-                                <td>@item.Topic</td>
-                                <td> <img src="~/Assets/Img/send.png" height="50" width="60" /> </td>
-                                <td>12/7/2017 12:30pm</td>
-                            </tr>
+                        <tr>
+                            <td>@item.Topic</td>
+                            <td> <button type="button" class="btn btn-success">Send</button> </td>
+                            <td>12/7/2017 12:30pm</td>
+                        </tr>
                         }
-                       
-                         
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <button class="btn btn-default">Edit Test</button><br /><br />
-                <button class="btn btn-default">Results</button><br /><br />
-                <button class="btn btn-default">Start Test</button><br /><br />
-                <button class="btn btn-default">End Test</button><br /><br />
 
+
+                    </tbody>
+                </table>
             </div>
         </div>
+       
     </div>
+</div>

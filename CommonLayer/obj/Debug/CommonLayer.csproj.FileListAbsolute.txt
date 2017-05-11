@@ -1,4 +1,0 @@
-D:\WorkSpace\AprilJah\CommonLayer\bin\Debug\CommonLayer.dll
-D:\WorkSpace\AprilJah\CommonLayer\bin\Debug\CommonLayer.pdb
-D:\WorkSpace\AprilJah\CommonLayer\obj\Debug\CommonLayer.dll
-D:\WorkSpace\AprilJah\CommonLayer\obj\Debug\CommonLayer.pdb
