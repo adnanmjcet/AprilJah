@@ -171,7 +171,7 @@ namespace BusinessLayer.Implementation
                 if (model.UserGroupList.Count == 0)
                     return;
 
-                userIds = tbl_userGroupMap.GetWithInclude(x => model.UserGroupList.Contains(x.Id)).Select(x => x.UserID.Value).ToList();
+                userIds = tbl_userGroupMap.GetWithInclude(x => model.UserGroupList.Contains(x.UserGroupID.Value)).Select(x => x.UserID.Value).ToList();
             }
             else // else categoryId
                 userIds = tbl_UserCategoryMap.GetWithInclude(x => x.CategoryID == model.CategoryID && x.IsSelected == true).Select(x => x.UserID).ToList();
@@ -179,30 +179,35 @@ namespace BusinessLayer.Implementation
             if (userIds.Count == 0)
                 return;
 
-            var deviceList = tbl_UserRegistration.GetWithInclude(x => userIds.Contains(x.Id) && x.DeviceID != null).Select(x => x.DeviceID).ToList();
 
-            if (deviceList.Count == 0)
-                return;
             if (model.IsMobileNotification)
             {
-                deviceList.ForEach(x =>
+                var deviceList = tbl_UserRegistration.GetWithInclude(x => userIds.Contains(x.Id) && x.DeviceID != null).Select(x => x.DeviceID).ToList();
+
+                if (deviceList.Count > 0)
                 {
-                    FCMClient client = new FCMClient("AAAAylgXv6E:APA91bHxCtlKnoU7NBp9P989-zIh8KS6oy6dG2ESyReH6DyaawXz9zfyogpiO6STy7-8ajMzlvpi1jAQ0VqOkKjSf8DtOk5vNbklD9q-F1V3rmAnR_oH-zYamaeTludLGqItoSjykVDe");
-                    var message = new Message()
+                    deviceList.ForEach(x =>
                     {
-                        To = x,
-                        Notification = new AndroidNotification()
+                        FCMClient client = new FCMClient("AAAAylgXv6E:APA91bHxCtlKnoU7NBp9P989-zIh8KS6oy6dG2ESyReH6DyaawXz9zfyogpiO6STy7-8ajMzlvpi1jAQ0VqOkKjSf8DtOk5vNbklD9q-F1V3rmAnR_oH-zYamaeTludLGqItoSjykVDe");
+                        var message = new Message()
                         {
-                            Title = model.Message,
-                        }
-                    };
-                    var result = client.SendMessageAsync(message);
-                });
+                            To = x,
+                            Notification = new AndroidNotification()
+                            {
+                                Title = model.Message,
+                            }
+                        };
+                        var result = client.SendMessageAsync(message);
+                    });
+                }
             }
             if (model.IsSms)
             {
                 string mobile = string.Empty;
                 var mobileList = tbl_UserRegistration.GetWithInclude(x => userIds.Contains(x.Id) && x.Contact != null).Select(x => x.Contact).ToList();
+                if (mobileList.Count == 0)
+                    return;
+
                 if (mobileList.Count > 0)
                 {
                     mobileList.ForEach(x =>
@@ -210,6 +215,7 @@ namespace BusinessLayer.Implementation
                         mobile += x + ",";
                     });
 
+                    mobile = mobile.Remove(mobile.Length - 1);
                     new SendSMS().Send(mobile, model.Message);
                 }
             }
