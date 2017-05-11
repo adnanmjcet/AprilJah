@@ -41,7 +41,7 @@ namespace ApiLayer.Controllers
                 if (checkUserName)
                     return Ok("UserName alreay exsist!");
                 res = _userRegistrationBs.Save(model);
-                new SendSMS().SendSMS(model.Contact, "OTP is "  + otp + " for Registration");
+                new SendSMS().Send(model.Contact, "OTP is "  + otp + " for Registration");
             }
             if (res != 0)
                 return Ok("User Registered Successfully and OTP is " + otp);

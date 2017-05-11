@@ -8,16 +8,23 @@ using CommonLayer.CommonModels;
 using DataAccessLayer.DataModel;
 using DataAccessLayer.GenericPattern.Implementation;
 using DataAccessLayer.GenericPattern.Interface;
+using FirebaseNet.Messaging;
 
 namespace BusinessLayer.Implementation
 {
     public class CourseBs : ICourse
     {
         private readonly IGenericPattern<Course> _Course;
+        private readonly IGenericPattern<Category> _category;
+        private readonly IGenericPattern<UserCategoryMapping> _useCategoryrGroupMap;
+        private readonly IGenericPattern<User> _user;
 
         public CourseBs()
         {
             _Course = new GenericPattern<Course>();
+            _category = new GenericPattern<Category>();
+            _useCategoryrGroupMap = new GenericPattern<UserCategoryMapping>();
+            _user = new GenericPattern<User>();
         }
         public List<CourseModel> CourseList()
         {
@@ -89,6 +96,42 @@ namespace BusinessLayer.Implementation
             }
 
             return _tbl_course.Id;
+        }
+
+        public bool EnableTest(int? courseID)
+        {
+            var getactive = _Course.GetWithInclude(x => x.Status == true).FirstOrDefault();
+            getactive.Status = false;
+            getactive.UpdatedOn = DateTime.Now;
+            _Course.Update(getactive);
+
+            var toactive = _Course.GetWithInclude(x => x.Id == courseID).FirstOrDefault();
+            toactive.Status = true;
+            toactive.UpdatedOn = DateTime.Now;
+            _Course.Update(toactive);
+
+            var courseCategoryID = _category.GetWithInclude(x => x.Name == "Course").Select(x => x.Id).FirstOrDefault();
+            var userIds = _useCategoryrGroupMap.GetWithInclude(x => x.CategoryID == courseCategoryID && x.IsSelected == true).Select(x => x.UserID).ToList();
+
+            var deviceList = _user.GetWithInclude(x => userIds.Contains(x.Id) && x.DeviceID != null).Select(x => x.DeviceID).ToList();
+
+            if (deviceList.Count == 0)
+                return false;
+
+            deviceList.ForEach(x =>
+            {
+                FCMClient client = new FCMClient("AAAAylgXv6E:APA91bHxCtlKnoU7NBp9P989-zIh8KS6oy6dG2ESyReH6DyaawXz9zfyogpiO6STy7-8ajMzlvpi1jAQ0VqOkKjSf8DtOk5vNbklD9q-F1V3rmAnR_oH-zYamaeTludLGqItoSjykVDe");
+                var message = new Message()
+                {
+                    To = x,
+                    Notification = new AndroidNotification()
+                    {
+                        Title = toactive.Name + " test is avaliable.",
+                    }
+                };
+                var result = client.SendMessageAsync(message);
+            });
+            return true;
         }
     }
 }

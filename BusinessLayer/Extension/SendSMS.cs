@@ -12,7 +12,7 @@ namespace BusinessLayer.Extension
     {
 
 
-        public String SendSMS(string mobile, string message)
+        public String Send(string mobile, string message)
         {
             String result = GetPageContent(@"http://smslogin.mobi/spanelv2/api.php?username=jahhyd&password=jahhyd&to=" + mobile + "&from=JAHHYD&message=" + message + "");
             return result;

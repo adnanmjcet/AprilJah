@@ -22,9 +22,6 @@ namespace JamiatAhleHadees.Areas.Admin.Controllers
             _courseBs = new CourseBs();
             _courseSessionModel = new CourseSessionModel();
             _courseSessionBs = new CourseSessionBs();
-
-
-
         }
         // GET: Admin/Course
         public ActionResult Index()
@@ -155,8 +152,14 @@ namespace JamiatAhleHadees.Areas.Admin.Controllers
         public ActionResult ViewCourse(int? id)
         {
             var res = _courseBs.GetCourseSessions(id.Value);
-             
+
             return View(res);
+        }
+
+        public ActionResult StartTest(int? courseID)
+        {
+            var response = _courseBs.EnableTest(courseID);
+            return RedirectToAction("Index");
         }
     }
 }

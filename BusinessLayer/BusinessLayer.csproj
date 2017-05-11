@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extension\SendSMS.cs" />
     <Compile Include="Implementation\CategoryBs.cs" />
     <Compile Include="Implementation\CourseBs.cs" />
     <Compile Include="Implementation\CourseSessionBs.cs" />
