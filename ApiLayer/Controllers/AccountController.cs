@@ -24,9 +24,9 @@ namespace ApiLayer.Controllers
             _loginBs = new LoginBs();
             apiResponse = new APIResponseModel();
         }
-
+        
         [HttpPost]
-
+        
         public IHttpActionResult UserRegistration(UserModel model)
         {
             int res = 0;

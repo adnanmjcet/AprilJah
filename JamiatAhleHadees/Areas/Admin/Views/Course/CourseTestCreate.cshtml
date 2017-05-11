@@ -1,0 +1,158 @@
+﻿@model CommonLayer.CommonModels.CourseTestModel
+@{
+    ViewBag.Title = "CourseTestCreate";
+    Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
+}
+
+<div class="box-header with-border">
+    <h3 class="box-title">Course Test</h3>
+</div>
+<br />
+
+
+
+@using (Html.BeginForm("CourseTestCreate", "Course", FormMethod.Post))
+{
+    <div class="container">
+
+        <div class="col-10">
+            @Html.HiddenFor(x => x.Id)
+            @Html.HiddenFor(x => x.CourseID)
+
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 courseTestSession" id="courseTestSession" style="border-bottom:1px solid black">
+            <div class="">
+                <div class="form-group col-lg- col-xs-12">
+                    <label for="Location" class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Question</label>
+                    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                        @Html.TextBoxFor(x => x.Question, new { @class = "form-control", @placeholder = "Question" })
+                    </div>
+                </div>
+
+                <div class="form-group col-lg-12 col-xs-12">
+                    <label for="Location" class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Answer1</label>
+                    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                        @*<input type="text" name="FirstAnswer" class="form-control" placeholder="Answer1" />*@
+                        @Html.TextBoxFor(x => x.Answer1, new { @class = "form-control", @placeholder = "Answer1" })
+                    </div>
+                </div>
+
+                <div class="form-group col-lg-12 col-xs-12">
+                    <label for="Location" class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Answer2</label>
+                    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                        @*<input type="text" name="SecondAnswer" class="form-control" placeholder="Answer2" />*@
+                        @Html.TextBoxFor(x => x.Answer2, new { @class = "form-control", @placeholder = "Answer2" })
+                    </div>
+                </div>
+
+                <div class="form-group col-lg-12 col-xs-12">
+                    <label for="Location" class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Answer3</label>
+                    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                        @*<input type="text" name="ThirdAnswer" class="form-control" placeholder="Answer3" />*@
+                        @Html.TextBoxFor(x => x.Answer3, new { @class = "form-control", @placeholder = "Answer3" })
+                    </div>
+                </div>
+                <div class="form-group col-lg-12 col-xs-12">
+                    <label for="Location" class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Answer4</label>
+                    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                        @*<input type="text" name="ForthAnswer" class="form-control" placeholder="Answer4" />*@
+                        @Html.TextBoxFor(x => x.Answer4, new { @class = "form-control", @placeholder = "Answer4" })
+                    </div>
+                </div>
+                <div class="form-group col-lg-12 col-xs-12">
+                    <label for="Location" class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Correct Answer</label>
+                    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                        @Html.TextBoxFor(x => x.CorrectAnswer, new { @class = "form-control", @placeholder = "CorrectAnswer" })
+                    </div>
+                </div>
+
+                <div class="form-group col-lg-12 col-xs-12">
+                    <label for="Location" class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Mark</label>
+                    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                        @Html.TextBoxFor(x => x.Mark, new { @class = "form-control", @placeholder = "Mark" })
+                    </div>
+                </div>
+                <div class="form-group col-lg-12 col-xs-12">
+                    <label for="Location" class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-4">Reason</label>
+                    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+                        @Html.TextAreaFor(x => x.Reason, new { @class = "form-control", @placeholder = "Reason" })
+                    </div>
+                </div>
+                <div class="form-group col-md-offset-5 col-lg-2 col-xs-12">
+
+                    <button type="button" class="btn-block btn btn-primary addQuestion" id="btnAdd">
+                        Add Question
+                    </button>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row form-group col-lg-12" style="margin-top:15px">
+            <div class="col-md-offset-5 col-md-2">
+                @if (Model.Id != null && Model.Id != 0)
+                {
+                <button type="submit" class="btn-block btn btn-success" data-id="@Model.Id" id="btnRegisterUpdate">
+                    Update
+                </button>
+                }
+                else
+                {
+                <button type="submit" class="btn-block btn btn-success" data-id="0" id="btnRegister">
+                    Submit
+                </button>
+                }
+            </div>
+            <div class="col-md-2">
+                <button value="Edit"
+                        class="btn-block btn btn-danger" type="submit" id="addressSearch"
+                        onclick="location.href='@Url.Action("SessionCreate", "Course")'">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    var masterIndex = 1;
+    $(document).on('click', '.addQuestion', function () {
+        debugger
+        var $template = $('#courseTestSession');
+        $clone = $template
+                       .clone()
+        .removeClass('hide')
+        .removeAttr('id')
+        .attr('data-master-index', masterIndex)
+        .insertBefore($template);
+
+        // Update the name attributes
+        $clone
+             .find('[name="Question"]').attr('name', 'Question' + masterIndex + '').end()
+            .find('[name="Answer1"]').attr('name', 'Answer1' + masterIndex + '').end()
+         .find('[name="Answer2"]').attr('name', 'Answer2' + masterIndex + '').end()
+         .find('[name="Answer3"]').attr('name', 'Answer3' + masterIndex + '').end()
+        .find('[name="Answer4"]').attr('name', 'Answer4' + masterIndex + '').end()
+        .find('[name="CorrectAnswer"]').attr('name', 'CorrectAnswer' + masterIndex + '').end()
+        .find('[name="Mark"]').attr('name', 'Mark' + masterIndex + '').end()
+        .find('[name="Reason"]').attr('name', 'Reason' + masterIndex + '').end()
+
+        $('<input type="button" class="form-group col-lg-2 col-xs-12 btn btn-danger btnRemoveQuestion" value="Remove"/>').appendTo($clone);
+        masterIndex = ++masterIndex;
+    })
+
+    // Remove button click handler
+       .on('click', '.btnRemoveQuestion', function () {
+           var $row = $(this).parents('.courseTestSession'),
+               index = $row.attr('data-master-index');
+
+           // Remove element containing the fields
+           masterIndex = --masterIndex;
+           $row.remove();
+
+       });
+
+</script>
+
