@@ -2,4 +2,3 @@ E:\Work\AprilJah\CommonLayer\bin\Debug\CommonLayer.dll
 E:\Work\AprilJah\CommonLayer\bin\Debug\CommonLayer.pdb
 E:\Work\AprilJah\CommonLayer\obj\Debug\CommonLayer.dll
 E:\Work\AprilJah\CommonLayer\obj\Debug\CommonLayer.pdb
-E:\Work\AprilJah\CommonLayer\obj\Debug\CommonLayer.csprojResolveAssemblyReference.cache

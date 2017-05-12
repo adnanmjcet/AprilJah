@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BusinessLayer.Implementation;
 using CommonLayer.CommonModels;
+using System.IO;
 
 namespace JamiatAhleHadees.Areas.Admin.Controllers
 {
@@ -101,7 +102,7 @@ namespace JamiatAhleHadees.Areas.Admin.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult SessionCreate(FormCollection form)
+        public ActionResult SessionCreate(FormCollection form, HttpPostedFileBase FirstDocument, HttpPostedFileBase SecondDocument)
         {
 
             List<CourseSessionModel> model = new List<CourseSessionModel>();
@@ -117,8 +118,30 @@ namespace JamiatAhleHadees.Areas.Admin.Controllers
                 obj.Topic = form["Topic" + currentKeyNum];
                 obj.AudioLink = form["AudioLink" + currentKeyNum];
                 obj.VideoLink = form["VideoLink" + currentKeyNum];
-                obj.Document1 = form["FirstDocument" + currentKeyNum];
-                obj.Document2 = form["SecondDocument" + currentKeyNum];
+
+                if (FirstDocument == null ? false : FirstDocument.ContentLength > 0)
+                {
+
+                    var ext = Path.GetExtension(FirstDocument.FileName);
+                    Random number = new Random();
+                    obj.Document1 = "Document_" + number.Next(1000000000) + ext;
+                    string path = Server.MapPath("~/Documents/" + obj.Document1);
+                    FirstDocument.SaveAs(path);
+                    // save image
+                }
+                if (SecondDocument == null ? false : SecondDocument.ContentLength > 0)
+                {
+
+                    var ext = Path.GetExtension(SecondDocument.FileName);
+                    Random number = new Random();
+                    obj.Document2 = "Document_" + number.Next(1000000000) + ext;
+                    string path = Server.MapPath("~/Documents/" + obj.Document2);
+                    SecondDocument.SaveAs(path);
+                    // save image
+                }
+
+                //obj.Document1 = form["FirstDocument" + currentKeyNum];
+                // obj.Document2 = form["SecondDocument" + currentKeyNum];
 
                 _courseSessionBs.Save(obj);
             }
@@ -161,7 +184,7 @@ namespace JamiatAhleHadees.Areas.Admin.Controllers
 
         public ActionResult StartTest(int? courseID, bool isStart = false)
         {
-            var response = _courseBs.EnableTest(courseID,isStart);
+            var response = _courseBs.EnableTest(courseID, isStart);
             return RedirectToAction("Index");
         }
         public ActionResult CourseTest(long? id)

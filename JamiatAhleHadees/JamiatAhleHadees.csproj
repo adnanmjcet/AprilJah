@@ -1340,6 +1340,7 @@
     <Folder Include="Areas\PanelMember\Views\RequestLikeDisLike\" />
     <Folder Include="Areas\User\Models\" />
     <Folder Include="Controllers\" />
+    <Folder Include="Documents\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
