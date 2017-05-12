@@ -66,10 +66,12 @@
     <Compile Include="Implementation\CategoryBs.cs" />
     <Compile Include="Implementation\CourseBs.cs" />
     <Compile Include="Implementation\CourseSessionBs.cs" />
+    <Compile Include="Implementation\CourseTestAnswerBs.cs" />
     <Compile Include="Implementation\CourseTestBs.cs" />
     <Compile Include="Implementation\ExistingMadarsaOperationsRequestBs.cs" />
     <Compile Include="Implementation\VolunteerBs.cs" />
     <Compile Include="Interface\ICourseTest.cs" />
+    <Compile Include="Interface\ICourseTestAnswer.cs" />
     <Compile Include="Interface\IUserGroupBS.cs" />
     <Compile Include="Implementation\LoginBs.cs" />
     <Compile Include="Implementation\MadarsaBs.cs" />

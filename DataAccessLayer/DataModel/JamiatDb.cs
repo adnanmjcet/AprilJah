@@ -50,6 +50,8 @@ namespace DataAccessLayer.DataModel
         public virtual DbSet<Volunteer> Volunteers { get; set; }
         public virtual DbSet<Course_Test> CourseTests { get; set; }
 
+        public virtual DbSet<Course_Test_Answer> CourseTestAnswers { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Volunteer>()

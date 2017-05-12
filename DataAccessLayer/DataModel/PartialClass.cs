@@ -601,5 +601,21 @@ namespace DataAccessLayer.DataModel
             CreatedOn = item.CreatedOn;
         }
     }
+
+
+    public partial class Course_Test_Answer
+    {
+        public Course_Test_Answer(CourseTestAnswerModel item)
+        {
+            Id = item.Id;
+            CourseID = item.CourseID;
+            CourseTestID = item.CourseTestID;
+            Ansser = item.Ansser;
+            UserID= item.UserID;
+            IsCorrect= item.IsCorrect;
+           CreatedOn = item.CreatedOn;
+           
+        }
+    }
 }
 

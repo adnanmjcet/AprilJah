@@ -15,7 +15,8 @@ namespace ApiLayer.Controllers
         private readonly CourseTestModel _courseTestModel;
         private readonly CourseTestBs _courseTestBs;
         private readonly CourseBs _courseBs;
-
+        private readonly CourseTestAnswerModel _courseTestAnswerModel;
+        private readonly CourseTestAnswerBs _courseTestAnswerBs;
         APIResponseModel apiResponse;
         public QuestionController()
         {
@@ -23,6 +24,8 @@ namespace ApiLayer.Controllers
             _courseTestBs = new CourseTestBs();
             apiResponse = new APIResponseModel();
             _courseBs = new CourseBs();
+            _courseTestAnswerBs = new CourseTestAnswerBs();
+            _courseTestAnswerModel = new CourseTestAnswerModel();
         }
 
         [HttpGet]
@@ -49,6 +52,15 @@ namespace ApiLayer.Controllers
             return Ok(apiResponse);
         }
 
+        [HttpPost]
+        public IHttpActionResult CourseTestAnswer(List<CourseTestAnswerModel> lstCourseTestAnswer)
+        {
+            
+            _courseTestAnswerBs.UpdateCourseTestAnswer(lstCourseTestAnswer);
+            apiResponse.IsSuccess = true;
+            apiResponse.Message = "Successfully Updated";
+            return Ok(apiResponse);
+        }
 
     }
 }
