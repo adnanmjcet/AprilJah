@@ -12,6 +12,10 @@
         width: 300px;
         margin-left: 16px;
     }
+
+    .hide{
+        display:none;
+    }
 </style>
 <link href="~/Assets/plugins/select2/select2.min.css" rel="stylesheet" />
 <div class="box-header with-border">
@@ -28,16 +32,26 @@
                     <label>Broadcast</label>
                 </div>
                 <div class="col-lg-2 form-group col-xs-12">
-                    @*<input type="checkbox" id="chksms" />*@SMS
+                    SMS
                     @Html.CheckBoxFor(Model => Model.IsSms)
                 </div>
                 <div class="col-lg-8 form-group col-xs-12">
-                    @*<input type="checkbox" id="chkMobileNotification" />*@
                     @Html.CheckBoxFor(Model => Model.IsMobileNotification)MobileApp Notification
-
                 </div>
             </div>
             <div class="row">
+                <div class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <label>Select Type</label>
+                </div>
+                <div class="col-lg-2 form-group col-xs-12">
+                    Category
+                    <input type="radio" name="UserType" value="0" />
+                </div>
+                <div class="col-lg-8 form-group col-xs-12">
+                    <input type="radio" name="UserType" value="1" />UserGroup
+                </div>
+            </div>
+            <div class="row" style="display:none" id="category">
                 <div class="form-group col-lg-12 col-xs-12">
 
                     <label for="message" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-2">Category</label>
@@ -50,7 +64,7 @@
 
             </div>
 
-            <div class="row">
+            <div class="row " style="display:none"  id="userGroup">
                 <div class="form-group col-lg-12 col-xs-12">
 
                     <label for="message" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-2">User Group</label>
@@ -59,12 +73,12 @@
                         @*<textarea  row="4" cols="150" name="notificationMessage" id="notificationMessage"  class="form-control" placeholder="Message" />*@
                         @foreach (var item in ViewBag.UserGroupList)
                         {
-                        <div class="form-group row" style="margin-left:0px;">
-                            <div class="col-10">
-                                <input type="checkbox" class="checkbox" name="UserGroupList" value="@item.Id" id="@item.Id" />
-                                <label style="margin-left: 35px;margin-top: -17px;">@item.Name</label>
+                            <div class="form-group row" style="margin-left:0px;">
+                                <div class="col-10">
+                                    <input type="checkbox" class="checkbox" name="UserGroupList" value="@item.Id" id="@item.Id" />
+                                    <label style="margin-left: 35px;margin-top: -17px;">@item.Name</label>
+                                </div>
                             </div>
-                        </div>
                         }
 
                     </div>
@@ -99,12 +113,20 @@
 
 
 }
-
-<script src="~/Assets/plugins/select2/select2.full.min.js"></script>
-<script src="~/Assets/plugins/select2/select2.full.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script>
+
     $(function () {
-        //Initialize Select2 Elements
-        $(".select2").select2();
-    });
+        $("input[type=radio][name=UserType]").change(function () {
+            debugger;
+            if (this.value == "0") {
+                $("#category").css("display","block");
+                $("#userGroup").css("display", "none");
+            }
+            else {
+                $("#category").css("display", "none");
+                $("#userGroup").css("display", "block");
+            }
+        })
+    })
 </script>

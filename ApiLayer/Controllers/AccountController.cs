@@ -24,9 +24,9 @@ namespace ApiLayer.Controllers
             _loginBs = new LoginBs();
             apiResponse = new APIResponseModel();
         }
-        
+
         [HttpPost]
-        
+
         public IHttpActionResult UserRegistration(UserModel model)
         {
             int res = 0;
@@ -41,7 +41,7 @@ namespace ApiLayer.Controllers
                 if (checkUserName)
                     return Ok("UserName alreay exsist!");
                 res = _userRegistrationBs.Save(model);
-                new SendSMS().Send(model.Contact, "OTP is "  + otp + " for Registration");
+                new SendSMS().Send(model.Contact, "OTP is " + otp + " for Registration");
             }
             if (res != 0)
                 return Ok("User Registered Successfully and OTP is " + otp);
@@ -107,12 +107,15 @@ namespace ApiLayer.Controllers
 
                     user.IsOTPCheck = true;
                     _userRegistrationBs.Save(user);
-
-                    return Ok("OTP Password Varified Successfylly!");
+                    apiResponse.IsSuccess = true;
+                    apiResponse.Message = "OTP Password Varified Successfylly!";
+                    return Ok(apiResponse);
                 }
                 else
                 {
-                    return Ok("Your OTP Password is expired!");
+                    apiResponse.IsSuccess = false;
+                    apiResponse.Message = "Your OTP Password is expired!";
+                    return Ok(apiResponse);
                 }
 
             }

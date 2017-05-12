@@ -16,11 +16,13 @@ namespace ApiLayer.Controllers
         private readonly CategoryModel _categoryModel;
         private readonly CategoryBs _categoryBs;
         private readonly UserCategoryMappingBs _userCategoryBs;
+        APIResponseModel apiResponse;
         public CategoryController()
         {
             _categoryModel = new CategoryModel();
             _categoryBs = new CategoryBs();
             _userCategoryBs = new UserCategoryMappingBs();
+            apiResponse = new APIResponseModel();
         }
         [HttpGet]
         public IHttpActionResult GetAllCategory(int userID)
@@ -33,16 +35,19 @@ namespace ApiLayer.Controllers
             {
                 x.IsChecked = UserCategory.Any(z => z.UserID == userid && z.CategoryID == x.Id && z.IsSelected == true);
             });
-            
-            return Ok(categorys);
+
+            apiResponse.Data = categorys;
+            apiResponse.IsSuccess = true;
+            return Ok(apiResponse);
         }
         [HttpPost]
         public IHttpActionResult Post(int userID, List<CategoryModel> model)
         {
             int userid = userID;
             _categoryBs.UpdateCategory(model,userid);
-
-            return Ok();
+            apiResponse.IsSuccess = true;
+            apiResponse.Message = "Successfully Updated";
+            return Ok(apiResponse);
         }
 
 
