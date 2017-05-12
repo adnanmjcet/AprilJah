@@ -9,12 +9,13 @@ namespace CommonLayer.CommonModels
     public class CourseTestAnswerModel
     {
         public long Id { get; set; }
-
+        public string UserName { get; set; }
         public long CourseID { get; set; }
 
+        public int Score { get; set; }
         public long CourseTestID { get; set; }
 
-        public string Ansser { get; set; }
+        public string Answer { get; set; }
 
         public int UserID { get; set; }
 

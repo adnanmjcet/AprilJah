@@ -273,5 +273,11 @@ namespace JamiatAhleHadees.Areas.Admin.Controllers
             return View(res);
         }
 
+        public ActionResult SendTopicNotification(Int64? topicID, Int64? courseID)
+        {
+            var response = _courseSessionBs.SendTopicNotification(topicID.Value, courseID.Value);
+            return RedirectToAction("ViewCourse", new { id = courseID });
+        }
+
     }
 }

@@ -55,7 +55,11 @@ namespace ApiLayer.Controllers
         [HttpPost]
         public IHttpActionResult CourseTestAnswer(List<CourseTestAnswerModel> lstCourseTestAnswer)
         {
-            
+            if (lstCourseTestAnswer == null)
+            {
+                apiResponse.IsSuccess = false;
+                apiResponse.Message = "Data is Empty";
+            }
             _courseTestAnswerBs.UpdateCourseTestAnswer(lstCourseTestAnswer);
             apiResponse.IsSuccess = true;
             apiResponse.Message = "Successfully Updated";

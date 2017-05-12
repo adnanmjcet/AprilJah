@@ -1,5 +1,4 @@
-﻿
-@model CommonLayer.CommonModels.CourseModel
+﻿@model CommonLayer.CommonModels.CourseModel
 @{
     ViewBag.Title = "ViewResult";
     Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
@@ -59,28 +58,17 @@
                         </tr>
                     </thead>
                     <tbody>
-
-                        <tr>
-                            <td>Abdus Samad</td>
-                            <td> 80</td>
-                            <td>01 Jan 2017</td>
-                        </tr>
-
-                        <tr>
-                            <td>Rashed</td>
-                            <td> 77</td>
-                            <td>02 Jan 2017</td>
-                        </tr>
-
-
-                        <tr>
-                            <td>Asif</td>
-                            <td> 75</td>
-                            <td>03 Jan 2017</td>
-                        </tr>
-
-
-
+                        @if (Model.CourseSessionAnswer != null)
+                        {
+                            foreach (var item in Model.CourseSessionAnswer)
+                            {
+                                <tr>
+                                    <td>@item.UserName</td>
+                                    <td>@item.Score</td>
+                                    <td>@item.CreatedOn</td>
+                                </tr>
+                            }
+                        }
 
                     </tbody>
                 </table>
