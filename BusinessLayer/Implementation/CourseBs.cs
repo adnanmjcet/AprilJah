@@ -15,6 +15,7 @@ namespace BusinessLayer.Implementation
     public class CourseBs : ICourse
     {
         private readonly IGenericPattern<Course> _Course;
+        private readonly IGenericPattern<Course_Test_Answer> _courseTestAnswer;
         private readonly IGenericPattern<Category> _category;
         private readonly IGenericPattern<UserCategoryMapping> _useCategoryrGroupMap;
         private readonly IGenericPattern<User> _user;
@@ -24,6 +25,7 @@ namespace BusinessLayer.Implementation
             _Course = new GenericPattern<Course>();
             _category = new GenericPattern<Category>();
             _useCategoryrGroupMap = new GenericPattern<UserCategoryMapping>();
+            _courseTestAnswer = new GenericPattern<Course_Test_Answer>();
             _user = new GenericPattern<User>();
         }
         public List<CourseModel> CourseList()
@@ -62,7 +64,7 @@ namespace BusinessLayer.Implementation
         {
             CourseModel _CourseSessionList = new CourseModel();
 
-            var resdata = _Course.GetAll().Where(x => x.Id == id).ToList();
+            var resdata = _Course.GetWithInclude(x => x.Id == id).ToList();
             _CourseSessionList = (from item in resdata
                                   select new CourseModel
                                   {
@@ -76,6 +78,7 @@ namespace BusinessLayer.Implementation
 
                                   }).FirstOrDefault();
 
+            _CourseSessionList.CourseSessionAnswer = GetCouseSessionByCourseID(id);
             return _CourseSessionList;
 
         }
@@ -105,12 +108,12 @@ namespace BusinessLayer.Implementation
 
         public bool EnableTest(int? courseID, bool isStart = false)
         {
-            var getactive = _Course.GetWithInclude(x => x.Status == true || x.Status==null).FirstOrDefault();
-            if (getactive!=null)
+            var getactive = _Course.GetWithInclude(x => x.Status == true || x.Status == null).FirstOrDefault();
+            if (getactive != null)
             {
                 getactive.Status = false;
                 getactive.UpdatedOn = DateTime.Now;
-                _Course.Update(getactive);    
+                _Course.Update(getactive);
             }
 
             var toactive = _Course.GetWithInclude(x => x.Id == courseID).FirstOrDefault();
@@ -144,5 +147,19 @@ namespace BusinessLayer.Implementation
             });
             return true;
         }
+
+        public List<CourseTestAnswerModel> GetCouseSessionByCourseID(Int64 courseID)
+        {
+
+            return _courseTestAnswer.GetWithInclude(x => x.CourseID == courseID).Select(x => new CourseTestAnswerModel
+            {
+                UserName = x.User.Name,
+                CreatedOn = x.CreatedOn,
+                Score = 80
+            }).ToList();
+
+        }
+
+
     }
 }

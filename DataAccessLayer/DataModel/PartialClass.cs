@@ -610,7 +610,7 @@ namespace DataAccessLayer.DataModel
             Id = item.Id;
             CourseID = item.CourseID;
             CourseTestID = item.CourseTestID;
-            Ansser = item.Ansser;
+            Answer = item.Answer;
             UserID= item.UserID;
             IsCorrect= item.IsCorrect;
            CreatedOn = item.CreatedOn;

@@ -22,13 +22,15 @@ namespace DataAccessLayer.DataModel
 
         public long CourseTestID { get; set; }
         [StringLength(250)]
-        public string Ansser { get; set; }
+        public string Answer { get; set; }
 
         public int UserID { get; set; }
 
         public bool IsCorrect { get; set; }
         [Column(TypeName = "date")]
         public DateTime? CreatedOn { get; set; }
+
+        public virtual User User { get; set; }
 
     }
 }

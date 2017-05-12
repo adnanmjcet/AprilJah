@@ -12,6 +12,7 @@ namespace DataAccessLayer.DataModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
+            this.Course_Test_Answer = new List<Course_Test_Answer>();
             EventRequests = new HashSet<EventRequest>();
             ExistingMadarsaOperationsRequests = new HashSet<ExistingMadarsaOperationsRequest>();
             Madarsas = new HashSet<Madarsa>();
@@ -122,5 +123,6 @@ namespace DataAccessLayer.DataModel
 
         public virtual UserType UserType { get; set; }
         public virtual ICollection<UserGroup_Mapping> UserGroup_Mapping { get; set; }
+        public virtual ICollection<Course_Test_Answer> Course_Test_Answer { get; set; }
     }
 }

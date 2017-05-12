@@ -8,6 +8,11 @@ namespace CommonLayer.CommonModels
 {
     public class CourseModel
     {
+        public CourseModel()
+        {
+            CourseSessionList = new List<CourseSessionModel>();
+            CourseSessionAnswer = new List<CourseTestAnswerModel>();
+        }
         public long Id { get; set; }
 
         public string Name { get; set; }
@@ -27,6 +32,8 @@ namespace CommonLayer.CommonModels
         public long UpdatedBy { get; set; }
 
         public List<CourseSessionModel> CourseSessionList { get; set; }
+
+        public List<CourseTestAnswerModel> CourseSessionAnswer { get; set; }
 
     }
 }

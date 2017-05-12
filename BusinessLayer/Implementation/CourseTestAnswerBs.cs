@@ -28,7 +28,7 @@ namespace BusinessLayer.Implementation
                 Id = x.Id,
                 CourseTestID = x.CourseTestID,
                 CourseID = x.CourseID,
-                Ansser = x.Ansser,
+                Answer = x.Answer,
                 UserID = x.UserID,
                 IsCorrect = x.IsCorrect,
                 CreatedOn = x.CreatedOn,
@@ -43,7 +43,7 @@ namespace BusinessLayer.Implementation
                 Id = x.Id,
                 CourseTestID = x.CourseTestID,
                 CourseID = x.CourseID,
-                Ansser = x.Ansser,
+                Answer = x.Answer,
                 UserID = x.UserID,
                 IsCorrect = x.IsCorrect,
                 CreatedOn = x.CreatedOn,
@@ -81,22 +81,26 @@ namespace BusinessLayer.Implementation
 
         public void UpdateCourseTestAnswer(List<CourseTestAnswerModel> lstmodel)
         {
+            var courseTestIds = lstmodel.Select(x => x.CourseTestID).ToList();
+            var courseTestList = _CourseTest.GetWithInclude(z => courseTestIds.Contains(z.Id)).ToList();
+            if (courseTestList.Count == 0)
+                return;
+
             lstmodel.ForEach(x =>
             {
-                var courseTest = _CourseTest.GetWithInclude(z => z.Id == x.CourseTestID && z.CourseID == x.CourseID).FirstOrDefault();
-
+                var courseTest = courseTestList.Where(z => z.Id == x.CourseTestID).FirstOrDefault();
                 if (courseTest != null)
                 {
                     Course_Test_Answer model = new Course_Test_Answer();
-                    model.CourseID = x.CourseID;
+                    model.CourseID = courseTest.CourseID;
                     model.CourseTestID = x.CourseTestID;
-                    model.Ansser = x.Ansser;
+                    model.Answer = x.Answer;
                     model.UserID = x.UserID;
-                    model.IsCorrect = courseTest.CorrectAnswer == x.Ansser ? true : false;
+                    model.IsCorrect = courseTest.CorrectAnswer == x.Answer ? true : false;
                     model.CreatedOn = DateTime.Now;
                     _CourseTestAnswer.Insert(model);
                 }
-                
+
             });
         }
     }
