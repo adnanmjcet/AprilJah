@@ -2,6 +2,7 @@
 using CommonLayer.CommonModels;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -35,8 +36,8 @@ namespace ApiLayer.Controllers
             model.Topic = sessionData.Topic;
             model.VideoLink = sessionData.VideoLink;
             model.AudioLink = sessionData.AudioLink;
-            model.Document1 = sessionData.Document1;
-            model.Document2 = sessionData.Document2;
+            model.Document1 = sessionData.Document1 != null ? ConfigurationManager.AppSettings["BaseUrl"] + "/Documents" + "/" + sessionData.Document1 : string.Empty;
+            model.Document2 = sessionData.Document2 != null ? ConfigurationManager.AppSettings["BaseUrl"] + "/Documents" + "/" + sessionData.Document2 : string.Empty;
             //sessionData.Document1 = "";// update with url
             //sessionData.Document2 = "";//same
 
