@@ -103,18 +103,23 @@ namespace BusinessLayer.Implementation
             return _tbl_course.Id;
         }
 
-        public bool EnableTest(int? courseID)
+        public bool EnableTest(int? courseID, bool isStart = false)
         {
-            var getactive = _Course.GetWithInclude(x => x.Status == true).FirstOrDefault();
-            getactive.Status = false;
-            getactive.UpdatedOn = DateTime.Now;
-            _Course.Update(getactive);
+            var getactive = _Course.GetWithInclude(x => x.Status == true || x.Status==null).FirstOrDefault();
+            if (getactive!=null)
+            {
+                getactive.Status = false;
+                getactive.UpdatedOn = DateTime.Now;
+                _Course.Update(getactive);    
+            }
 
             var toactive = _Course.GetWithInclude(x => x.Id == courseID).FirstOrDefault();
-            toactive.Status = true;
+            toactive.Status = isStart;
             toactive.UpdatedOn = DateTime.Now;
             _Course.Update(toactive);
 
+            if (!isStart)
+                return true;
             var courseCategoryID = _category.GetWithInclude(x => x.Name == "Course").Select(x => x.Id).FirstOrDefault();
             var userIds = _useCategoryrGroupMap.GetWithInclude(x => x.CategoryID == courseCategoryID && x.IsSelected == true).Select(x => x.UserID).ToList();
 

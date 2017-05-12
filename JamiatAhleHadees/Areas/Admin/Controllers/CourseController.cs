@@ -159,16 +159,16 @@ namespace JamiatAhleHadees.Areas.Admin.Controllers
             return View(res);
         }
 
-        public ActionResult StartTest(int? courseID)
+        public ActionResult StartTest(int? courseID, bool isStart = false)
         {
-            var response = _courseBs.EnableTest(courseID);
+            var response = _courseBs.EnableTest(courseID,isStart);
             return RedirectToAction("Index");
         }
         public ActionResult CourseTest(long? id)
         {
             var courseTestSession = _courseTestBs.GetCourseTestList(id.Value);
             TempData["CourseID"] = id.Value;
-            
+
             return View(courseTestSession);
         }
 
@@ -201,14 +201,14 @@ namespace JamiatAhleHadees.Areas.Admin.Controllers
                 var currentKeyNum = item.Replace("Question", "");
                 obj.Id = Convert.ToInt64(form["Id"]);
                 obj.CourseID = Convert.ToInt64(form["CourseID"]);
-                obj.Question= form["Question" + currentKeyNum];
-                obj.Answer1= form["Answer1" + currentKeyNum];
-                obj.Answer2= form["Answer2" + currentKeyNum];
-                obj.Answer3= form["Answer3" + currentKeyNum];
-                obj.Answer4= form["Answer4" + currentKeyNum];
+                obj.Question = form["Question" + currentKeyNum];
+                obj.Answer1 = form["Answer1" + currentKeyNum];
+                obj.Answer2 = form["Answer2" + currentKeyNum];
+                obj.Answer3 = form["Answer3" + currentKeyNum];
+                obj.Answer4 = form["Answer4" + currentKeyNum];
                 obj.CorrectAnswer = form["CorrectAnswer" + currentKeyNum];
                 obj.Mark = form["Mark" + currentKeyNum];
-                obj.Reason= form["Reason" + currentKeyNum];
+                obj.Reason = form["Reason" + currentKeyNum];
 
                 _courseTestBs.Save(obj);
             }

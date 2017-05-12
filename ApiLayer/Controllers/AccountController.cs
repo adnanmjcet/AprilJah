@@ -108,6 +108,7 @@ namespace ApiLayer.Controllers
                     user.IsOTPCheck = true;
                     _userRegistrationBs.Save(user);
                     apiResponse.IsSuccess = true;
+                    apiResponse.Data = user.Id;
                     apiResponse.Message = "OTP Password Varified Successfylly!";
                     return Ok(apiResponse);
                 }

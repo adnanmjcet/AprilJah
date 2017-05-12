@@ -37,12 +37,18 @@
                 <div class="col-sm-3">
                     <button class="btn btn-primary">Results</button><br /><br />
                 </div>
-                <div class="col-sm-3">
-                    <a href="@Url.Action("StartTest", "Course", new { courseID = @Model.Id })" class="btn btn-primary">Start Test</a><br /><br />
-                </div>
-                <div class="col-sm-3">
-                    <button class="btn btn-primary">End Test</button><br /><br />
-                </div>
+                @if (!Model.Status)
+                {
+                    <div class="col-sm-3">
+                        <a href="@Url.Action("StartTest", "Course", new { courseID = @Model.Id,isStart=true })" class="btn btn-primary">Start Test</a><br /><br />
+                    </div>
+                }
+                else
+                {
+                    <div class="col-sm-3">
+                        <a href="@Url.Action("StartTest", "Course", new { courseID = @Model.Id, isStart = false })" class="btn btn-primary">End Test</a><br /><br />
+                    </div>
+                }
 
             </div>
         </div>
