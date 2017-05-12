@@ -120,6 +120,7 @@ namespace BusinessLayer.Implementation
 
             if (!isStart)
                 return true;
+
             var courseCategoryID = _category.GetWithInclude(x => x.Name == "Course").Select(x => x.Id).FirstOrDefault();
             var userIds = _useCategoryrGroupMap.GetWithInclude(x => x.CategoryID == courseCategoryID && x.IsSelected == true).Select(x => x.UserID).ToList();
 

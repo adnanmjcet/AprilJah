@@ -161,7 +161,7 @@ namespace JamiatAhleHadees.Areas.Admin.Controllers
 
         public ActionResult StartTest(int? courseID, bool isStart = false)
         {
-            var response = _courseBs.EnableTest(courseID,isStart);
+            var response = _courseBs.EnableTest(courseID, isStart);
             return RedirectToAction("Index");
         }
         public ActionResult CourseTest(long? id)
@@ -248,6 +248,12 @@ namespace JamiatAhleHadees.Areas.Admin.Controllers
             var res = _courseBs.GetCourseSessions(id.Value);
 
             return View(res);
+        }
+
+        public ActionResult SendTopicNotification(Int64? topicID, Int64? courseID)
+        {
+            var response = _courseSessionBs.SendTopicNotification(topicID.Value, courseID.Value);
+            return RedirectToAction("ViewCourse", new { id = courseID });
         }
 
     }
