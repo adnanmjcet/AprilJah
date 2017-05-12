@@ -44,6 +44,7 @@
     <Compile Include="CommonModels\CategoryModel.cs" />
     <Compile Include="CommonModels\CourseModel.cs" />
     <Compile Include="CommonModels\CourseSessionModel.cs" />
+    <Compile Include="CommonModels\CourseTestAnswerModel.cs" />
     <Compile Include="CommonModels\CourseTestModel.cs" />
     <Compile Include="CommonModels\DefaultInovlvementModel.cs" />
     <Compile Include="CommonModels\EventMasterModel.cs" />

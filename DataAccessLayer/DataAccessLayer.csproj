@@ -55,6 +55,7 @@
     <Compile Include="DataModel\Course.cs" />
     <Compile Include="DataModel\CourseSession.cs" />
     <Compile Include="DataModel\Course_Test.cs" />
+    <Compile Include="DataModel\Course_Test_Answer.cs" />
     <Compile Include="DataModel\DefaultInovlvement.cs" />
     <Compile Include="DataModel\EventMaster.cs" />
     <Compile Include="DataModel\EventRequest.cs" />
