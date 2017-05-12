@@ -14,6 +14,7 @@ namespace ApiLayer.Controllers
     {
         private readonly CourseTestModel _courseTestModel;
         private readonly CourseTestBs _courseTestBs;
+        private readonly CourseBs _courseBs;
 
         APIResponseModel apiResponse;
         public QuestionController()
@@ -21,12 +22,19 @@ namespace ApiLayer.Controllers
             _courseTestModel = new CourseTestModel();
             _courseTestBs = new CourseTestBs();
             apiResponse = new APIResponseModel();
+            _courseBs = new CourseBs();
         }
 
         [HttpGet]
 
-        public IHttpActionResult GetQuestionByCourse(long courseID)
+        public IHttpActionResult GetQuestionByCourse()
         {
+            var courseID = _courseBs.GetActiveCourse();
+            if (courseID == 0)
+            {
+                apiResponse.IsSuccess = false;
+                apiResponse.Message = "No active course avaliable!";
+            }
             var response = _courseTestBs.GetCourseTestList(courseID);
             if (response != null)
             {
@@ -38,7 +46,6 @@ namespace ApiLayer.Controllers
                 apiResponse.IsSuccess = false;
                 apiResponse.Message = "Question Not Found!";
             }
-
             return Ok(apiResponse);
         }
 

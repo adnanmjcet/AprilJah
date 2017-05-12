@@ -23,9 +23,9 @@ namespace ApiLayer.Controllers
             _userCategoryBs = new UserCategoryMappingBs();
         }
         [HttpGet]
-        public IHttpActionResult GetAllCategory()
+        public IHttpActionResult GetAllCategory(int userID)
         {
-            int userid = User.Identity.GetUserID();
+            int userid = userID;
             var categorys = _categoryBs.CategoryList();
 
             var UserCategory = _userCategoryBs.UserCategoryList().Where(x => x.UserID == userid).Select(x => x).ToList();
@@ -37,9 +37,9 @@ namespace ApiLayer.Controllers
             return Ok(categorys);
         }
         [HttpPost]
-        public IHttpActionResult Post(List<CategoryModel> model)
+        public IHttpActionResult Post(int userID, List<CategoryModel> model)
         {
-            int userid = User.Identity.GetUserID();
+            int userid = userID;
             _categoryBs.UpdateCategory(model,userid);
 
             return Ok();

@@ -9,6 +9,7 @@ using DataAccessLayer.DataModel;
 using DataAccessLayer.GenericPattern.Interface;
 using DataAccessLayer.GenericPattern.Implementation;
 using FirebaseNet.Messaging;
+using BusinessLayer.Extension;
 
 namespace BusinessLayer.Implementation
 {
@@ -182,20 +183,37 @@ namespace BusinessLayer.Implementation
 
             if (deviceList.Count == 0)
                 return;
-
-            deviceList.ForEach(x =>
+            if (model.IsMobileNotification)
             {
-                FCMClient client = new FCMClient("AAAAylgXv6E:APA91bHxCtlKnoU7NBp9P989-zIh8KS6oy6dG2ESyReH6DyaawXz9zfyogpiO6STy7-8ajMzlvpi1jAQ0VqOkKjSf8DtOk5vNbklD9q-F1V3rmAnR_oH-zYamaeTludLGqItoSjykVDe");
-                var message = new Message()
+                deviceList.ForEach(x =>
                 {
-                    To = x,
-                    Notification = new AndroidNotification()
+                    FCMClient client = new FCMClient("AAAAylgXv6E:APA91bHxCtlKnoU7NBp9P989-zIh8KS6oy6dG2ESyReH6DyaawXz9zfyogpiO6STy7-8ajMzlvpi1jAQ0VqOkKjSf8DtOk5vNbklD9q-F1V3rmAnR_oH-zYamaeTludLGqItoSjykVDe");
+                    var message = new Message()
                     {
-                        Title = model.Message,
-                    }
-                };
-                var result = client.SendMessageAsync(message);
-            });
+                        To = x,
+                        Notification = new AndroidNotification()
+                        {
+                            Title = model.Message,
+                        }
+                    };
+                    var result = client.SendMessageAsync(message);
+                });
+            }
+            if (model.IsSms)
+            {
+                string mobile = string.Empty;
+                var mobileList = tbl_UserRegistration.GetWithInclude(x => userIds.Contains(x.Id) && x.Contact != null).Select(x => x.Contact).ToList();
+                if (mobileList.Count > 0)
+                {
+                    mobileList.ForEach(x =>
+                    {
+                        mobile += x + ",";
+                    });
+
+                    new SendSMS().Send(mobile, model.Message);
+                }
+            }
+
         }
 
         public bool UpdateUser(int userid, string deviceID, string platformID)

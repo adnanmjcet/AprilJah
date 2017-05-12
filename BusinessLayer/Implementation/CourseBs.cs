@@ -40,6 +40,11 @@ namespace BusinessLayer.Implementation
             }).ToList();
         }
 
+        public Int64 GetActiveCourse()
+        {
+            return _Course.GetWithInclude(x => x.Status == true).Select(x => x.Id).FirstOrDefault();
+        }
+
         public CourseModel GetById(int id)
         {
             return _Course.GetWithInclude(x => x.Id == id).Select(x => new CourseModel
