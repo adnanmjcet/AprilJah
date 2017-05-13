@@ -186,19 +186,20 @@ namespace BusinessLayer.Implementation
 
                 if (deviceList.Count > 0)
                 {
-                    deviceList.ForEach(x =>
-                    {
-                        FCMClient client = new FCMClient("AAAAylgXv6E:APA91bHxCtlKnoU7NBp9P989-zIh8KS6oy6dG2ESyReH6DyaawXz9zfyogpiO6STy7-8ajMzlvpi1jAQ0VqOkKjSf8DtOk5vNbklD9q-F1V3rmAnR_oH-zYamaeTludLGqItoSjykVDe");
-                        var message = new Message()
-                        {
-                            To = x,
-                            Notification = new AndroidNotification()
-                            {
-                                Title = model.Message,
-                            }
-                        };
-                        var result = client.SendMessageAsync(message);
-                    });
+                    //deviceList.ForEach(x =>
+                    //{
+                    //    FCMClient client = new FCMClient("AAAAylgXv6E:APA91bHxCtlKnoU7NBp9P989-zIh8KS6oy6dG2ESyReH6DyaawXz9zfyogpiO6STy7-8ajMzlvpi1jAQ0VqOkKjSf8DtOk5vNbklD9q-F1V3rmAnR_oH-zYamaeTludLGqItoSjykVDe");
+                    //    var message = new Message()
+                    //    {
+                    //        To = x,
+                    //        Notification = new AndroidNotification()
+                    //        {
+                    //            Title = model.Message,
+                    //        }
+                    //    };
+                    //    var result = client.SendMessageAsync(message);
+                    //});
+                    new SendSMS().SendPushNotification(deviceList, model.Message);
                 }
             }
             if (model.IsSms)

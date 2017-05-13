@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FirebaseNet.Messaging;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,30 @@ namespace BusinessLayer.Extension
             ResponseReader = new StreamReader(Request.GetResponse().
     GetResponseStream());
             return ResponseReader.ReadToEnd();
+        }
+
+
+        public void SendPushNotification(List<string> deviceList, string messge)
+        {
+            deviceList.ForEach(x =>
+            {
+                FCMClient client = new FCMClient("AAAAylgXv6E:APA91bHxCtlKnoU7NBp9P989-zIh8KS6oy6dG2ESyReH6DyaawXz9zfyogpiO6STy7-8ajMzlvpi1jAQ0VqOkKjSf8DtOk5vNbklD9q-F1V3rmAnR_oH-zYamaeTludLGqItoSjykVDe");
+                var message = new Message()
+                {
+                    To = x,
+                    //Notification = new AndroidNotification()
+                    //{
+                    //    Title = toactive.Name + " test is avaliable.",
+                    //}
+                    Data = new Dictionary<string, string>
+                       {
+                           //{ "Nick", "Mario" },
+                           { "Body", messge },
+                            //{ "Room", "PortugalVSDenmark" }
+                       }
+                };
+                var result = client.SendMessageAsync(message);
+            });
         }
     }
 }

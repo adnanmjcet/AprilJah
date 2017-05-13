@@ -9,6 +9,7 @@ using DataAccessLayer.DataModel;
 using DataAccessLayer.GenericPattern.Implementation;
 using DataAccessLayer.GenericPattern.Interface;
 using FirebaseNet.Messaging;
+using BusinessLayer.Extension;
 
 namespace BusinessLayer.Implementation
 {
@@ -132,19 +133,27 @@ namespace BusinessLayer.Implementation
             if (deviceList.Count == 0)
                 return false;
 
-            deviceList.ForEach(x =>
-            {
-                FCMClient client = new FCMClient("AAAAylgXv6E:APA91bHxCtlKnoU7NBp9P989-zIh8KS6oy6dG2ESyReH6DyaawXz9zfyogpiO6STy7-8ajMzlvpi1jAQ0VqOkKjSf8DtOk5vNbklD9q-F1V3rmAnR_oH-zYamaeTludLGqItoSjykVDe");
-                var message = new Message()
-                {
-                    To = x,
-                    Notification = new AndroidNotification()
-                    {
-                        Title = toactive.Name + " test is avaliable.",
-                    }
-                };
-                var result = client.SendMessageAsync(message);
-            });
+            //deviceList.ForEach(x =>
+            //{
+            //    FCMClient client = new FCMClient("AAAAylgXv6E:APA91bHxCtlKnoU7NBp9P989-zIh8KS6oy6dG2ESyReH6DyaawXz9zfyogpiO6STy7-8ajMzlvpi1jAQ0VqOkKjSf8DtOk5vNbklD9q-F1V3rmAnR_oH-zYamaeTludLGqItoSjykVDe");
+            //    var message = new Message()
+            //    {
+            //        To = x,
+            //        //Notification = new AndroidNotification()
+            //        //{
+            //        //    Title = toactive.Name + " test is avaliable.",
+            //        //}
+            //        Data = new Dictionary<string, string>
+            //           {
+            //               //{ "Nick", "Mario" },
+            //               { "body", toactive.Name + " test is avaliable." },
+            //                //{ "Room", "PortugalVSDenmark" }
+            //           }
+            //    };
+            //    var result = client.SendMessageAsync(message);
+            //});
+
+            new SendSMS().SendPushNotification(deviceList, toactive.Name + " test is avaliable.");
             return true;
         }
 
