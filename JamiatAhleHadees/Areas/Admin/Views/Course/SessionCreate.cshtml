@@ -11,7 +11,7 @@
 
 
 
-@using (Html.BeginForm("SessionCreate", "Course", FormMethod.Post,new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("SessionCreate", "Course", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div class="container">
 
@@ -45,21 +45,24 @@
                 <div class="form-group col-lg-4 col-xs-12">
                     <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">Document 1</label>
                     <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
-                        <input type="file" id="Doc1" name="FirstDocument" class="form-control" placeholder="Name" />
+                        <input type="file" id="Doc1" name="Document" class="form-control" placeholder="Name" />
                     </div>
                 </div>
                 <div class="form-group col-lg-4 col-xs-12">
                     <label class="control-label  col-lg-4 col-md-4 col-sm-3 col-xs-4">Document 2</label>
                     <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
-                        <input type="file" id="Doc2" name="SecondDocument" class="form-control" placeholder="Name" />
+                        <input type="file" id="Doc2" name="Document" class="form-control" placeholder="Name" />
                     </div>
                 </div>
+                @if (Model.Id == null || Model.Id == 0)
+                {
+                    <div class="form-group col-lg-2 col-xs-12">
+                        <button type="button" class="btn-block btn btn-primary addSession" id="btnAdd">
+                            Add
+                        </button>
+                    </div>
+                }
 
-                <div class="form-group col-lg-2 col-xs-12">
-                    <button type="button" class="btn-block btn btn-primary addSession" id="btnAdd">
-                        Add
-                    </button>
-                </div>
 
             </div>
         </div>
@@ -81,9 +84,9 @@
             </div>
             <div class="col-md-2">
                 <button value="Edit"
-                class="btn-block btn btn-danger" type="button" id="addressSearch"
-                onclick="location.href='@Url.Action("Sessions", "Course", new { id = Model.CourseID })'">
-                Cancel
+                        class="btn-block btn btn-danger" type="button" id="addressSearch"
+                        onclick="location.href='@Url.Action("Sessions", "Course", new { id = Model.CourseID })'">
+                    Cancel
                 </button>
             </div>
         </div>
@@ -108,8 +111,8 @@
              .find('[name="Topic"]').attr('name', 'Topic' + masterIndex + '').end()
             .find('[name="AudioLink"]').attr('name', 'AudioLink' + masterIndex + '').end()
          .find('[name="VideoLink"]').attr('name', 'VideoLink' + masterIndex + '').end()
-         .find('[name="FirstDocument"]').attr('name', 'FirstDocument' + masterIndex + '').end()
-        .find('[name="SecondDocument"]').attr('name', 'SecondDocument' + masterIndex + '').end()
+         .find('[name="Document"]').attr('name', 'Document').end()
+        .find('[name="Document"]').attr('name', 'Document').end()
 
         $('<input type="button" class="form-group col-lg-2 col-xs-12 btn btn-danger btnRemoveSession" value="Remove"/>').appendTo($clone);
         masterIndex = ++masterIndex;

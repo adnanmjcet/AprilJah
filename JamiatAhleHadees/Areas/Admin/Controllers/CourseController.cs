@@ -102,7 +102,7 @@ namespace JamiatAhleHadees.Areas.Admin.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult SessionCreate(FormCollection form, HttpPostedFileBase FirstDocument, HttpPostedFileBase SecondDocument)
+        public ActionResult SessionCreate(FormCollection form, List<HttpPostedFileBase> Document)
         {
 
             List<CourseSessionModel> model = new List<CourseSessionModel>();
@@ -119,26 +119,31 @@ namespace JamiatAhleHadees.Areas.Admin.Controllers
                 obj.AudioLink = form["AudioLink" + currentKeyNum];
                 obj.VideoLink = form["VideoLink" + currentKeyNum];
 
-                if (FirstDocument == null ? false : FirstDocument.ContentLength > 0)
+                if (Document[0] == null ? false : Document[0].ContentLength > 0)
                 {
-
-                    var ext = Path.GetExtension(FirstDocument.FileName);
+                    var ext = Path.GetExtension(Document[0].FileName);
                     Random number = new Random();
                     obj.Document1 = "Document_" + number.Next(1000000000) + ext;
                     string path = Server.MapPath("~/Documents/" + obj.Document1);
-                    FirstDocument.SaveAs(path);
+                    Document[0].SaveAs(path);
                     // save image
-                }
-                if (SecondDocument == null ? false : SecondDocument.ContentLength > 0)
-                {
 
-                    var ext = Path.GetExtension(SecondDocument.FileName);
-                    Random number = new Random();
-                    obj.Document2 = "Document_" + number.Next(1000000000) + ext;
-                    string path = Server.MapPath("~/Documents/" + obj.Document2);
-                    SecondDocument.SaveAs(path);
-                    // save image
                 }
+                if (Document[1] == null ? false : Document[1].ContentLength > 0)
+                {
+                    var ext1 = Path.GetExtension(Document[1].FileName);
+                    Random number1 = new Random();
+                    obj.Document2 = "Document_" + number1.Next(1000000000) + ext1;
+                    string path1 = Server.MapPath("~/Documents/" + obj.Document2);
+                    Document[1].SaveAs(path1);
+
+                }
+
+                for (int i = 0; i < 2; i++)
+                {
+                    Document.Remove(Document[0]);
+                }
+
 
                 //obj.Document1 = form["FirstDocument" + currentKeyNum];
                 // obj.Document2 = form["SecondDocument" + currentKeyNum];
