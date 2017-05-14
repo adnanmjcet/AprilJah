@@ -124,7 +124,7 @@ namespace BusinessLayer.Implementation
             //    };
             //    var result = client.SendMessageAsync(message);
             //});
-            new SendSMS().SendPushNotification(deviceList, topic.Topic + " is avaliable.Current topicID is" + topic.Id);
+            new SendSMS().SendPushNotification(deviceList, topic.Topic + " is avaliable.Current topicID is" + topic.Id,"1");
             return true;
         }
     }

@@ -199,7 +199,7 @@ namespace BusinessLayer.Implementation
                     //    };
                     //    var result = client.SendMessageAsync(message);
                     //});
-                    new SendSMS().SendPushNotification(deviceList, model.Message);
+                    new SendSMS().SendPushNotification(deviceList, model.Message,"3");
                 }
             }
             if (model.IsSms)

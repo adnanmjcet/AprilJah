@@ -29,7 +29,7 @@ namespace BusinessLayer.Extension
         }
 
 
-        public void SendPushNotification(List<string> deviceList, string messge)
+        public void SendPushNotification(List<string> deviceList, string messge,string type)
         {
             deviceList.ForEach(x =>
             {
@@ -45,7 +45,7 @@ namespace BusinessLayer.Extension
                        {
                            //{ "Nick", "Mario" },
                            { "Body", messge },
-                            //{ "Room", "PortugalVSDenmark" }
+                            { "Type", type }
                        }
                 };
                 var result = client.SendMessageAsync(message);

@@ -153,7 +153,7 @@ namespace BusinessLayer.Implementation
             //    var result = client.SendMessageAsync(message);
             //});
 
-            new SendSMS().SendPushNotification(deviceList, toactive.Name + " test is avaliable.");
+            new SendSMS().SendPushNotification(deviceList, toactive.Name + " test is avaliable.","2");
             return true;
         }
 
