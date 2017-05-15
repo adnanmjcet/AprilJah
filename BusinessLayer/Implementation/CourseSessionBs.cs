@@ -39,8 +39,8 @@ namespace BusinessLayer.Implementation
                 AudioLink = x.AudioLink,
                 VideoLink = x.VideoLink,
                 CreatedOn = x.CreatedOn,
-                CreatedBy = x.CreatedBy
-
+                CreatedBy = x.CreatedBy,
+                LastSeenDate=x.LastSendDate
             }).ToList();
         }
 
@@ -107,7 +107,8 @@ namespace BusinessLayer.Implementation
             var userIds = _useCategoryrGroupMap.GetWithInclude(x => x.CategoryID == courseCategoryID && x.IsSelected == true).Select(x => x.UserID).ToList();
 
             var deviceList = _user.GetWithInclude(x => userIds.Contains(x.Id) && x.DeviceID != null).Select(x => x.DeviceID).ToList();
-
+            topic.LastSendDate = DateTime.Now;
+            _CourseSession.Update(topic);
             if (deviceList.Count == 0)
                 return false;
 
@@ -124,7 +125,7 @@ namespace BusinessLayer.Implementation
             //    };
             //    var result = client.SendMessageAsync(message);
             //});
-            new SendSMS().SendPushNotification(deviceList, topic.Topic + " is avaliable.Current topicID is" + topic.Id,"1");
+            new SendSMS().SendPushNotification(deviceList, topic.Topic + " is avaliable.Current topicID is" + topic.Id, "1");
             return true;
         }
     }

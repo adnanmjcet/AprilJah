@@ -30,6 +30,9 @@ namespace DataAccessLayer.DataModel
         public string VideoLink { get; set; }
         [Column(TypeName = "date")]
         public DateTime? CreatedOn { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime? LastSendDate { get; set; }
         
         public long CreatedBy { get; set; }
     }

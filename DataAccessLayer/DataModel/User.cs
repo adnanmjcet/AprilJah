@@ -52,7 +52,6 @@ namespace DataAccessLayer.DataModel
         public string Password { get; set; }
 
 
-        [StringLength(50)]
         public string DeviceID { get; set; }
        
         

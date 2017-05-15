@@ -76,7 +76,7 @@
                                         @*<button type="button" class="btn btn-success">Send</button>*@
                                         <a href="@Url.Action("SendTopicNotification", "Course", new { topicID = item.Id, courseID = item.CourseID })" class="btn btn-success">Send</a>
                                     </td>
-                                    <td>12/7/2017 12:30pm</td>
+                                    <td>@item.LastSeenDate</td>
                                 </tr>
                             }
 

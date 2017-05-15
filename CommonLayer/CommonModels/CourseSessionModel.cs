@@ -8,6 +8,7 @@ namespace CommonLayer.CommonModels
 {
     public class CourseSessionModel
     {
+        public DateTime? LastSeenDate { get; set; }
         public long Id { get; set; }
         public long CourseID { get; set; }
         public string Topic { get; set; }
