@@ -16,5 +16,6 @@ namespace CommonLayer.CommonModels
 
         public DateTime? CreatedDate { get; set; }
         public bool IsChecked { get; set; }
+        public int UserID { get; set; }
     }
 }

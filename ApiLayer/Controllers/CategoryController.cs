@@ -41,9 +41,9 @@ namespace ApiLayer.Controllers
             return Ok(apiResponse);
         }
         [HttpPost]
-        public IHttpActionResult Post(int userID, List<CategoryModel> model)
+        public IHttpActionResult Post(List<CategoryModel> model)
         {
-            int userid = userID;
+            int userid = model.Select(x => x.UserID).FirstOrDefault();
             _categoryBs.UpdateCategory(model,userid);
             apiResponse.IsSuccess = true;
             apiResponse.Message = "Successfully Updated";
