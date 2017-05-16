@@ -16,6 +16,7 @@ namespace BusinessLayer.Implementation
     public class CourseBs : ICourse
     {
         private readonly IGenericPattern<Course> _Course;
+        private readonly IGenericPattern<Course_Test> _CourseTest;
         private readonly IGenericPattern<Course_Test_Answer> _courseTestAnswer;
         private readonly IGenericPattern<Category> _category;
         private readonly IGenericPattern<UserCategoryMapping> _useCategoryrGroupMap;
@@ -28,6 +29,7 @@ namespace BusinessLayer.Implementation
             _useCategoryrGroupMap = new GenericPattern<UserCategoryMapping>();
             _courseTestAnswer = new GenericPattern<Course_Test_Answer>();
             _user = new GenericPattern<User>();
+            _CourseTest = new GenericPattern<Course_Test>();
         }
         public List<CourseModel> CourseList()
         {
@@ -153,20 +155,28 @@ namespace BusinessLayer.Implementation
             //    var result = client.SendMessageAsync(message);
             //});
 
-            new SendSMS().SendPushNotification(deviceList, toactive.Name + " test is avaliable.","2");
+            new SendSMS().SendPushNotification(deviceList, toactive.Name + " test is avaliable.", "2");
             return true;
         }
 
         public List<CourseTestAnswerModel> GetCouseSessionByCourseID(Int64 courseID)
         {
+            var courseQuestionCount = _CourseTest.GetWithInclude(x => x.CourseID == courseID).Count();
 
-            return _courseTestAnswer.GetWithInclude(x => x.CourseID == courseID).Select(x => new CourseTestAnswerModel
+            var userIds = _courseTestAnswer.GetWithInclude(x => x.CourseID == courseID).GroupBy(x => x.UserID).Select(x => x.Key).ToList();
+
+            List<CourseTestAnswerModel> answerList = new List<CourseTestAnswerModel>();
+            userIds.ForEach(x =>
             {
-                UserName = x.User.Name,
-                CreatedOn = x.CreatedOn,
-                Score = 80
-            }).ToList();
-
+                var courseAnswer = _courseTestAnswer.GetWithInclude(z => z.UserID == x).ToList();
+                CourseTestAnswerModel model = new CourseTestAnswerModel();
+                model.UserName = courseAnswer.Select(z => z.User.Name).FirstOrDefault();
+                model.CreatedOn = courseAnswer.Select(z => z.CreatedOn).FirstOrDefault();
+                var answerCount = courseAnswer.Where(z => z.IsCorrect).Count();
+                model.Score = (int)Math.Round((double)(100 * answerCount) / courseQuestionCount);
+                answerList.Add(model);
+            });
+            return answerList;
         }
 
 

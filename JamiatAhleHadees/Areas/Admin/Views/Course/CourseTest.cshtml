@@ -32,7 +32,7 @@
                 <td><b>ID</b></td>
                 <td><b>Question</b></td>
                 <td><b>Answer</b></td>
-                <td><b>View Result</b></td>
+                @*<td><b>View Result</b></td>*@
                 <td><b>Edit</b></td>
                 <td><b>Delete</b></td>
 
@@ -49,13 +49,13 @@
                         <td>@item.Answer1</td>
                         @*<td>@item.ConfirmPassword</td>*@
 
-                        <td>
+                        @*<td>
                             <button value="Edit"
                                     class="btn btn-success btn-sm" type="button" id="result"
                                     onclick="location.href='@Url.Action("ViewResult", "Course" ,new {id = item.CourseID })'">
                                 View Result
                             </button>
-                        </td>
+                        </td>*@
                         <td>
                             <button value="Edit"
                                     class="btn btn-primary btn-sm" type="button" id="addressSearch"

@@ -267,7 +267,7 @@ namespace JamiatAhleHadees.Areas.Admin.Controllers
             var getCourse = _courseBs.GetById(id.Value);
             getCourse.IsDelete = true;
             _courseBs.Save(getCourse);
-            return RedirectToAction("Sessions", "Course", new { area = "Admin" });
+            return RedirectToAction("Index", "Course", new { area = "Admin" });
         }
 
 

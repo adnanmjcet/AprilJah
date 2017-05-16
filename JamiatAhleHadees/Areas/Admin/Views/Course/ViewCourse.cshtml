@@ -35,7 +35,7 @@
                         <button class="btn btn-primary">Edit Test</button><br /><br />
                     </div>
                     <div class="col-sm-3">
-                        <button class="btn btn-primary">Results</button><br /><br />
+                        <a href="@Url.Action("ViewResult", "Course", new { id = @Model.Id})" class="btn btn-primary">Result</a><br /><br />
                     </div>
                     @if (!Model.Status)
                     {
