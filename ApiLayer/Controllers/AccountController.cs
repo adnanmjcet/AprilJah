@@ -207,7 +207,7 @@ namespace ApiLayer.Controllers
 
         }
 
-
+        [HttpPost]
         public IHttpActionResult UserProfileUpdate(UserModel model)
         {
             int i = 0;
