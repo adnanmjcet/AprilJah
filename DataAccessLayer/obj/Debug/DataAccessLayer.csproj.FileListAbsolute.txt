@@ -10,3 +10,15 @@ E:\Work\AprilJah\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
 E:\Work\AprilJah\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
 E:\Work\AprilJah\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 E:\Work\AprilJah\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+E:\Git\MayJah\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+E:\Git\MayJah\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+E:\Git\MayJah\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+E:\Git\MayJah\DataAccessLayer\bin\Debug\CommonLayer.dll
+E:\Git\MayJah\DataAccessLayer\bin\Debug\EntityFramework.dll
+E:\Git\MayJah\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+E:\Git\MayJah\DataAccessLayer\bin\Debug\CommonLayer.pdb
+E:\Git\MayJah\DataAccessLayer\bin\Debug\EntityFramework.xml
+E:\Git\MayJah\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+E:\Git\MayJah\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
+E:\Git\MayJah\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+E:\Git\MayJah\DataAccessLayer\obj\Debug\DataAccessLayer.pdb

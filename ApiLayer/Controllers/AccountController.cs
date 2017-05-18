@@ -184,5 +184,22 @@ namespace ApiLayer.Controllers
             }
             return otp;
         }
+        [HttpGet]
+        public IHttpActionResult UserProfile(int id)
+        {
+            var res = _userRegistrationBs.GetById(id);
+
+            apiResponse.Data = res;
+            if (apiResponse!=null)
+            {
+                return Ok("Success" + apiResponse);
+
+            }
+            else
+            {
+                return BadRequest("No Record Found");
+            }
+
+        }
     }
 }
