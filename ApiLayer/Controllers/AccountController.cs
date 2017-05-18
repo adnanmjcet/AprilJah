@@ -189,17 +189,46 @@ namespace ApiLayer.Controllers
         {
             var res = _userRegistrationBs.GetById(id);
 
-            apiResponse.Data = res;
-            if (apiResponse!=null)
+           
+            if (res!=null)
             {
-                return Ok("Success" + apiResponse);
+                apiResponse.Data = res;
+                apiResponse.IsSuccess = true;
+                apiResponse.Message = "Data Found";
+                return Ok(apiResponse);
 
             }
             else
             {
-                return BadRequest("No Record Found");
+                apiResponse.IsSuccess = false;
+                apiResponse.Message = "No Record Found";
+                return Ok("No Record Found");
             }
 
+        }
+
+
+        public IHttpActionResult UserProfileUpdate(UserModel model)
+        {
+            int i = 0;
+            if (model.Id!=0)
+            {
+              i=  _userRegistrationBs.Save(model);
+            }
+
+            if (i>0)
+            {
+                apiResponse.IsSuccess = true;
+                apiResponse.Message = "Updated Successfully";
+                return Ok(apiResponse);
+
+            }
+            else
+            {
+                apiResponse.IsSuccess = false;
+                apiResponse.Message = "Internal Server Error";
+                return Ok(apiResponse);
+            }
         }
     }
 }
