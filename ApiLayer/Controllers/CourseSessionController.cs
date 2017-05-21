@@ -45,5 +45,15 @@ namespace ApiLayer.Controllers
             apiResponse.Data = model;
             return Ok(apiResponse);
         }
+
+        [HttpGet]
+        public IHttpActionResult SendCourseSessionForNewUser(string deviceID)
+        {
+            _courseSessionBs.SendCourseSessionForUser(deviceID);
+            apiResponse.IsSuccess = true;
+            return Ok(apiResponse);
+        }
+
+
     }
 }

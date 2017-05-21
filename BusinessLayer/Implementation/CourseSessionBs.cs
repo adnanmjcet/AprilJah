@@ -40,7 +40,7 @@ namespace BusinessLayer.Implementation
                 VideoLink = x.VideoLink,
                 CreatedOn = x.CreatedOn,
                 CreatedBy = x.CreatedBy,
-                LastSeenDate=x.LastSendDate
+                LastSeenDate = x.LastSendDate
             }).ToList();
         }
 
@@ -127,6 +127,20 @@ namespace BusinessLayer.Implementation
             //});
             new SendSMS().SendPushNotification(deviceList, topic.Topic + " is avaliable.Current topicID is" + topic.Id, "1");
             return true;
+        }
+
+        public void SendCourseSessionForUser(string deviceID)
+        {
+            var sendedSessionID = _CourseSession.GetWithInclude(x => x.LastSendDate != null).ToList();
+            if (sendedSessionID.Count == 0)
+                return;
+            List<string> deviceList = new List<string>();
+            deviceList.Add(deviceID);
+            sendedSessionID.ForEach(x =>
+            {
+                new SendSMS().SendPushNotification(deviceList, x.Topic + " is avaliable.Current topicID is" + x.Id, "1");
+            });
+
         }
     }
 }
