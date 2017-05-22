@@ -9,5 +9,7 @@ namespace BusinessLayer.Implementation
         long Save(UserGroupModel model);
        List<UserGroupModel> UserGroupList();
         UserGroupModel GetUserList(Int64 userGroupID);
+
+        void SaveUserGroupMap(int userID);
     }
 }

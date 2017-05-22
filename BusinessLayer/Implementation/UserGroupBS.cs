@@ -131,5 +131,17 @@ namespace BusinessLayer.Implementation
             }
             return true;
         }
+
+        public void SaveUserGroupMap(int userID)
+        {
+            UserGroup_Mapping usermap = new UserGroup_Mapping();
+            usermap.UserGroupID = 1;
+            usermap.UserID = userID;
+            usermap.IsActive = true;
+            usermap.CreatedOn = DateTime.Now;
+            _userGroupMap.Insert(usermap);
+        }
+
+
     }
 }

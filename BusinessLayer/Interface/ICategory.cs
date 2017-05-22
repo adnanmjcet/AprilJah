@@ -18,5 +18,7 @@ namespace BusinessLayer.Interface
         CategoryModel GetById(int id);
 
         void UpdateCategory(List<CategoryModel> lstmodel,int userID);
+
+        void AddCategoryMapping(int userID);
     }
 }
