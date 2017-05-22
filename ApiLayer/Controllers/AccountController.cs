@@ -37,13 +37,14 @@ namespace ApiLayer.Controllers
             string otp = null;
             if (model != null)
             {
+               
+                var checkUserName = _userRegistrationBs.CheckUserName(model.UserName);
+                if (checkUserName)
+                    return Ok("UserName alreay exsist!");
                 otp = GetOTPPassword();
                 model.OTPPassword = otp;
                 model.OTPGeneratedTime = DateTime.Now;
                 model.IsOTPCheck = false;
-                var checkUserName = _userRegistrationBs.CheckUserName(model.UserName);
-                if (checkUserName)
-                    return Ok("UserName alreay exsist!");
                 res = _userRegistrationBs.Save(model);
                 new SendSMS().Send(model.Contact, "OTP is " + otp + " for Registration");
             }

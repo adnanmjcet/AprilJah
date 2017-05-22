@@ -42,6 +42,11 @@ namespace JamiatAhleHadees.Areas.Admin.Controllers
         {
             long i = 0;
 
+            if (model.Id==1)
+            {
+                  TempData["msg"] = "Pemission Denied";
+                  return RedirectToAction("Index", "UserGroup", new { area = "Admin" });
+            }
             if (model != null)
             {
                 i = _userGroupBs.Save(model);
@@ -68,6 +73,11 @@ namespace JamiatAhleHadees.Areas.Admin.Controllers
         }
         public ActionResult AddUser(UserGroupModel model, int[] UserCheckList)
         {
+            if (model.UserGroupID==1)
+            {
+                 TempData["msg"] = "Permission Denied.";
+                 return RedirectToAction("Index");
+            }
 
             model.UserCheckList = UserCheckList == null ? new List<int>() : UserCheckList.ToList();
             bool response = _userGroupBs.AddUserList(model);

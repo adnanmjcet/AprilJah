@@ -32,7 +32,7 @@ namespace BusinessLayer.Implementation
                 Name = x.Name,
                 CreatedOn = x.CreatedOn,
                 UserCount = x.UserGroup_Mapping.Count(),
-            }).OrderByDescending(x => x.Id).ToList();
+            }).ToList();
         }
 
         public UserGroupModel GetById(int id)
