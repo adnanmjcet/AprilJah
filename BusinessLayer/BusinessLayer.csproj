@@ -68,6 +68,7 @@
     <Compile Include="Implementation\CourseSessionBs.cs" />
     <Compile Include="Implementation\CourseTestAnswerBs.cs" />
     <Compile Include="Implementation\CourseTestBs.cs" />
+    <Compile Include="Implementation\EventRequestBs.cs" />
     <Compile Include="Implementation\ExistingMadarsaOperationsRequestBs.cs" />
     <Compile Include="Implementation\VolunteerBs.cs" />
     <Compile Include="Interface\ICourseTest.cs" />

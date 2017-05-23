@@ -26,13 +26,18 @@ namespace DataAccessLayer.DataModel
         public string Venu { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime? Date { get; set; }
+        public DateTime? FromDate { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime? ToDate { get; set; }
 
         public int? UserId { get; set; }
 
         public int? RequestSubmitId { get; set; }
 
         public int? RequestTypeId { get; set; }
+
+        public byte[] Poster { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? CreatedDate { get; set; }

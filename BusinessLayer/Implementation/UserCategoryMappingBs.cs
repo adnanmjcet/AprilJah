@@ -13,15 +13,17 @@ namespace BusinessLayer.Implementation
 {
     public class UserCategoryMappingBs : IUserCategoryMapping
     {
+
+
         private readonly IGenericPattern<UserCategoryMapping> _userCategory;
         //private readonly CategoryModel _CategoryModel;
-
 
         public UserCategoryMappingBs()
         {
             _userCategory = new GenericPattern<UserCategoryMapping>();
             //_CategoryModel = new CategoryModel();
         }
+
         public UserCategoryMappingModel GetById(int id)
         {
             return _userCategory.GetAll().Where(x => x.Id == id).Select(x => new UserCategoryMappingModel

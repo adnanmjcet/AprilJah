@@ -38,6 +38,8 @@ namespace BusinessLayer.Implementation
                                ZoneId = item.ZoneId,
                                ZoneName = (item.Zone != null) ? item.Zone.Name : string.Empty,
                                Mobile = item.Mobile,
+                               Latitude=item.Latitude,
+                               Longitude=item.Longitude,
                                CreatedDate = item.CreatedDate,
                                CreatedBy = item.CreatedBy,
                            }).OrderByDescending(x => x.Id).ToList();

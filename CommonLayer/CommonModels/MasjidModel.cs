@@ -25,6 +25,11 @@ namespace CommonLayer.CommonModels
 
         public int? CreatedBy { get; set; }
 
+        public string Latitude { get; set; }
+
+        public string Longitude { get; set; }
+
+
         public List<UserModel> UserLists { get; set; }
 
         public List<ZoneModel> ZoneLists { get; set; }

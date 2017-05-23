@@ -28,6 +28,9 @@ namespace DataAccessLayer.DataModel
 
         public int? HeadUserId { get; set; }
 
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
+
         public int? ZoneId { get; set; }
 
         [StringLength(50)]

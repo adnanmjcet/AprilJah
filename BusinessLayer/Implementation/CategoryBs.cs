@@ -72,26 +72,25 @@ namespace BusinessLayer.Implementation
         }
 
 
-        public void UpdateCategory(List<CategoryModel> lstmodel, int userid)
+        public void UpdateCategory(CategoryModel lstmodel)
         {
-            lstmodel.ForEach(x =>
-            {
-                var userCategory = _userCategoryMapping.GetWithInclude(z => z.UserID == userid && z.CategoryID == x.Id).FirstOrDefault();
+            
+                var userCategory = _userCategoryMapping.GetWithInclude(z => z.UserID == lstmodel.UserID && z.CategoryID == lstmodel.Id).FirstOrDefault();
 
                 if (userCategory != null)
                 {
-                    userCategory.IsSelected = x.IsChecked;
+                    userCategory.IsSelected = lstmodel.IsChecked;
                     _userCategoryMapping.Update(userCategory);
                 }
                 else
                 {
                     UserCategoryMapping catergorymap = new UserCategoryMapping();
-                    catergorymap.UserID = userid;
-                    catergorymap.CategoryID = x.Id;
-                    catergorymap.IsSelected = x.IsChecked;
+                    catergorymap.UserID = lstmodel.UserID;
+                    catergorymap.CategoryID = lstmodel.Id;
+                    catergorymap.IsSelected = lstmodel.IsChecked;
                     _userCategoryMapping.Insert(catergorymap);
                 }
-            });
+            
             return;
         }
     }

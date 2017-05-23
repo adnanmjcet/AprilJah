@@ -41,15 +41,31 @@ namespace ApiLayer.Controllers
             return Ok(apiResponse);
         }
         [HttpPost]
-        public IHttpActionResult Post(List<CategoryModel> model)
+        public IHttpActionResult Post(CategoryModel model)
         {
-            int userid = model.Select(x => x.UserID).FirstOrDefault();
-            _categoryBs.UpdateCategory(model,userid);
+             _categoryBs.UpdateCategory(model);
             apiResponse.IsSuccess = true;
             apiResponse.Message = "Successfully Updated";
             return Ok(apiResponse);
         }
 
+        [HttpGet]
+        public IHttpActionResult GetAllCategory()
+        {
+           var res= _categoryBs.CategoryList().ToList();
+            if (res!=null)
+            {
+                apiResponse.Data = res;
+                apiResponse.Message = "List of Categories found";
+                return Ok(apiResponse);
+            }
+            else
+            {
+                 apiResponse.Message = "No Categories found";
+                return Ok(apiResponse);
+            }
+           
+        }
 
     }
 }

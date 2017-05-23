@@ -17,6 +17,7 @@ namespace DataAccessLayer.DataModel
 
         }
         public long Id { get; set; }
+
         public long CourseID { get; set; }
 
 

@@ -57,6 +57,8 @@ namespace DataAccessLayer.DataModel
             Location = _obj.Location;
             HeadUserId = _obj.HeadUserId;
             ZoneId = _obj.ZoneId;
+            Latitude = _obj.Latitude;
+            Longitude= _obj.Longitude;
             Mobile = _obj.Mobile;
             CreatedDate = _obj.CreatedDate;
             CreatedBy = _obj.CreatedBy;
@@ -617,5 +619,60 @@ namespace DataAccessLayer.DataModel
            
         }
     }
+
+    public partial class EventMaster
+    {
+
+        public EventMaster(EventMasterModel item)
+        {
+            Id = item.Id;
+            Name = item.Name;
+
+        }
+    }
+
+    public partial class EventRequest
+    {
+        public EventRequest()
+        {
+
+        }
+
+        public EventRequest(EventRequestModel item)
+        {
+            Id = item.Id;
+            EventName = item.EventName;
+            Description = item.Description;
+            TotalSpeakers = item.TotalSpeakers;
+            Venu = item.Venu;
+            FromDate = item.FromDate;
+            ToDate = item.ToDate;
+            CreatedDate = item.CreatedDate;
+            UserId = item.UserId;
+            EventType = item.EventTypeId;
+            RequestTypeId = item.RequestTypeId;
+            RequestSubmitId = item.RequestSubmitId;
+        }
+    }
+
+    public partial class EventRequestDetail
+    {
+        public EventRequestDetail()
+        {
+
+        }
+
+        public EventRequestDetail(EventRequestDetailModel item)
+        {
+            Id = item.Id;
+            SpeakerName = item.SpeakerName;
+            Date = item.Date;
+            Time = item.Time;
+            Topic = item.Topic;
+            CreatedDate = item.CreatedDate;
+            EventRequestId = item.EventRequestId;
+        }
+    }
+
 }
 
