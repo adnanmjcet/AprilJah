@@ -36,27 +36,31 @@
                     <td>@item.Id</td>
                     <td>@item.Name</td>
                     <td>@item.UserCount</td>
-                    <td>
-                        <button value="Edit"
-                                class="btn btn-primary btn-sm" type="button" id="addressSearch"
-                                onclick="location.href='@Url.Action("Create", "UserGroup" ,new {id = item.Id })'">
-                            Edit
-                        </button>
-                    </td>
-                    <td>
-                        <button value="Delete"
-                                class="btn btn-danger btn-sm" type="button" id="addressSearch"
-                                onclick="">
-                            Delete
-                        </button>
-                    </td>
-                    <td>
-                        <button value="AddUserList"
-                                class="btn btn-success btn-sm" type="button" id="addressSearch"
-                                onclick="location.href='@Url.Action("UserList", "UserGroup", new { userGroupID=@item.Id })'">
-                            Add User
-                        </button>
-                    </td>
+                    @if (item.Id != 1)
+                    {
+                        <td>
+                            <button value="Edit"
+                                    class="btn btn-primary btn-sm" type="button" id="addressSearch"
+                                    onclick="location.href='@Url.Action("Create", "UserGroup" ,new {id = item.Id })'">
+                                Edit
+                            </button>
+                        </td>
+                        <td>
+                            <button value="Delete"
+                                    class="btn btn-danger btn-sm" type="button" id="addressSearch"
+                                    onclick="">
+                                Delete
+                            </button>
+                        </td>
+                        <td>
+                            <button value="AddUserList"
+                                    class="btn btn-success btn-sm" type="button" id="addressSearch"
+                                    onclick="location.href='@Url.Action("UserList", "UserGroup", new { userGroupID=@item.Id })'">
+                                Add User
+                            </button>
+                        </td>
+                    }
+                   
                 </tr>
 
             }

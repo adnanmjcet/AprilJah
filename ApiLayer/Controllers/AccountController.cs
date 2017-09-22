@@ -16,12 +16,16 @@ namespace ApiLayer.Controllers
         private readonly UserModel _userModel;
         private readonly UserRegistrationBs _userRegistrationBs;
         private readonly LoginBs _loginBs;
+        private readonly CategoryBs _categoryBs;
+        private readonly UserGroupBS _userGroupBs;
         APIResponseModel apiResponse;
         public AccountController()
         {
             _userModel = new UserModel();
             _userRegistrationBs = new UserRegistrationBs();
             _loginBs = new LoginBs();
+            _categoryBs = new CategoryBs();
+            _userGroupBs = new UserGroupBS();
             apiResponse = new APIResponseModel();
         }
 
@@ -33,13 +37,14 @@ namespace ApiLayer.Controllers
             string otp = null;
             if (model != null)
             {
+               
+                var checkUserName = _userRegistrationBs.CheckUserName(model.UserName);
+                if (checkUserName)
+                    return Ok("UserName alreay exsist!");
                 otp = GetOTPPassword();
                 model.OTPPassword = otp;
                 model.OTPGeneratedTime = DateTime.Now;
                 model.IsOTPCheck = false;
-                var checkUserName = _userRegistrationBs.CheckUserName(model.UserName);
-                if (checkUserName)
-                    return Ok("UserName alreay exsist!");
                 res = _userRegistrationBs.Save(model);
                 new SendSMS().Send(model.Contact, "OTP is " + otp + " for Registration");
             }
@@ -109,6 +114,8 @@ namespace ApiLayer.Controllers
                     _userRegistrationBs.Save(user);
                     apiResponse.IsSuccess = true;
                     apiResponse.Data = user.Id;
+                    _categoryBs.AddCategoryMapping(user.Id);
+                    _userGroupBs.SaveUserGroupMap(user.Id);
                     apiResponse.Message = "OTP Password Varified Successfylly!";
                     return Ok(apiResponse);
                 }

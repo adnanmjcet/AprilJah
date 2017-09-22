@@ -32,7 +32,7 @@ namespace BusinessLayer.Implementation
                 Name = x.Name,
                 CreatedOn = x.CreatedOn,
                 UserCount = x.UserGroup_Mapping.Count(),
-            }).OrderByDescending(x => x.Id).ToList();
+            }).ToList();
         }
 
         public UserGroupModel GetById(int id)
@@ -131,5 +131,17 @@ namespace BusinessLayer.Implementation
             }
             return true;
         }
+
+        public void SaveUserGroupMap(int userID)
+        {
+            UserGroup_Mapping usermap = new UserGroup_Mapping();
+            usermap.UserGroupID = 1;
+            usermap.UserID = userID;
+            usermap.IsActive = true;
+            usermap.CreatedOn = DateTime.Now;
+            _userGroupMap.Insert(usermap);
+        }
+
+
     }
 }

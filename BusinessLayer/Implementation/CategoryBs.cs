@@ -93,5 +93,21 @@ namespace BusinessLayer.Implementation
             
             return;
         }
+
+
+        public void AddCategoryMapping(int userID)
+        {
+            var category = _Category.GetWithInclude(x => x.IsDelete == false).ToList();
+
+            foreach (var item in category)
+            {
+                UserCategoryMapping catergorymap = new UserCategoryMapping();
+                catergorymap.UserID = userID;
+                catergorymap.CategoryID = item.Id;
+                catergorymap.IsSelected = true;
+                _userCategoryMapping.Insert(catergorymap);
+            }
+
+        }
     }
 }
