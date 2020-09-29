@@ -24,6 +24,7 @@ namespace ApiLayer.Controllers
             _userCategoryBs = new UserCategoryMappingBs();
             apiResponse = new APIResponseModel();
         }
+        //Added by Mouzam
         [HttpGet]
         public IHttpActionResult GetAllCategory(int userID)
         {

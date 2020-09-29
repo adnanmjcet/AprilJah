@@ -29,6 +29,8 @@ namespace ApiLayer.Controllers
             apiResponse = new APIResponseModel();
         }
 
+        //Added by Mouzam
+
         [HttpPost]
 
         public IHttpActionResult UserRegistration(UserModel model)
